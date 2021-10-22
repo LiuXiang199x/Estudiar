@@ -19,4 +19,13 @@ function alias {   # 这里要空格！
 	echo "$# arguments"
 }
 
+# return不细说了
+# Bash 函数体内直接声明的变量，属于全局变量，整个脚本都可以读取
+foo=2   # 有些地方空格是一定要写的，像赋值的话，空格不要！！！
+fn() {
+	foo=22
+}
 
+fn
+
+echo "foo = $foo"
