@@ -8,39 +8,43 @@ using namespace std;
 思路：当前最好的选择，首先肯定是使用面值最大的钱，比如总共要130元，则第一步肯定是选择100元面值的，第二步选择20元面值的，第三步选择10元面值的。
 */
 
-typedef struct Money{
+struct Money{
 	int single[7] = {1,2,5,10,20,50,100};
 	int number[7] = {2,5,0,3,4,0,4};
 };
 
+int total[7]={};
+
 int changemoney(int money, Money money_param){
 
-	for(int i=sizeof(money_param.single)/sizeof(money_param.single[0]; i>=0; i--)){
-		total[i]=min(number[i], money/single_money[i]);
+	cout << sizeof(money_param.single)/sizeof(money_param.single[0]) << endl;
+	for(int i=sizeof(money_param.single)/sizeof(money_param.single[0])-1; i>=0; i--){
+		total[i]=min(money_param.number[i], money/money_param.single[i]);
+		money = money - total[i]*money_param.single[i];
 	}
 	return 0;
 }
 
 
-int mian(int argc, char **argv){
+int main(int argc, char **argv){
 
 	int money_needed;
 	cout << "Please enter the amount of money you need change:";
 	cin >> money_needed;
 	
 	Money money_param;
-	int total[7]={};
 	
 	// 这里就不考虑小数了
 	if(money_needed<=0){
 		cout << "WRONG NUMBER, Please enter again!" << endl;		
 	}
 	else{
-		changemoney(money_needed);		
+		changemoney(money_needed, money_param);		
 	}
 
 	for(int i=0; i<sizeof(total)/sizeof(total[0]); i++){
-		cout << total[i] << endl;
+		cout << "Amount of " << money_param.single[i];
+		cout << ":" << total[i] << endl;
 	}
 
 	return 0;
