@@ -1,0 +1,8 @@
+prefix=/home/xiang/test_ros/install
+
+Name: ros_tutorial
+Description: Description of ros_tutorial
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs
