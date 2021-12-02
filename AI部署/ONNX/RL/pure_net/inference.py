@@ -37,7 +37,7 @@ def main():
 
     # Inference
     print(">======== Running RKNN model ==========<")
-    outputs = rknn.inference(inputs)
+    outputs = rknn.inference(inputs=[inputs])
     print(outputs)
     print(">======== Inference done =========<")
 
