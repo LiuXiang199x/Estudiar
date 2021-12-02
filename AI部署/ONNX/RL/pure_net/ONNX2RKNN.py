@@ -1,3 +1,4 @@
+import torch
 from rknn.api import RKNN
 
 ONNX_MODEL = "test_conv_pool.onnx"

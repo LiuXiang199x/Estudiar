@@ -1,6 +1,6 @@
 from rknn.api import RKNN
 
-ONNX_MODEL = "test_conv_pool.onnx"
+ONNX_MODEL = "test_without_pool.onnx"
 RKNN_MODEL = "test_model.rknn"
  
 if __name__ == '__main__':
