@@ -1,6 +1,7 @@
 import torch
 import numpy
 from rknn.api import RKNN
+import time
 
 
 def main():
@@ -29,6 +30,7 @@ def main():
 
     # init environment
     print(">======== Init runtime environment ========<")
+    
     ret = rknn.init_runtime()
     if ret != 0:
         print("<======== Init runtime environment failed! ========>")
@@ -37,8 +39,11 @@ def main():
 
     # Inference
     print(">======== Running RKNN model ==========<")
+    time1 = time.time()
     outputs = rknn.inference(inputs=[inputs])
     print(outputs)
+    time2 = time.time()
+    print("inference time: ", time2-time1)
     print(">======== Inference done =========<")
 
 
