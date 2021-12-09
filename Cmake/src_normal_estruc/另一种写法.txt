@@ -1,0 +1,20 @@
+这里解释一下为什么在build目录下运行cmake？从前面几个case中可以看到，如果不这样做，cmake运行时生成的附带文件就会跟源码文件混在一起，这样会对程序的目录结构造成污染，而在build目录下运行cmake，生成的附带文件就只会待在build目录下，如果我们不想要这些文件了就可以直接清空build目录，非常方便。
+
+另外一种写法：
+前面的工程使用了2个CMakeLists.txt，最外层的CMakeLists.txt用于掌控全局，使用add_subdirectory来控制其它目录下的CMakeLists.txt的运行。
+
+上面的例子也可以只使用一个CMakeLists.txt，把最外层的CMakeLists.txt内容改成如下:
+
+cmake_minimum_required (VERSION 2.8)
+
+project (demo)
+
+set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+
+aux_source_directory (src SRC_LIST)
+
+include_directories (include)
+
+add_executable (main ${SRC_LIST})
+
+别忘了删除 src 目录下的CMakeLists.txt。
