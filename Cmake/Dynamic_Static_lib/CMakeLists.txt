@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.5)
 
 project (demo)
 
-set (SRC_LIST ${PROJECT_SOURCE_DIR}/testFunc/testFunc.c)
+set (SRC_LIST ${PROJECT_SOURCE_DIR}/testFunc/testFunc.cc)
 
 # add_library: 生成动态库或静态库(第1个参数指定库的名字；第2个参数决定是动态还是静态，如果没有就默认静态；第3个参数指定生成库的源文件)
 # set_target_properties: 设置最终生成的库的名称，还有其它功能，如设置库的版本号等等
