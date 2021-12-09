@@ -17,3 +17,5 @@ find_library(TESTFUNC_LIB testFunc HINTS ${PROJECT_SOURCE_DIR}/testFunc/lib)
 add_executable (main ${SRC_LIST})
 
 target_link_libraries (main ${TESTFUNC_LIB})
+
+# ps：在lib目录下有testFunc的静态库和动态库，find_library(TESTFUNC_LIB testFunc ...默认是查找动态库，如果想直接指定使用动态库还是静态库，可以写成find_library(TESTFUNC_LIB libtestFunc.so ...或者find_library(TESTFUNC_LIB libtestFunc.a ...
