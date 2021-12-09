@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xiang/Estudiar/Cmake/different_cato/main.cc
+iostream
+-
+test_Func/testFunc.h
+/home/xiang/Estudiar/Cmake/different_cato/test_Func/testFunc.h
+test_Func1/testFunc1.h
+/home/xiang/Estudiar/Cmake/different_cato/test_Func1/testFunc1.h
+
+/home/xiang/Estudiar/Cmake/different_cato/test_Func/testFunc.cc
+iostream
+-
+testFunc.h
+/home/xiang/Estudiar/Cmake/different_cato/test_Func/testFunc.h
+
+/home/xiang/Estudiar/Cmake/different_cato/test_Func/testFunc.h
+
+/home/xiang/Estudiar/Cmake/different_cato/test_Func1/testFunc1.cc
+iostream
+-
+testFunc1.h
+/home/xiang/Estudiar/Cmake/different_cato/test_Func1/testFunc1.h
+
+/home/xiang/Estudiar/Cmake/different_cato/test_Func1/testFunc1.h
+
