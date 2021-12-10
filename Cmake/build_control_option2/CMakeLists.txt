@@ -1,18 +1,20 @@
 cmake_minimum_required(VERSION 3.5)
 
+# 可以通过定义宏来控制打印的信息，我们CMakeLists.txt内容如下
 project(demo)
-
-option(MYDEBUG "enable debug compilation" OFF)
-
-# 有时希望在编译代码时只编译一些指定的源码，可以使用cmake的option命令，主要遇到的情况分为2种：
-### 1.本来要生成多个bin或库文件，现在只想生成部分指定的bin或库文件
-### 2.对于同一个bin文件，只想编译其中部分代码（使用宏来控制）
-# 假设我们现在的工程会生成2个bin文件，main1和main2
 
 set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
-add_subdirectory(src)
+option(WWW1 "print one message" OFF)
+option(WWW2 "print another message" OFF)
 
-# 直接cmake .. 只会编译出main1
-# cmake .. -DMYDEBUG=ON  这样就可以编译出main1 和 main2了
-# 和control1不一样，想想每次去编译的时候打一个 -DMYDEBUG=ON 很麻烦，因此我们可以有更简单的办法
+if (WWW1)
+    add_definitions(-DWWW1)
+endif()
+
+if (WWW2)
+    add_definitions(-DWWW2)
+endif()
+
+add_executable(main main.cc)
+# 这里把option的名字保持和main.c里的宏名称一致，这样更加直观，也可以选择不同的名字。通过与add_definitions()的配合，就可以控制单个bin文件的打印输出了
