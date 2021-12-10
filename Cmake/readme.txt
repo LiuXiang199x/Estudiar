@@ -1,3 +1,5 @@
+https://blog.csdn.net/whahu1989/article/details/82078563
+
 一 安装CMake
 本文使用ubuntu18.04，安装cmake使用如下命令，
 sudo apt install cmake
