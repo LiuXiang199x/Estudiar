@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/../include/add.h
+iostream
+-
+
+../src/../include/menor.h
+iostream
+-
+
+/home/xiang/Estudiar/Cmake/TEST/test1/src/main.cc
+iostream
+-
+add.h
+/home/xiang/Estudiar/Cmake/TEST/test1/src/add.h
+menor.h
+/home/xiang/Estudiar/Cmake/TEST/test1/src/menor.h
+
