@@ -10,7 +10,7 @@ def main():
     rknn = RKNN()
 
     # wihtout quantification
-    ret = rknn.load_rknn('test_model.rknn')
+    ret = rknn.load_rknn('rknn/ckpt.85.rknn')
 
     # with quantification
     # rknn.load_rknn('./centerface_quantization_1088_1920.rknn')

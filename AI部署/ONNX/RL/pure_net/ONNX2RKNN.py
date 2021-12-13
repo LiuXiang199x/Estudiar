@@ -1,8 +1,8 @@
 import torch
 from rknn.api import RKNN
 
-ONNX_MODEL = "test_conv_pool.onnx"
-RKNN_MODEL = "test_model.rknn"
+ONNX_MODEL = "onnx/ckpt.85.onnx"
+RKNN_MODEL = "rknn/ckpt.85.rknn"
  
 if __name__ == '__main__':
 
