@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xiang/Estudiar/AI部署/Version1/promaps_func/rknn_RL/src/main.cc
+iostream
+-
+vector
+-
+stdio.h
+-
+stdint.h
+-
+stdlib.h
+-
+fstream
+-
+iostream
+-
+string.h
+-
+uchar.h
+-
+
