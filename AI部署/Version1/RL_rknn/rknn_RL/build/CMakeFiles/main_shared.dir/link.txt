@@ -1,0 +1,1 @@
+aarch64-linux-gnu-g++ -fPIC  -std=c++11  -shared -Wl,-soname,libmain_rl.so -o ../lib/libmain_rl.so CMakeFiles/main_shared.dir/src/main.cc.o 
