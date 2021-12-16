@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../librknn_api/include/rknn_api.h
+stdint.h
+-
+
+/home/xiang/rknn_c++_sin_opencvall/rknn_mobilenet_demo/src/main.cc
+stdio.h
+-
+stdint.h
+-
+stdlib.h
+-
+fstream
+-
+iostream
+-
+sys/time.h
+-
+vector
+-
+string.h
+-
+uchar.h
+-
+rknn_api.h
+/home/xiang/rknn_c++_sin_opencvall/rknn_mobilenet_demo/src/rknn_api.h
+
