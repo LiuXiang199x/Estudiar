@@ -10,8 +10,10 @@
 #include <COccupancyGridMap2D.h>
 
 #include "rknn_api.h"
+#include "rl_api.h"
 
 using namespace std;
+
 //using namespace cv;
 
 #define BATCH_SIZE 1
@@ -21,7 +23,7 @@ using namespace std;
 #define img_height 64
 #define img_channels 3
 
-COccupancyGridMap2D map;
+mrpt::slam::COccupancyGridMap2D maps_original;
 // [-30, 15]
 
 double min_range = 0.5 - 0.117;
@@ -100,7 +102,7 @@ int predictions(vector<vector<vector<double>>> inputs_map, int expand_type, vect
 	int model_len = 0;
 	unsigned char* model;
 
-	const char* model_path = "../model/ckpt.85.rknn";
+	const char* model_path = "/userdata/ckpt.85.rknn";
 	// const char* img_path = argv[2];
 	// vector<vector<vector<double>>> data_vector;
 	// data_vector = get_inputs();
@@ -314,8 +316,8 @@ void get_target(int robot_x, int robot_y) {
 	printf("we are in func get_target");
 	// int size_x = 800;
 	// int size_y = 800;
-	int size_x = map.getSizeX();
-	int size_y = map.getSizeY();
+	int size_x = maps_original.getSizeX();
+	int size_y = maps_original.getSizeY();
 	int x_origin = 200;
 	int y_origin = 200;
 	double tmp_value;
@@ -341,7 +343,7 @@ void get_target(int robot_x, int robot_y) {
 	if (size_x == 800 && size_y == 800) {
 		for (int x = 0; x < size_x; x++) {
 			for (int y = 0; y < size_y; y++) {
-				tmp_value = map[x][y];
+				tmp_value = maps_original.getCell(x, y);
 				// tmp_value = 0.4;
 				// obstacles
 				if (tmp_value <= min_range) {
@@ -370,7 +372,7 @@ void get_target(int robot_x, int robot_y) {
 	if (size_x == 800 && size_y == 1200) {
 		for (int x = 0; x < size_x; x++) {
 			for (int y = 0; y < size_y; y++) {
-				tmp_value = map[x][y];
+				tmp_value = maps_original.getCell(x, y);
 				// tmp_value = 0.4;
 				// obstacles
 				if (tmp_value <= min_range) {
@@ -399,7 +401,7 @@ void get_target(int robot_x, int robot_y) {
 	if (size_x == 1200 && size_y == 800) {
 		for (int x = 0; x < size_x; x++) {
 			for (int y = 0; y < size_y; y++) {
-				tmp_value = map[x][y];
+				tmp_value = maps_original.getCell(x, y);
 				// tmp_value = 0.4;
 				// obstacles
 				if (tmp_value <= min_range) {
@@ -428,7 +430,7 @@ void get_target(int robot_x, int robot_y) {
 	if (size_x == 1200 && size_y == 1200) {
 		for (int x = 0; x < size_x; x++) {
 			for (int y = 0; y < size_y; y++) {
-				tmp_value = map[x][y];
+				tmp_value = maps_original.getCell(x, y);
 				// tmp_value = 0.4;
 				// obstacles
 				if (tmp_value <= min_range) {
@@ -446,7 +448,7 @@ void get_target(int robot_x, int robot_y) {
 					explored_states[x][y] = 0;
 				}
 
-				// double float_value = map.getCell(x, y);
+				// double float_value = maps_original.getCell(x, y);
 			}
 		}
 		robot__x = robot_x;
@@ -672,11 +674,11 @@ void pro_target(vector<float> outputs, int expand_type, vector<vector<double>> m
 
 	
 	// if transfomed target is obstacle --> use traditional algorithm
-	if (map[x][y] <= min_range) {
+	if (maps_original.getCell(x, y) <= min_range) {
 		for (int i = x - 2; i < x + 3; i++) {
 			double tmp_;
 			for (int j = y - 2; j < y + 3; j++) {
-				tmp_ = map[i][j];
+				tmp_ = maps_original.getCell(i, j);
 				if (tmp_ > min_range) {
 					target_point[0] = i;
 					target_point[1] = j;
@@ -696,8 +698,9 @@ void pro_target(vector<float> outputs, int expand_type, vector<vector<double>> m
 	cout << "====== get target done ======" << endl;
 	// return target_point;
 }
-/*
+
 int main() {
+	/*
 	printf("start to test!!");
 	get_target(241, 445);
 	int aaxx;
@@ -705,6 +708,6 @@ int main() {
 	aaxx = get_target_x();
 	aayy = get_target_y();
 	cout << "aaxx::" << aaxx << "aayy::" << aayy << endl;
-
+	*/
 	return 0;
-}*/
+}

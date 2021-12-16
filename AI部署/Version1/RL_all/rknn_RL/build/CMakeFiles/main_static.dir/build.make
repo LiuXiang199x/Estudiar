@@ -60,15 +60,15 @@ include CMakeFiles/main_static.dir/flags.make
 CMakeFiles/main_static.dir/src/main.cc.o: CMakeFiles/main_static.dir/flags.make
 CMakeFiles/main_static.dir/src/main.cc.o: ../src/main.cc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main_static.dir/src/main.cc.o"
-	aarch64-linux-gnu-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main_static.dir/src/main.cc.o -c /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc
+	arm-linux-gnueabihf-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main_static.dir/src/main.cc.o -c /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc
 
 CMakeFiles/main_static.dir/src/main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main_static.dir/src/main.cc.i"
-	aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc > CMakeFiles/main_static.dir/src/main.cc.i
+	arm-linux-gnueabihf-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc > CMakeFiles/main_static.dir/src/main.cc.i
 
 CMakeFiles/main_static.dir/src/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_static.dir/src/main.cc.s"
-	aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc -o CMakeFiles/main_static.dir/src/main.cc.s
+	arm-linux-gnueabihf-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc -o CMakeFiles/main_static.dir/src/main.cc.s
 
 CMakeFiles/main_static.dir/src/main.cc.o.requires:
 

@@ -60,15 +60,15 @@ include CMakeFiles/rl_all.dir/flags.make
 CMakeFiles/rl_all.dir/src/main.cc.o: CMakeFiles/rl_all.dir/flags.make
 CMakeFiles/rl_all.dir/src/main.cc.o: ../src/main.cc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rl_all.dir/src/main.cc.o"
-	aarch64-linux-gnu-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rl_all.dir/src/main.cc.o -c /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc
+	arm-linux-gnueabihf-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rl_all.dir/src/main.cc.o -c /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc
 
 CMakeFiles/rl_all.dir/src/main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rl_all.dir/src/main.cc.i"
-	aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc > CMakeFiles/rl_all.dir/src/main.cc.i
+	arm-linux-gnueabihf-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc > CMakeFiles/rl_all.dir/src/main.cc.i
 
 CMakeFiles/rl_all.dir/src/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rl_all.dir/src/main.cc.s"
-	aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc -o CMakeFiles/rl_all.dir/src/main.cc.s
+	arm-linux-gnueabihf-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/src/main.cc -o CMakeFiles/rl_all.dir/src/main.cc.s
 
 CMakeFiles/rl_all.dir/src/main.cc.o.requires:
 
@@ -90,7 +90,7 @@ rl_all_EXTERNAL_OBJECTS =
 
 ../bin/rl_all: CMakeFiles/rl_all.dir/src/main.cc.o
 ../bin/rl_all: CMakeFiles/rl_all.dir/build.make
-../bin/rl_all: ../../librknn_api/lib64/librknn_api.so
+../bin/rl_all: ../../librknn_api/lib/librknn_api.so
 ../bin/rl_all: CMakeFiles/rl_all.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../bin/rl_all"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rl_all.dir/link.txt --verbose=$(VERBOSE)

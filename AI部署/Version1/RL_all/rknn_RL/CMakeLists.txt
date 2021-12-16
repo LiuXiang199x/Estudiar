@@ -19,12 +19,12 @@ add_definitions(-w)
 # set(CMAKE_CXX_COMPILER ${CROSS_COMPILE_TOOL}-g++)
 
 #1806/1808
-set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
-set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
+# set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
+# set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
 
 
-#SET(CMAKE_C_COMPILER "arm-linux-gnueabihf-gcc")
-#SET(CMAKE_CXX_COMPILER "arm-linux-gnueabihf-g++")
+SET(CMAKE_C_COMPILER "arm-linux-gnueabihf-gcc")
+SET(CMAKE_CXX_COMPILER "arm-linux-gnueabihf-g++")
 
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")

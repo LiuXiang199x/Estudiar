@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL
+CMAKE_SOURCE_DIR = /home/xiang/桌面/RL_api/rknn_RL
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build
+CMAKE_BINARY_DIR = /home/xiang/桌面/RL_api/rknn_RL/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/main_shared.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build
 CMakeFiles/main_shared.dir/all:
 	$(MAKE) -f CMakeFiles/main_shared.dir/build.make CMakeFiles/main_shared.dir/depend
 	$(MAKE) -f CMakeFiles/main_shared.dir/build.make CMakeFiles/main_shared.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles --progress-num=1,2 "Built target main_shared"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles --progress-num=1,2 "Built target main_shared"
 .PHONY : CMakeFiles/main_shared.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/main_shared.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main_shared.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main_shared.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles 0
 .PHONY : CMakeFiles/main_shared.dir/rule
 
 # Convenience name for target.
@@ -103,7 +103,7 @@ clean: CMakeFiles/main_shared.dir/clean
 CMakeFiles/main_static.dir/all:
 	$(MAKE) -f CMakeFiles/main_static.dir/build.make CMakeFiles/main_static.dir/depend
 	$(MAKE) -f CMakeFiles/main_static.dir/build.make CMakeFiles/main_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles --progress-num=3,4 "Built target main_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles --progress-num=3,4 "Built target main_static"
 .PHONY : CMakeFiles/main_static.dir/all
 
 # Include target in all.
@@ -113,9 +113,9 @@ all: CMakeFiles/main_static.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main_static.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main_static.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles 0
 .PHONY : CMakeFiles/main_static.dir/rule
 
 # Convenience name for target.
@@ -140,7 +140,7 @@ clean: CMakeFiles/main_static.dir/clean
 CMakeFiles/rl_api.dir/all:
 	$(MAKE) -f CMakeFiles/rl_api.dir/build.make CMakeFiles/rl_api.dir/depend
 	$(MAKE) -f CMakeFiles/rl_api.dir/build.make CMakeFiles/rl_api.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles --progress-num=5,6 "Built target rl_api"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles --progress-num=5,6 "Built target rl_api"
 .PHONY : CMakeFiles/rl_api.dir/all
 
 # Include target in all.
@@ -150,9 +150,9 @@ all: CMakeFiles/rl_api.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rl_api.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rl_api.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/Version1/RL_api/rknn_RL/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles 0
 .PHONY : CMakeFiles/rl_api.dir/rule
 
 # Convenience name for target.

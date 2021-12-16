@@ -49,7 +49,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./rl_all")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./rl_all"
-         OLD_RPATH "/home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/../librknn_api/lib64:"
+         OLD_RPATH "/home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/../librknn_api/lib:"
          NEW_RPATH "lib")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./rl_all")
@@ -62,7 +62,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/../librknn_api/lib64/librknn_api.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI部署/Version1/RL_all/rknn_RL/../librknn_api/lib/librknn_api.so")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

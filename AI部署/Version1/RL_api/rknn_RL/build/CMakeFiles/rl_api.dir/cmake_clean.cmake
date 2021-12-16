@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rl_api.dir/src/main.cc.o"
-  "../bin/rl_api.pdb"
-  "../bin/rl_api"
+  "rl_api.pdb"
+  "rl_api"
 )
 
 # Per-language clean rules from dependency scanning.
