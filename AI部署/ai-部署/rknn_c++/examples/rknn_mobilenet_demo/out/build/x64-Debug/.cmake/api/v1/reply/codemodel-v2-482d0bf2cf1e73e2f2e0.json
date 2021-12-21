@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.1"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "rknn_class_infer_linux",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "rknn_class_infer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rknn_class_infer-Debug-cd4da04f1f8bfc0b23a5.json",
+					"name" : "rknn_class_infer",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Administrator/Desktop/3irobotics/ai-部署/rknn_c++/examples/rknn_mobilenet_demo/out/build/x64-Debug",
+		"source" : "C:/Users/Administrator/Desktop/3irobotics/ai-部署/rknn_c++/examples/rknn_mobilenet_demo"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}
