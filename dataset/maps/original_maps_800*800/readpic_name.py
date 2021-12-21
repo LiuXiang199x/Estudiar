@@ -4,7 +4,7 @@ import os
 import re
 import shutil
         
-path ='/home/xiang/Estudiar/dataset/maps/original_maps_800*800/png/' 
+path ='/home/xiang/Estudiar/dataset/maps/original_maps_800*800/png2/' 
 f=open("allpic_name.txt")
 
 # count = 0
@@ -14,7 +14,7 @@ f=open("allpic_name.txt")
 
 
 filelist = os.listdir(path)
-count = 1
+count = 76
 for item in filelist:
     # print('item name is ',item)
     if item.endswith('.png'):
@@ -28,9 +28,4 @@ for item in filelist:
         continue
     count += 1
 
-lenl = len(filelist)
-for i in range(lenl):
-    #if i.find('testnan')!=-1:
-    i += 1
-    shutil.move(path + "map_" + str(i) + ".png","/home/xiang/Estudiar/dataset/maps/file_est/map_"+ str(i) +"/", "map_"+str(i) +".png")
-    #print(i,name[i])
+
