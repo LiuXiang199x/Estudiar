@@ -10,11 +10,12 @@ def main():
     rknn = RKNN()
 
     # wihtout quantification
-    ret = rknn.load_rknn('rknn/ckpt.85.rknn')
+    # ret = rknn.load_rknn('rknn/ckpt.85.rknn')
+    ret = rknn.load_rknn('rknn_con_precompile/ckpt_precompile.rknn')
 
     # with quantification
     # rknn.load_rknn('./centerface_quantization_1088_1920.rknn')
-    # ret = rknn.init_runtime(target='rk1808', target_sub_class='AICS')
+    ret = rknn.init_runtime(target='rk1808', target_sub_class='AICS')
     if ret != 0:
         print('Init runtime environment failed')
         exit(ret)
@@ -30,13 +31,13 @@ def main():
 
     # init environment
     print(">======== Init runtime environment ========<")
-    
+    """
     ret = rknn.init_runtime()
     if ret != 0:
         print("<======== Init runtime environment failed! ========>")
         exit(ret)
     print("======== Init environment done =========")
-
+    """
     # Inference
     print(">======== Running RKNN model ==========<")
     time1 = time.time()
