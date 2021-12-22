@@ -2,7 +2,7 @@ import torch
 from rknn.api import RKNN
 
 ONNX_MODEL = "onnx/ckpt.85.onnx"
-RKNN_MODEL = "rknn/ckpt.85.rknn"
+RKNN_MODEL = "rknn_sin_precompile/ckpt.85.rknn"
  
 if __name__ == '__main__':
 
