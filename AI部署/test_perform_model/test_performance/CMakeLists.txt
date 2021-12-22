@@ -61,7 +61,7 @@ target_link_libraries(test_performance
 
 # install target and libraries
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install/test_performance)
-install(TARGETS rknn_class_infer DESTINATION ./)
+install(TARGETS test_performance DESTINATION ./)
 install(FILES model/ckpt.85.rknn DESTINATION ./)
 # install(FILES model/dog_224x224.jpg DESTINATION ./)
 
