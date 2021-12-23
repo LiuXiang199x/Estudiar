@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\RL">
+      <UniqueIdentifier>{8e55f4a1-52da-4503-9d50-bd10f534728a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Estudiar">
+      <UniqueIdentifier>{1dc39897-ac51-45b5-a3ed-66246dab69ea}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="alllib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="char_string.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="class.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="func_pass.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="if_for_while.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="multiarrays.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="pointer_freespace.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="structs.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="templates.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="待学习.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE.h">
+      <Filter>头文件\RL</Filter>
+    </ClInclude>
+    <ClInclude Include="loadmodel.h">
+      <Filter>头文件\RL</Filter>
+    </ClInclude>
+    <ClInclude Include="NFBE.h">
+      <Filter>头文件\RL</Filter>
+    </ClInclude>
+    <ClInclude Include="RL.h">
+      <Filter>头文件\RL</Filter>
+    </ClInclude>
+    <ClInclude Include="predictions.h">
+      <Filter>头文件\RL</Filter>
+    </ClInclude>
+    <ClInclude Include="final.h">
+      <Filter>头文件\RL</Filter>
+    </ClInclude>
+    <ClInclude Include="generate_inputs.h">
+      <Filter>头文件\RL</Filter>
+    </ClInclude>
+    <ClInclude Include="find_MaxValue.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+    <ClInclude Include="time.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="references.h">
+      <Filter>头文件\Estudiar</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
