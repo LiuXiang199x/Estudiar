@@ -181,7 +181,7 @@ int main(int argc, char** argv)
     unsigned char *model;
     srand((unsigned)time(NULL));
 
-    const char *model_path = "../model/ckpt.85.rknn";
+    const char *model_path = "../model/ckpt_precompile_20.rknn";
     const char *img_path = argv[2];
 	for(int counter_test=0; counter_test<1000; counter_test++){
 		vector<vector<vector<double>>> data_vector;
