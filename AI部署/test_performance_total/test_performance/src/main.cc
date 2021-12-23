@@ -90,7 +90,10 @@ vector<vector<vector<double>>> get_inputs(){
 		    inputs[4][i][j] = (rand()&10001)/10000.0;
 		    inputs[5][i][j] = (rand()&10001)/10000.0;
 		    inputs[7][i][j] = (rand()&10001)/10000.0;
-
+		    if(i==45&&j==45){
+		        inputs[2][i][j]=1;
+		        inputs[6][i][j]=1;
+			}
 			if(inputs[0][i][j]>=0.5){
 				inputs[0][i][j] = 1;
 			}
@@ -130,30 +133,23 @@ vector<vector<vector<double>>> get_inputs(){
 		}
     }
 
-	int robot_x = rand()%100+1;
-	int robot_y = rand()%100+1;
-	inputs[2][robot_x][robot_y] = 1;
-	inputs[6][robot_x][robot_y] = 1; 
-	printf("====>robot_x=%d, robot_y=%d<====\n", robot_x, robot_y);
-
+ 
     return inputs;
 }
 
-void pro_target(vector<float> outputs, int output_size) {
+void pro_target(vector<float> outputs) {
 
 	cout << "===I am in pro_target func===" << endl;
 
 	double tmp_max = outputs[0];
 	int tmp_index = 0;
-	printf("tmp_max====%f\n",tmp_max);
-	printf("outputs.size() = %d\n", output_size);
-	for (int i = 0; i < output_size; i++) {
+	for (int i = 0; i < outputs.size(); i++) {
 		if (tmp_max < outputs[i]) {
 			tmp_max = outputs[i];
 			tmp_index = i;
 		}
 	}
-	cout << "240->max_index=" << tmp_index << "  240->x=" << tmp_index%240 << "  240->y=" << tmp_index/240 << endl;
+	cout << "240->i=" << tmp_index << "240->x=" << tmp_index%240 << "240->y=" << tmp_index/240 << endl;
 	vector<int> target_point(2);
 	// x: rows;    y: columns
 	// cout << "tmp_index = " << tmp_index << endl;
@@ -179,7 +175,7 @@ int main(int argc, char** argv)
     int ret;
     int model_len = 0;
     unsigned char *model;
-    srand((unsigned)time(NULL));
+    srand(time(0));
 
     const char *model_path = "../model/ckpt.85.rknn";
     const char *img_path = argv[2];
@@ -323,8 +319,7 @@ int main(int argc, char** argv)
 
 		printf("[1]:%f, [2]:%f, [3]:%f\n", output[0], output[1], output[2]);
 		printf("======== Getting target done ========\n");
-		printf("output size!!!! = %d", output.size());
-		pro_target(output, output.size());
+		pro_target(output);
 		// output -> output
 		// Release rknn_outputs
 		rknn_outputs_release(ctx, 1, outputs);
