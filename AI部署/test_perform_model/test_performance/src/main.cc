@@ -79,7 +79,7 @@ static unsigned char *load_model(const char *filename, int *model_size)
 }
 
 vector<vector<vector<double>>> get_inputs(){
-    srand(time(0));
+    // srand(time(0));
     vector<vector<vector<double>>> inputs(8, vector<vector<double>>(240, vector<double>(240, 0)));
 
     for(int i=0; i<240; i++){
@@ -137,6 +137,31 @@ vector<vector<vector<double>>> get_inputs(){
     return inputs;
 }
 
+void pro_target(vector<float> outputs) {
+
+	cout << "===I am in pro_target func===" << endl;
+
+	double tmp_max = outputs[0];
+	int tmp_index = 0;
+	for (int i = 0; i < outputs.size(); i++) {
+		if (tmp_max < outputs[i]) {
+			tmp_max = outputs[i];
+			tmp_index = i;
+		}
+	}
+	cout << "240->i=" << tmp_index << "240->x=" << tmp_index%240 << "240->y=" << tmp_index/240 << endl;
+	vector<int> target_point(2);
+	// x: rows;    y: columns
+	// cout << "tmp_index = " << tmp_index << endl;
+	int y = tmp_index % 240 * 5;
+	int x = tmp_index / 240 * 5;
+
+	cout << "=====>target_x=" << x << " ======>target_y=" << y << endl;
+	
+	cout << "====== get target done ======" << endl;
+	// return target_point;
+}
+
 /*-------------------------------------------
                   Main Function
 -------------------------------------------*/
@@ -150,6 +175,7 @@ int main(int argc, char** argv)
     int ret;
     int model_len = 0;
     unsigned char *model;
+    srand(time(0));
 
     const char *model_path = "../model/ckpt.85.rknn";
     const char *img_path = argv[2];
@@ -166,7 +192,13 @@ int main(int argc, char** argv)
 			    }
 		    }
 		}
-
+		/*
+		printf("%d",data_vector[56]);
+		printf("%d",data_vector[156]);
+		printf("%d",data_vector[256]);
+		printf("%d",data_vector[356]);
+		printf("%d",data_vector[456]);
+		*/		
 		// const char *img_path2 = argv[3];
 		// unsigned long start_time,end_load_model_time, stop_time;
 		timeval start_time,end_load_model_time,end_init_time,end_run_time,end_process_time, stop_time;
@@ -285,6 +317,9 @@ int main(int argc, char** argv)
 		    // printf("size of ouput:%d\n", output.size());
 		}
 
+		printf("[1]:%f, [2]:%f, [3]:%f\n", output[0], output[1], output[2]);
+		printf("======== Getting target done ========\n");
+		pro_target(output);
 		// output -> output
 		// Release rknn_outputs
 		rknn_outputs_release(ctx, 1, outputs);
@@ -298,5 +333,6 @@ int main(int argc, char** argv)
 		}
 
 	}
+
     return 0;
 }
