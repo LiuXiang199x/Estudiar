@@ -122,7 +122,7 @@ vector<vector<double>> crop_map(vector<vector<double>> tmp, int x, int y, double
 
 	for (int i = 0; i < 240; i++) {
 		for (int j = 0; j < 240; j++) {
-			map_output[i][j] = map[robot_y - 120 + i][robot_x - 120 + j];
+			map_output[i][j] = map[robot_x - 120 + i][robot_y - 120 + j];
 		}
 	}
 	return map_output;
@@ -320,15 +320,15 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 			front_map_pool[i][j] = Frontp_pooling[i * 240 + j];
 		}
 	}
-	front_map_pool = filter_frontier(front_map_pool, 240, 240, 2);
+	// front_map_pool = filter_frontier(front_map_pool, 240, 240, 2);
 
 	printf("======== Getting croped maps =======");
 	// maps:(1200, 1200) ---> (240, 240)
-	Ocp_crop = crop_map(map_occupancy, idx, idy, double(1));
-	Expp_crop = crop_map(explored_states, idx, idy, double(0));
-	Agentp_crop = crop_map(agent_status, idx, idy, double(0));
-	Frontier_crop = crop_map(frontier_map, idx, idy, double(0));
-	Frontier_crop = filter_frontier(Frontier_crop, 240, 240, 2);
+	Ocp_crop = crop_map(map_occupancy, robot__x, robot__y, double(1));
+	Expp_crop = crop_map(explored_states, robot__x, robot__y, double(0));
+	Agentp_crop = crop_map(agent_status, robot__x, robot__y, double(0));
+	Frontier_crop = crop_map(frontier_map, robot__x, robot__y, double(0));
+	// Frontier_crop = filter_frontier(Frontier_crop, 240, 240, 2);
 
 	// double output_maps[8][240][240];
 	static vector<vector<vector<double>>> output_maps(8, vector<vector<double>>(240, vector<double>(240)));
@@ -355,6 +355,8 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 			}
 		}
 	}
+
+	cout << "Frontier mappp ======== " << flag_end << endl;
 
 	if (flag_end == 0) {
 		printf("There is no frontier left on the map");
@@ -557,7 +559,7 @@ int main(int argc, char** argv)
 		static vector<vector<double>> frontier_mask(240, vector<double>(240));
 		for(int i=0; i<240; i++){
 		    for(int j=0; j<240; j++){
-				frontier_mask[i][j] = data_vector[2][i][j];
+				frontier_mask[i][j] = data_vector[3][i][j];
 		    }
 		}
 			
