@@ -35,6 +35,17 @@ using namespace std;
 #define img_height 64
 #define img_channels 3
 
+double min_range = 0.5 - 0.117;
+double max_range = 0.5 + 0.059;
+
+vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, int idx, int idy);
+int predictions(vector<vector<vector<double>>> inputs, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy);
+vector<vector<double>> crop_map(vector<vector<double>> tmp, int x, int y, double padding_num);
+vector<vector<double>> get_frontier(vector<vector<double>> explored_map, vector<vector<double>> occupancy_map, int row, int column);
+vector<vector<double>> filter_frontier(vector<vector<double>> map, int row, int column, int minimum_size);
+void pro_target(vector<float> outputs, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy);
+
+
 /*-------------------------------------------
                   Functions
 -------------------------------------------*/
@@ -352,6 +363,24 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	return output_maps;
 }
 
+vector<vector<double>> filter_frontier(vector<vector<double>> map, int row, int column, int minimum_size) {
+	for (int i = minimum_size; i < row - minimum_size; i++) {
+		for (int j = minimum_size; j < column - minimum_size; j++) {
+			if (map[i][j] == 1) {
+				double tmp = 0;
+				for (int m = i - minimum_size; m < i + minimum_size + 1; m++) {
+					for (int n = j - minimum_size; n < j + minimum_size + 1; n++) {
+						tmp = tmp + map[m][n];
+					}
+				}
+				if (tmp <= 2) {
+					map[i][j] = 0;
+				}
+			}
+		}
+	}
+	return map;
+}
 
 vector<vector<double>> get_frontier(vector<vector<double>> explored_map,
 	vector<vector<double>> occupancy_map, int row, int column) {
@@ -419,7 +448,7 @@ static unsigned char *load_model(const char *filename, int *model_size)
 
 vector<vector<double>> get_inputs(int &robotx, int &roboty){
     // srand(time(0));
-    static vector<vector<double>> inputs(800, vector<vdouble>(800));
+    static vector<vector<double>> inputs(800, vector<double>(800));
 
     for(int i=0; i<800; i++){
 		for(int j=0;j<800;j++){
@@ -433,7 +462,7 @@ vector<vector<double>> get_inputs(int &robotx, int &roboty){
 	robotx = robot_x;
 	roboty = robot_y;
 	printf("====>robot_x=%d, robot_y=%d<====\n", robot_x, robot_y);
-	printf("====> 800*800 random maps generated !!! <====\n",);
+	printf("====> 800*800 random maps generated !!! <====\n");
 
     return inputs;
 }
@@ -497,7 +526,7 @@ int main(int argc, char** argv)
 		// ================ GET RANDOM INPUT DATA ==================
 		int robot_xx, robot_yy;
 		long startt_getdata = get_sys_time_interval();
-		static vector<vecto<double>> data_vectorrr;
+		static vector<vector<double>> data_vectorrr;
 		static vector<vector<vector<double>>> data_vector;
 		data_vectorrr = get_inputs(robot_xx, robot_yy);
 		long end_getdata = get_sys_time_interval();

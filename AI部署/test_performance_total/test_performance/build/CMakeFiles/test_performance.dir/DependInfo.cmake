@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xiang/Estudiar/AI部署/test_perform_withMask/test_performance/src/main.cc" "/home/xiang/Estudiar/AI部署/test_perform_withMask/test_performance/build/CMakeFiles/test_performance.dir/src/main.cc.o"
+  "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/src/main.cc" "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/test_performance.dir/src/main.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
