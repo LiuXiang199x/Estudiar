@@ -1,8 +1,8 @@
-# Install script for directory: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance
+# Install script for directory: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/install/test_performance")
+  set(CMAKE_INSTALL_PREFIX "/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/install/test_performance_cropping")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,31 +38,31 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_cropping" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_cropping")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_cropping"
          RPATH "lib")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE EXECUTABLE FILES "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/bin/test_performance")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE EXECUTABLE FILES "/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/bin/test_performance_cropping")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_cropping" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_cropping")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance"
-         OLD_RPATH "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/../librknn_api/lib64:"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_cropping"
+         OLD_RPATH "/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/../librknn_api/lib64:"
          NEW_RPATH "lib")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_cropping")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE FILE FILES "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/model/ckpt_precompile_20.rknn")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE FILE FILES "/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/model/ckpt_precompile_20.rknn")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/../librknn_api/lib64/librknn_api.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/../librknn_api/lib64/librknn_api.so")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -73,5 +73,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

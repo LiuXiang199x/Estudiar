@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/3.10.2/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/3.10.2/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,33 +23,33 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/3.10.2/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/3.10.2/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_20db5/fast"
-/usr/bin/make -f CMakeFiles/cmTC_20db5.dir/build.make CMakeFiles/cmTC_20db5.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_20db5.dir/testCCompiler.c.o
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc    -o CMakeFiles/cmTC_20db5.dir/testCCompiler.c.o   -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_20db5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_20db5.dir/link.txt --verbose=1
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc      CMakeFiles/cmTC_20db5.dir/testCCompiler.c.o  -o cmTC_20db5 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_2140a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2140a.dir/build.make CMakeFiles/cmTC_2140a.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_2140a.dir/testCCompiler.c.o
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc    -o CMakeFiles/cmTC_2140a.dir/testCCompiler.c.o   -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_2140a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2140a.dir/link.txt --verbose=1
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc      CMakeFiles/cmTC_2140a.dir/testCCompiler.c.o  -o cmTC_2140a 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b9f92/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b9f92.dir/build.make CMakeFiles/cmTC_b9f92.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc    -o CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_b9f92
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9f92.dir/link.txt --verbose=1
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc     -v CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o  -o cmTC_b9f92 
+Run Build Command:"/usr/bin/make" "cmTC_b11c3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b11c3.dir/build.make CMakeFiles/cmTC_b11c3.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc    -o CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_b11c3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b11c3.dir/link.txt --verbose=1
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc     -v CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o  -o cmTC_b11c3 
 使用内建 specs。
 COLLECT_GCC=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc
 COLLECT_LTO_WRAPPER=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/lto-wrapper
@@ -59,24 +59,24 @@ COLLECT_LTO_WRAPPER=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueab
 gcc 版本 6.3.1 20170404 (Linaro GCC 6.3-2017.05) 
 COMPILER_PATH=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/bin/
 LIBRARY_PATH=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/lib/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/lib/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9f92' '-march=armv7-a' '-mtune=cortex-a9' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu'
- /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/collect2 -plugin /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/liblto_plugin.so -plugin-opt=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccdyMNDT.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc --build-id --eh-frame-hdr -dynamic-linker /lib/ld-linux-armhf.so.3 -X -m armelf_linux_eabi -o cmTC_b9f92 /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crt1.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crti.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtbegin.o -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1 -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/lib -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/lib -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtend.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9f92' '-march=armv7-a' '-mtune=cortex-a9' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu'
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b11c3' '-march=armv7-a' '-mtune=cortex-a9' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu'
+ /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/collect2 -plugin /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/liblto_plugin.so -plugin-opt=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccyYCooy.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc --build-id --eh-frame-hdr -dynamic-linker /lib/ld-linux-armhf.so.3 -X -m armelf_linux_eabi -o cmTC_b11c3 /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crt1.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crti.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtbegin.o -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1 -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/lib -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/lib -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtend.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b11c3' '-march=armv7-a' '-mtune=cortex-a9' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu'
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_b9f92/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_b9f92.dir/build.make CMakeFiles/cmTC_b9f92.dir/build]
-  ignore line: [make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”]
-  ignore line: [Building C object CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc    -o CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_b9f92]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9f92.dir/link.txt --verbose=1]
-  ignore line: [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc     -v CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o  -o cmTC_b9f92 ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_b11c3/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_b11c3.dir/build.make CMakeFiles/cmTC_b11c3.dir/build]
+  ignore line: [make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”]
+  ignore line: [Building C object CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc    -o CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_b11c3]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b11c3.dir/link.txt --verbose=1]
+  ignore line: [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc     -v CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o  -o cmTC_b11c3 ]
   ignore line: [使用内建 specs。]
   ignore line: [COLLECT_GCC=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc]
   ignore line: [COLLECT_LTO_WRAPPER=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/lto-wrapper]
@@ -86,13 +86,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc 版本 6.3.1 20170404 (Linaro GCC 6.3-2017.05) ]
   ignore line: [COMPILER_PATH=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/bin/]
   ignore line: [LIBRARY_PATH=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/lib/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/lib/:/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9f92' '-march=armv7-a' '-mtune=cortex-a9' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu']
-  link line: [ /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/collect2 -plugin /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/liblto_plugin.so -plugin-opt=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccdyMNDT.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc --build-id --eh-frame-hdr -dynamic-linker /lib/ld-linux-armhf.so.3 -X -m armelf_linux_eabi -o cmTC_b9f92 /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crt1.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crti.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtbegin.o -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1 -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/lib -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/lib -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtend.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b11c3' '-march=armv7-a' '-mtune=cortex-a9' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu']
+  link line: [ /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/collect2 -plugin /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/liblto_plugin.so -plugin-opt=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccyYCooy.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc --build-id --eh-frame-hdr -dynamic-linker /lib/ld-linux-armhf.so.3 -X -m armelf_linux_eabi -o cmTC_b11c3 /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crt1.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crti.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtbegin.o -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1 -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/lib -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/lib -L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtend.o /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crtn.o]
     arg [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../libexec/gcc/arm-linux-gnueabihf/6.3.1/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccdyMNDT.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccyYCooy.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -107,7 +107,7 @@ Parsed C implicit link information from above output:
     arg [-m] ==> ignore
     arg [armelf_linux_eabi] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_b9f92] ==> ignore
+    arg [cmTC_b11c3] ==> ignore
     arg [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crt1.o] ==> ignore
     arg [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib/crti.o] ==> ignore
     arg [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/crtbegin.o] ==> ignore
@@ -117,7 +117,7 @@ Parsed C implicit link information from above output:
     arg [-L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/lib] ==> dir [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../lib/gcc/arm-linux-gnueabihf/6.3.1/../../../../arm-linux-gnueabihf/lib]
     arg [-L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/lib] ==> dir [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/lib]
     arg [-L/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib] ==> dir [/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/../arm-linux-gnueabihf/libc/usr/lib]
-    arg [CMakeFiles/cmTC_b9f92.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_b11c3.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -143,17 +143,17 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_07896/fast"
-/usr/bin/make -f CMakeFiles/cmTC_07896.dir/build.make CMakeFiles/cmTC_07896.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_07896.dir/feature_tests.c.o
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc   -std=c11 -o CMakeFiles/cmTC_07896.dir/feature_tests.c.o   -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_07896
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_07896.dir/link.txt --verbose=1
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc      CMakeFiles/cmTC_07896.dir/feature_tests.c.o  -o cmTC_07896 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_b5fe1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b5fe1.dir/build.make CMakeFiles/cmTC_b5fe1.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_b5fe1.dir/feature_tests.c.o
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc   -std=c11 -o CMakeFiles/cmTC_b5fe1.dir/feature_tests.c.o   -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_b5fe1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b5fe1.dir/link.txt --verbose=1
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc      CMakeFiles/cmTC_b5fe1.dir/feature_tests.c.o  -o cmTC_b5fe1 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -163,17 +163,17 @@ make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/tes
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b2687/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b2687.dir/build.make CMakeFiles/cmTC_b2687.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_b2687.dir/feature_tests.c.o
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc   -std=c99 -o CMakeFiles/cmTC_b2687.dir/feature_tests.c.o   -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_b2687
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b2687.dir/link.txt --verbose=1
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc      CMakeFiles/cmTC_b2687.dir/feature_tests.c.o  -o cmTC_b2687 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_8c112/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8c112.dir/build.make CMakeFiles/cmTC_8c112.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_8c112.dir/feature_tests.c.o
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc   -std=c99 -o CMakeFiles/cmTC_8c112.dir/feature_tests.c.o   -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_8c112
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c112.dir/link.txt --verbose=1
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc      CMakeFiles/cmTC_8c112.dir/feature_tests.c.o  -o cmTC_8c112 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -183,17 +183,17 @@ make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/tes
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9c593/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9c593.dir/build.make CMakeFiles/cmTC_9c593.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_9c593.dir/feature_tests.c.o
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc   -std=c90 -o CMakeFiles/cmTC_9c593.dir/feature_tests.c.o   -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_9c593
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c593.dir/link.txt --verbose=1
-/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc      CMakeFiles/cmTC_9c593.dir/feature_tests.c.o  -o cmTC_9c593 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_99a32/fast"
+/usr/bin/make -f CMakeFiles/cmTC_99a32.dir/build.make CMakeFiles/cmTC_99a32.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_99a32.dir/feature_tests.c.o
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc   -std=c90 -o CMakeFiles/cmTC_99a32.dir/feature_tests.c.o   -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_99a32
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_99a32.dir/link.txt --verbose=1
+/home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf-gcc      CMakeFiles/cmTC_99a32.dir/feature_tests.c.o  -o cmTC_99a32 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -201,30 +201,30 @@ make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/tes
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_6151e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_6151e.dir/build.make CMakeFiles/cmTC_6151e.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_6151e.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTC_6151e.dir/testCXXCompiler.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_6151e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6151e.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_6151e.dir/testCXXCompiler.cxx.o  -o cmTC_6151e 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_f6889/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f6889.dir/build.make CMakeFiles/cmTC_f6889.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_f6889.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_f6889.dir/testCXXCompiler.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_f6889
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f6889.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_f6889.dir/testCXXCompiler.cxx.o  -o cmTC_f6889 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e44db/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e44db.dir/build.make CMakeFiles/cmTC_e44db.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_e44db
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e44db.dir/link.txt --verbose=1
-/usr/bin/c++      -v CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e44db 
+Run Build Command:"/usr/bin/make" "cmTC_303f9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_303f9.dir/build.make CMakeFiles/cmTC_303f9.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_303f9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_303f9.dir/link.txt --verbose=1
+/usr/bin/c++      -v CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_303f9 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -236,24 +236,24 @@ Thread model: posix
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e44db' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjzke8l.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_e44db /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e44db' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_303f9' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccafwfrL.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_303f9 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_303f9' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_e44db/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_e44db.dir/build.make CMakeFiles/cmTC_e44db.dir/build]
-  ignore line: [make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”]
-  ignore line: [Building CXX object CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_e44db]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e44db.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e44db ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_303f9/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_303f9.dir/build.make CMakeFiles/cmTC_303f9.dir/build]
+  ignore line: [make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”]
+  ignore line: [Building CXX object CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_303f9]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_303f9.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_303f9 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -265,13 +265,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e44db' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjzke8l.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_e44db /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_303f9' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccafwfrL.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_303f9 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccjzke8l.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccafwfrL.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -289,7 +289,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_e44db] ==> ignore
+    arg [cmTC_303f9] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -301,7 +301,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_e44db.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_303f9.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -327,17 +327,17 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1bbc0/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1bbc0.dir/build.make CMakeFiles/cmTC_1bbc0.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_1bbc0.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_1bbc0.dir/feature_tests.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_1bbc0
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1bbc0.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_1bbc0.dir/feature_tests.cxx.o  -o cmTC_1bbc0 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_1fff0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1fff0.dir/build.make CMakeFiles/cmTC_1fff0.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_1fff0.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_1fff0.dir/feature_tests.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_1fff0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1fff0.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_1fff0.dir/feature_tests.cxx.o  -o cmTC_1fff0 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -400,17 +400,17 @@ make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/tes
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9e2a3/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9e2a3.dir/build.make CMakeFiles/cmTC_9e2a3.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_9e2a3.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_9e2a3.dir/feature_tests.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_9e2a3
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9e2a3.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_9e2a3.dir/feature_tests.cxx.o  -o cmTC_9e2a3 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_19ce9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_19ce9.dir/build.make CMakeFiles/cmTC_19ce9.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_19ce9.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_19ce9.dir/feature_tests.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_19ce9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_19ce9.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_19ce9.dir/feature_tests.cxx.o  -o cmTC_19ce9 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -473,17 +473,17 @@ make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/tes
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_fabc1/fast"
-/usr/bin/make -f CMakeFiles/cmTC_fabc1.dir/build.make CMakeFiles/cmTC_fabc1.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_fabc1.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_fabc1.dir/feature_tests.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_fabc1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fabc1.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_fabc1.dir/feature_tests.cxx.o  -o cmTC_fabc1 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_998c4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_998c4.dir/build.make CMakeFiles/cmTC_998c4.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_998c4.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_998c4.dir/feature_tests.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_998c4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_998c4.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_998c4.dir/feature_tests.cxx.o  -o cmTC_998c4 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -546,17 +546,17 @@ make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/tes
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp
+Change Dir: /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_23acc/fast"
-/usr/bin/make -f CMakeFiles/cmTC_23acc.dir/build.make CMakeFiles/cmTC_23acc.dir/build
-make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_23acc.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_23acc.dir/feature_tests.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_23acc
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23acc.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_23acc.dir/feature_tests.cxx.o  -o cmTC_23acc 
-make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/make" "cmTC_2721a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2721a.dir/build.make CMakeFiles/cmTC_2721a.dir/build
+make[1]: 进入目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_2721a.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_2721a.dir/feature_tests.cxx.o -c /home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_2721a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2721a.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_2721a.dir/feature_tests.cxx.o  -o cmTC_2721a 
+make[1]: 离开目录“/home/xiang/Estudiar/AI部署/test_performance_cropping/test_performance/build/CMakeFiles/CMakeTmp”
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-project(test_performance)
+project(test_performance_maxpool)
 
 set(CMAKE_SYSTEM_NAME Linux)
 add_definitions(-w)
@@ -45,14 +45,14 @@ set(RKNN_API_LIB ${RKNN_API_PATH}/${LIB_ARCH}/librknn_api.so)
 
 set(CMAKE_INSTALL_RPATH "lib")
 
-add_executable(test_performance
+add_executable(test_performance_maxpool
         src/main.cc
         #src/opencv_test.cc
         #src/deeplabV3_test.cc
         #src/CDeeplabV3Segamentation.cc
         )
 
-target_link_libraries(test_performance
+target_link_libraries(test_performance_maxpool
 	${RKNN_API_LIB}
   pthread
   dl
@@ -60,8 +60,8 @@ target_link_libraries(test_performance
 
 
 # install target and libraries
-set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install/test_performance)
-install(TARGETS test_performance DESTINATION ./)
+set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install/test_performance_maxpool)
+install(TARGETS test_performance_maxpool DESTINATION ./)
 install(FILES model/ckpt_precompile_20.rknn DESTINATION ./)
 # install(FILES model/dog_224x224.jpg DESTINATION ./)
 

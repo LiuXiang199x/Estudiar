@@ -48,24 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xiang/Estudiar/AI部署/test_performance_total/test_performance
+CMAKE_SOURCE_DIR = /home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build
+CMAKE_BINARY_DIR = /home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -78,6 +67,17 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -126,9 +126,9 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/build/CMakeFiles /home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,17 +157,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test_performance
+# Target rules for targets named test_performance_maxpool
 
 # Build rule for target.
-test_performance: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_performance
-.PHONY : test_performance
+test_performance_maxpool: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_performance_maxpool
+.PHONY : test_performance_maxpool
 
 # fast build rule for target.
-test_performance/fast:
-	$(MAKE) -f CMakeFiles/test_performance.dir/build.make CMakeFiles/test_performance.dir/build
-.PHONY : test_performance/fast
+test_performance_maxpool/fast:
+	$(MAKE) -f CMakeFiles/test_performance_maxpool.dir/build.make CMakeFiles/test_performance_maxpool.dir/build
+.PHONY : test_performance_maxpool/fast
 
 src/main.o: src/main.cc.o
 
@@ -175,7 +175,7 @@ src/main.o: src/main.cc.o
 
 # target to build an object file
 src/main.cc.o:
-	$(MAKE) -f CMakeFiles/test_performance.dir/build.make CMakeFiles/test_performance.dir/src/main.cc.o
+	$(MAKE) -f CMakeFiles/test_performance_maxpool.dir/build.make CMakeFiles/test_performance_maxpool.dir/src/main.cc.o
 .PHONY : src/main.cc.o
 
 src/main.i: src/main.cc.i
@@ -184,7 +184,7 @@ src/main.i: src/main.cc.i
 
 # target to preprocess a source file
 src/main.cc.i:
-	$(MAKE) -f CMakeFiles/test_performance.dir/build.make CMakeFiles/test_performance.dir/src/main.cc.i
+	$(MAKE) -f CMakeFiles/test_performance_maxpool.dir/build.make CMakeFiles/test_performance_maxpool.dir/src/main.cc.i
 .PHONY : src/main.cc.i
 
 src/main.s: src/main.cc.s
@@ -193,7 +193,7 @@ src/main.s: src/main.cc.s
 
 # target to generate assembly for a file
 src/main.cc.s:
-	$(MAKE) -f CMakeFiles/test_performance.dir/build.make CMakeFiles/test_performance.dir/src/main.cc.s
+	$(MAKE) -f CMakeFiles/test_performance_maxpool.dir/build.make CMakeFiles/test_performance_maxpool.dir/src/main.cc.s
 .PHONY : src/main.cc.s
 
 # Help Target
@@ -202,9 +202,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... install/strip"
-	@echo "... test_performance"
+	@echo "... edit_cache"
+	@echo "... test_performance_maxpool"
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install/local"

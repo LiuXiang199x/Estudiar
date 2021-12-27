@@ -54,45 +54,45 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xiang/Estudiar/AI部署/test_performance_total/test_performance
+CMAKE_SOURCE_DIR = /home/xiang/Estudiar/AI部署/test_performance_frontiers/test_performance
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build
+CMAKE_BINARY_DIR = /home/xiang/Estudiar/AI部署/test_performance_frontiers/test_performance/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_performance.dir
+# Target rules for target CMakeFiles/test_performance_frontiers.dir
 
 # All Build rule for target.
-CMakeFiles/test_performance.dir/all:
-	$(MAKE) -f CMakeFiles/test_performance.dir/build.make CMakeFiles/test_performance.dir/depend
-	$(MAKE) -f CMakeFiles/test_performance.dir/build.make CMakeFiles/test_performance.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles --progress-num=1,2 "Built target test_performance"
-.PHONY : CMakeFiles/test_performance.dir/all
+CMakeFiles/test_performance_frontiers.dir/all:
+	$(MAKE) -f CMakeFiles/test_performance_frontiers.dir/build.make CMakeFiles/test_performance_frontiers.dir/depend
+	$(MAKE) -f CMakeFiles/test_performance_frontiers.dir/build.make CMakeFiles/test_performance_frontiers.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/Estudiar/AI部署/test_performance_frontiers/test_performance/build/CMakeFiles --progress-num=1,2 "Built target test_performance_frontiers"
+.PHONY : CMakeFiles/test_performance_frontiers.dir/all
 
 # Include target in all.
-all: CMakeFiles/test_performance.dir/all
+all: CMakeFiles/test_performance_frontiers.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test_performance.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_performance.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/test_performance_total/test_performance/build/CMakeFiles 0
-.PHONY : CMakeFiles/test_performance.dir/rule
+CMakeFiles/test_performance_frontiers.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/test_performance_frontiers/test_performance/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_performance_frontiers.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI部署/test_performance_frontiers/test_performance/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_performance_frontiers.dir/rule
 
 # Convenience name for target.
-test_performance: CMakeFiles/test_performance.dir/rule
+test_performance_frontiers: CMakeFiles/test_performance_frontiers.dir/rule
 
-.PHONY : test_performance
-
-# clean rule for target.
-CMakeFiles/test_performance.dir/clean:
-	$(MAKE) -f CMakeFiles/test_performance.dir/build.make CMakeFiles/test_performance.dir/clean
-.PHONY : CMakeFiles/test_performance.dir/clean
+.PHONY : test_performance_frontiers
 
 # clean rule for target.
-clean: CMakeFiles/test_performance.dir/clean
+CMakeFiles/test_performance_frontiers.dir/clean:
+	$(MAKE) -f CMakeFiles/test_performance_frontiers.dir/build.make CMakeFiles/test_performance_frontiers.dir/clean
+.PHONY : CMakeFiles/test_performance_frontiers.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/test_performance_frontiers.dir/clean
 
 .PHONY : clean
 

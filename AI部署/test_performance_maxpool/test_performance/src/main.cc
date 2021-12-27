@@ -206,107 +206,6 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 		agent_status[robot__x][robot__y] = 1;
 		expand_type = 0;
 	}
-	/*
-	if (size_x == 800 && size_y == 1200) {
-		for (int x = 0; x < size_x; x++) {
-			for (int y = 0; y < size_y; y++) {
-				tmp_value = maps_original.getCell(x, y);
-				// tmp_value = 0.4;
-				// obstacles
-				if (tmp_value <= min_range) {
-					map_occupancy[x_origin + x][y] = 1;
-					explored_states[x_origin + x][y] = 1;
-				}
-				// free space
-				if (tmp_value >= max_range) {
-					map_occupancy[x_origin + x][y] = 0;
-					explored_states[x_origin + x][y] = 1;
-				}
-				// unexplored space
-				if (tmp_value > min_range && tmp_value < max_range) {
-					map_occupancy[x_origin + x][y] = 1;
-					explored_states[x_origin + x][y] = 0;
-				}
-
-				// double float_value = map.getCell(x, y);
-			}
-		}
-		robot__x = x_origin + idx;
-		robot__y = idy;
-		agent_status[robot__x][robot__y] = 1;
-		expand_type = 1;
-	}
-	if (size_x == 1200 && size_y == 800) {
-		for (int x = 0; x < size_x; x++) {
-			for (int y = 0; y < size_y; y++) {
-				tmp_value = maps_original.getCell(x, y);
-				// tmp_value = 0.4;
-				// obstacles
-				if (tmp_value <= min_range) {
-					map_occupancy[x][y_origin + y] = 1;
-					explored_states[x][y_origin + y] = 1;
-				}
-				// free space
-				if (tmp_value >= max_range) {
-					map_occupancy[x][y_origin + y] = 0;
-					explored_states[x][y_origin + y] = 1;
-				}
-				// unexplored space
-				if (tmp_value > min_range && tmp_value < max_range) {
-					map_occupancy[x][y_origin + y] = 1;
-					explored_states[x][y_origin + y] = 0;
-				}
-
-				// double float_value = map.getCell(x, y);
-			}
-		}
-		robot__x = idx;
-		robot__y = y_origin + idy;
-		agent_status[robot__x][robot__y] = 1;
-		expand_type = 2;
-	}
-	if (size_x == 1200 && size_y == 1200) {
-		for (int x = 0; x < size_x; x++) {
-			for (int y = 0; y < size_y; y++) {
-				tmp_value = maps_original.getCell(x, y);
-				// tmp_value = 0.4;
-				// obstacles
-				if (tmp_value <= min_range) {
-					map_occupancy[x][y] = 1;
-					explored_states[x][y] = 1;
-				}
-				// free space
-				if (tmp_value >= max_range) {
-					map_occupancy[x][y] = 0;
-					explored_states[x][y] = 1;
-				}
-				// unexplored space
-				if (tmp_value > min_range && tmp_value < max_range) {
-					map_occupancy[x][y] = 1;
-					explored_states[x][y] = 0;
-				}
-
-				// double float_value = maps_original.getCell(x, y);
-			}
-		}
-		
-		robot__x = idx;
-		robot__y = idy;
-		agent_status[robot__x][robot__y] = 1;
-		expand_type = 3;
-	}
-	*/
-	// long end_getoriginmap = get_sys_time_interval();
-	// printf("Getting original map datas ===================> :%ldms\n", end_getoriginmap - startt_getoriginmap);
-	printf("\n");
-
-
-	printf("======== Getting frontier maps =======\n");
-	// timeval startt_getfrontiermap, end_getfrontiermap;
-	// long startt_getfrontiermap = get_sys_time_interval();
-	frontier_map = get_frontier(explored_states, map_occupancy, 1200, 1200);
-	// long end_getfrontiermap = get_sys_time_interval();
-	// printf("Getting frontier map datas ===================> :%ldms\n", end_getfrontiermap - startt_getfrontiermap);
 	printf("\n");
 
 
@@ -347,114 +246,10 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	Agentp_pooling = pool2d.poll(Agentmap, 1200, 1200, 5, 5, false);
 	Frontp_pooling = pool2d.poll(Frontmap, 1200, 1200, 5, 5, false);
 
-	static vector<vector<double>> front_map_pool(240, vector<double>(240));
-	for (int i = 0; i < 240; i++) {
-		for (int j = 0; j < 240; j++) {
-			front_map_pool[i][j] = Frontp_pooling[i * 240 + j];
-		}
-	}
-	// front_map_pool = filter_frontier(front_map_pool, 240, 240, 2);
-	// long end_maxpoolmaps = get_sys_time_interval();
-	// printf("Getting max pooling map datas ===================> :%ldms\n", end_maxpoolmaps - start_maxpoolmaps);
-	printf("\n");
-
-
-	printf("======== Getting croped maps =======\n");
-	// long start_cropmaps = get_sys_time_interval();
-	// maps:(1200, 1200) ---> (240, 240)
-	Ocp_crop = crop_map(map_occupancy, robot__x, robot__y, double(1));
-	Expp_crop = crop_map(explored_states, robot__x, robot__y, double(0));
-	Agentp_crop = crop_map(agent_status, robot__x, robot__y, double(0));
-	Frontier_crop = crop_map(frontier_map, robot__x, robot__y, double(0));
-	// Frontier_crop = filter_frontier(Frontier_crop, 240, 240, 2);
-	// long end_cropmaps = get_sys_time_interval();
-	// printf("Getting croped map datas ===================> :%ldms\n", end_cropmaps - start_cropmaps);
-	printf("\n");
-
-
-	printf("======== Reshape all datas to (8,G,G) =======\n");
-	// timeval start_model_input, end_model_input;
-	// double output_maps[8][240][240];
-	static vector<vector<vector<double>>> output_maps(8, vector<vector<double>>(240, vector<double>(240)));
-	for (int x = 0; x < 240; x++) {
-		for (int y = 0; y < 240; y++) {
-			output_maps[0][x][y] = Ocp_crop[x][y];
-			output_maps[1][x][y] = Expp_crop[x][y];
-			output_maps[2][x][y] = Agentp_crop[x][y];
-			output_maps[3][x][y] = Frontier_crop[x][y];
-			output_maps[4][x][y] = *(Ocp_pooling + x * 240 + y);
-			output_maps[5][x][y] = *(Expp_pooling + x * 240 + y);
-			output_maps[6][x][y] = *(Agentp_pooling + x * 240 + y);
-			output_maps[7][x][y] = front_map_pool[x][y];
-		}
-	}
-	// long end_model_input = get_sys_time_interval();
-	// printf("Getting all datas for model ===================> :%ldms\n", end_model_input - start_model_input);
-	printf("\n");
-	printf("========== ALL DATA PREPARED ==========");
-
-	int flag_end = 0;
-
-	for (int i = 0; i < 240; i++) {
-		for (int j = 0; j < 240; j++) {
-			if (Frontier_crop[i][j] == 1) {
-				flag_end = flag_end + 1;
-			}
-		}
-	}
-
-	cout << "Frontier mappp ======== " << flag_end << endl;
-
-	if (flag_end == 0) {
-		printf("There is no frontier left on the map");
-	}
-
-	return output_maps;
+	vector<vector<vector<double>>> mappp;
+	return mappp;
 }
 
-vector<vector<double>> filter_frontier(vector<vector<double>> map, int row, int column, int minimum_size) {
-	for (int i = minimum_size; i < row - minimum_size; i++) {
-		for (int j = minimum_size; j < column - minimum_size; j++) {
-			if (map[i][j] == 1) {
-				double tmp = 0;
-				for (int m = i - minimum_size; m < i + minimum_size + 1; m++) {
-					for (int n = j - minimum_size; n < j + minimum_size + 1; n++) {
-						tmp = tmp + map[m][n];
-					}
-				}
-				if (tmp <= 2) {
-					map[i][j] = 0;
-				}
-			}
-		}
-	}
-	return map;
-}
-
-vector<vector<double>> get_frontier(vector<vector<double>> explored_map,
-	vector<vector<double>> occupancy_map, int row, int column) {
-
-	// global map[0] = map occupancy: -1/100-->1(unexplored space/obstacles); 0-->0(free space) --- expand with 1
-	// global map[1] = explored states: 0/100-->1(free space/obstacles); -1-->0(unexplored space) --- expand with 0
-	vector<vector<double>> map_frontier(1200, vector<double>(1200, 0));
-
-	for (int i = 1; i < 1199; i++) {
-		for (int j = 1; j < 1199; j++) {
-			double tmp = explored_map[i][j - 1] + explored_map[i][j + 1] + explored_map[i - 1][j] + explored_map[i + 1][j];
-			if (explored_map[i][j] == 0 && tmp != 0) {
-				map_frontier[i][j] = 1;
-			}
-		}
-	}
-
-	for (int i = 0; i < 1200; i++) {
-		for (int j = 0; j < 1200; j++) {
-			map_frontier[i][j] = map_frontier[i][j] * occupancy_map[i][j];
-		}
-	}
-
-	return map_frontier;
-}
 
 static unsigned char *load_model(const char *filename, int *model_size)
 {
@@ -500,39 +295,6 @@ vector<vector<double>> get_inputs(int &robotx, int &roboty){
     return inputs;
 }
 
-void pro_target(vector<float> outputs, int output_size, vector<vector<double>> mask) {
-
-	cout << "===I am in pro_target func===" << endl;
-	cout << "===Processing outputs with frontier mask===" << endl;
-
-	for(int i=0; i<240; i++){
-		for(int j=0; j<240; j++){
-			outputs[i*240+j] = outputs[i*240+j]*mask[i][j];
-		}
-	}
-
-	double tmp_max = outputs[0];
-	int tmp_index = 0;
-	printf("tmp_max====%f\n",tmp_max);
-	printf("outputs.size() = %d\n", output_size);
-	for (int i = 0; i < output_size; i++) {
-		if (tmp_max < outputs[i]) {
-			tmp_max = outputs[i];
-			tmp_index = i;
-		}
-	}
-	cout << "240->max_index=" << tmp_index << "  240->x=" << tmp_index%240 << "  240->y=" << tmp_index/240 << endl;
-	vector<int> target_point(2);
-	// x: rows;    y: columns
-	// cout << "tmp_index = " << tmp_index << endl;
-	int y = tmp_index % 240 * 5;
-	int x = tmp_index / 240 * 5;
-
-	cout << "=====>target_x=" << x << " ======>target_y=" << y << endl;
-	
-	cout << "====== get target done ======" << endl;
-	// return target_point;
-}
 
 /*-------------------------------------------
                   Main Function
@@ -574,7 +336,7 @@ int main(int argc, char** argv)
 		printf("Processing datas --------:%ldms\n",end_ProcessData - start_ProcessData);
 		printf("\n");
 		// ===================================================
-
+		/*
 		// uchar batch_img_data[img.cols*img.rows*img.channels() * BATCH_SIZE];
 		uchar batch_img_data[240*240*8 * BATCH_SIZE];
 		uchar data[240*240*8];
@@ -725,7 +487,7 @@ int main(int argc, char** argv)
 		if(model) {
 		    free(model);
 		}
-
+		*/
 	}
 
     return 0;
