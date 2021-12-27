@@ -13,7 +13,7 @@ if __name__ == '__main__':
 	print("---> condig model")
 
 	# 1806-regnet，reorder_channel='0 1 2 3 4 5 6 7', mean_values=[[123.675, 116.28, 103.53,1,1,1,1,1]], std_values=[[58.395, 57.12, 57.375,1,1,1,1,1]]
-	# rknn.config(batch_size=1, target_platform=['rv1109','rv1126'])
+	rknn.config(batch_size=1, target_platform=['rv1109','rv1126'])
 
 	# Load models	
 	print("---> Loading model")

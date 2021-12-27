@@ -2,7 +2,7 @@ import torch
 from rknn.api import RKNN
 
 ONNX_MODEL = "rknn_sin_precompile/ckpt.20.rknn"
-RKNN_MODEL = "rknn_con_precompile/ckpt_precompile_20.rknn"
+RKNN_MODEL = "rknn_con_precompile/ckpt_precompile_20_rk161.rknn"
  
 if __name__ == '__main__':
 
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
 	# Note: you must set rknn2precompile=True when call rknn.init_runtime()
 	#       RK3399Pro with android system does not support this function.
-	ret = rknn.init_runtime(target='rk1109', rknn2precompile=True)
+	ret = rknn.init_runtime(target='rv1109', rknn2precompile=True)
 	if ret != 0:
 		print('Init runtime environment failed')
 		exit(ret)
