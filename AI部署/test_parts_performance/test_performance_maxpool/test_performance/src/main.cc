@@ -69,6 +69,7 @@ static void printRKNNTensor(rknn_tensor_attr *attr) {
 }
 
 
+// !!!!为了节省时间，里面get_max直接给的参数kernelsize=5，换成别的kernel是会报错的！要记得手动改
 class MaxPolling {
 public:
 

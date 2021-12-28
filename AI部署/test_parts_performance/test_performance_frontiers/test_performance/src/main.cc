@@ -41,7 +41,7 @@ double max_range = 0.5 + 0.059;
 vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, int idx, int idy);
 int predictions(vector<vector<vector<double>>> inputs, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy);
 vector<vector<double>> crop_map(vector<vector<double>> tmp, int x, int y, double padding_num);
-vector<vector<double>> get_frontier(vector<vector<double>> explored_map, vector<vector<double>> occupancy_map, int row, int column);
+vector<vector<int>> get_frontier(vector<vector<int>> explored_map, vector<vector<int>> occupancy_map, int row, int column);
 vector<vector<double>> filter_frontier(vector<vector<double>> map, int row, int column, int minimum_size);
 void pro_target(vector<float> outputs, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy);
 
@@ -92,47 +92,12 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	// frontier map: 1-->frontiers; 0-->not frontiers --- expand with 0 before FBE: 1:explored spaces, 0:unexplored spaces
 	// obstacles <-- 0.5 --> free space: threshold = [min_range, max_range]
 
-	static vector<vector<double>> map_occupancy(1200, vector<double>(1200, 1));
-	static vector<vector<double>> explored_states(1200, vector<double>(1200, 0));
+	static vector<vector<int>> map_occupancy(240, vector<int>(240, 1));
+	static vector<vector<int>> explored_states(240, vector<int>(240, 0));
 	static vector<vector<double>> agent_status(1200, vector<double>(1200, 0));
-	static vector<vector<double>> frontier_map(1200, vector<double>(1200, 0));
+	static vector<vector<int>> frontier_map(240, vector<int>(240, 0));
 	
-	printf("======== Getting maps data =======\n");
-	// long startt_getoriginmap = get_sys_time_interval();
-	// map_occupancy / explored_states / agent_status
-	if (size_x == 800 && size_y == 800) {
-		for (int x = 0; x < size_x; x++) {
-			for (int y = 0; y < size_y; y++) {
-				tmp_value = map_data[x][y];
-				/// tmp_value = 0.4;
-				// obstacles
-				if (tmp_value <= min_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 1;
-					explored_states[x_origin + x][y_origin + y] = 1;
-				}
-				// free space
-				if (tmp_value >= max_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 0;
-					explored_states[x_origin + x][y_origin + y] = 1;
-				}
-				// unexplored space
-				if (tmp_value > min_range && tmp_value < max_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 1;
-					explored_states[x_origin + x][y_origin + y] = 0;
-				}
-
-				// double float_value = map.getCell(x, y);
-			}
-		}
-		robot__x = x_origin + idx;
-		robot__y = y_origin + idy;
-		agent_status[robot__x][robot__y] = 1;
-		expand_type = 0;
-	}
-	// long end_getoriginmap = get_sys_time_interval();
-	// printf("Getting original map datas ===================> :%ldms\n", end_getoriginmap - startt_getoriginmap);
-	printf("\n");
-	frontier_map = get_frontier(explored_states, map_occupancy, 1200, 1200);
+	frontier_map = get_frontier(explored_states, map_occupancy, 240, 240);
 
 	
 	vector<vector<vector<double>>> output_maps;
@@ -185,28 +150,42 @@ vector<vector<double>> get_inputs(int &robotx, int &roboty){
     return inputs;
 }
 
-vector<vector<double>> get_frontier(vector<vector<double>> explored_map,
-	vector<vector<double>> occupancy_map, int row, int column) {
+
+// input: explored_map=>[240*240]
+vector<vector<int>> get_frontier(vector<vector<int>> explored_map,
+	vector<vector<int>> occupancy_map, int row, int column) {
 
 	// global map[0] = map occupancy: -1/100-->1(unexplored space/obstacles); 0-->0(free space) --- expand with 1
 	// global map[1] = explored states: 0/100-->1(free space/obstacles); -1-->0(unexplored space) --- expand with 0
-	vector<vector<double>> map_frontier(1200, vector<double>(1200, 0));
+	vector<vector<int>> map_frontier(row, vector<int>(column, 0));
 
-	for (int i = 1; i < 1199; i++) {
-		for (int j = 1; j < 1199; j++) {
-			double tmp = explored_map[i][j - 1] + explored_map[i][j + 1] + explored_map[i - 1][j] + explored_map[i + 1][j];
-			if (explored_map[i][j] == 0 && tmp != 0) {
-				map_frontier[i][j] = 1;
+	for (int i = 1; i < row-1; i++) {
+		for (int j = 1; j < column-1; j++) {
+			int tmp = explored_map[i][j - 1] + explored_map[i][j + 1] + explored_map[i - 1][j] + explored_map[i + 1][j];
+			if (explored_map[i][j] == 1) {
+				if (explored_map[i][j-1]==0 or explored_map[i][j+1]==0 or explored_map[i-1][j]==0 or explored_map[i+1][j]==0){
+					if(tmp!=0){
+						map_frontier[i][j] = 1;
+					}
+				}
+			}
+			if(map_frontier[i][j]==1 && occupancy_map[i][j]==0){
+					map_frontier[i][j] = 1;
+			}
+			if(map_frontier[i][j]==1 && occupancy_map[i][j]==1){
+					map_frontier[i][j] = 0;
 			}
 		}
 	}
-
-	for (int i = 0; i < 1200; i++) {
-		for (int j = 0; j < 1200; j++) {
-			map_frontier[i][j] = map_frontier[i][j] * occupancy_map[i][j];
+	for (int i = 1; i < row-1; i++) {
+		for (int j = 1; j < column-1; j++) {
+			int tmp_ = map_frontier[i][j - 1] + map_frontier[i][j + 1] + map_frontier[i - 1][j] + map_frontier[i + 1][j];
+			if(tmp_==0){
+				map_frontier[i][j]=0;
+			}
+			
 		}
 	}
-
 	return map_frontier;
 }
 
