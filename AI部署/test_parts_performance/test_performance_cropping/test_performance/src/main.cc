@@ -22,6 +22,7 @@
 #include <vector>
 #include <string.h>
 #include <uchar.h>
+#include <numeric>
 
 #include "rknn_api.h"
 
@@ -49,6 +50,17 @@ void pro_target(vector<float> outputs, int expand_type, vector<vector<double>> m
                   Functions
 				  input_maps = [global_map, visited_map, agent_position_onehot]     +      output * frontier_mask
 -------------------------------------------*/
+
+vector<int> CutArrs(vector<int>& Arrs, int begin, int end){ // begin <= end;
+        //if(end > Arrs.size()) return;
+        vector<int> result;
+        result.assign(Arrs.begin() + begin, Arrs.begin() + end);
+        return result;
+}
+
+/*
+先直接一波bug，不管他是否在边缘区域了
+// tmp[map_w*y + x]
 vector<vector<double>> crop_map(vector<vector<double>> tmp, int x, int y, double padding_num) {
 	vector<vector<double>> map(1200 + 240, vector<double>(1200 + 240, padding_num));
 	vector<vector<double>> map_output(240, vector<double>(240));
@@ -56,15 +68,28 @@ vector<vector<double>> crop_map(vector<vector<double>> tmp, int x, int y, double
 	int robot_y = y + 120;
 
 	for (int i = 0; i < 1200; i++) {
-		for (int j = 0; j < 1200; j++) {
-			map[120 + i][120 + j] = tmp[i][j];
-		}
+		map[120 + i].assign(tmp[i].begin(), tmp[i].end());
 	}
 
 	for (int i = 0; i < 240; i++) {
 		for (int j = 0; j < 240; j++) {
 			map_output[i][j] = map[robot_y - 120 + i][robot_x - 120 + j];
 		}
+	}
+	return map_output;
+}
+*/
+
+vector<vector<double>> crop_map(svector<vector<double>> tmp, int x, int y, double padding_num) {
+	static vector<vector<double>> map(1200 + 240, vector<double>(1200 + 240, padding_num));
+	static vector<vector<double>> map_output(240, vector<double>(240));
+	int robot_x = x + 120;
+	int robot_y = y + 120;
+
+
+	for (int i = 0; i < 240; i++) {
+		map_output[i].assign(tmp[i+robot_x-120].begin()+robot_y-120, tmp[i].begin()+robot_y+120);
+		
 	}
 	return map_output;
 }
