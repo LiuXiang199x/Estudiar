@@ -37,6 +37,8 @@ using namespace std;
 
 double min_range = 0.5 - 0.117;
 double max_range = 0.5 + 0.059;
+static vector<vector<int>> visited_map(1200, vector<int>(1200, 0));
+static int Visitedmap[1200 * 1200] = {0};
 
 vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, int idx, int idy);
 int predictions(vector<vector<vector<double>>> inputs, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy);
@@ -127,22 +129,30 @@ public:
 };
 
 vector<vector<double>> crop_map(vector<vector<double>> tmp, int x, int y, double padding_num) {
-	vector<vector<double>> map(1200 + 240, vector<double>(1200 + 240, padding_num));
-	vector<vector<double>> map_output(240, vector<double>(240));
+	// vector<vector<double>> map(1200 + 240, vector<double>(1200 + 240, padding_num));
+	static vector<vector<double>> map_output(240, vector<double>(240));
 	int robot_x = x + 120;
 	int robot_y = y + 120;
 
+	if(x>120 && x<1080 && y>120 && y<1080){
+		for (int i = 0; i < 240; i++) {
+			for (int j = 0; j < 240; j++) {
+				map_output[i][j] = map[x - 120 + i][ - 120 + j];
+			}
+		}
+	}
+
+	else{
+	/*
 	for (int i = 0; i < 1200; i++) {
 		for (int j = 0; j < 1200; j++) {
 			map[120 + i][120 + j] = tmp[i][j];
 		}
 	}
-
-	for (int i = 0; i < 240; i++) {
-		for (int j = 0; j < 240; j++) {
-			map_output[i][j] = map[robot_x - 120 + i][robot_y - 120 + j];
-		}
+	*/
+	printf("Position of robot is out of frontiers!!!\n");
 	}
+
 	return map_output;
 }
 
@@ -169,10 +179,24 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	// frontier map: 1-->frontiers; 0-->not frontiers --- expand with 0 before FBE: 1:explored spaces, 0:unexplored spaces
 	// obstacles <-- 0.5 --> free space: threshold = [min_range, max_range]
 
-	static vector<vector<double>> map_occupancy(1200, vector<double>(1200, 1));
-	static vector<vector<double>> explored_states(1200, vector<double>(1200, 0));
-	static vector<vector<double>> agent_status(1200, vector<double>(1200, 0));
-	static vector<vector<double>> frontier_map(1200, vector<double>(1200, 0));
+	static vector<vector<int>> map_occupancy(1200, vector<int>(1200, 1));
+	static vector<vector<int>> explored_states(1200, vector<int>(1200, 0));
+	static vector<vector<int>> agent_status(1200, vector<int>(1200, 0));
+
+	int* Ocp_pooling;
+	int* Expp_pooling;
+	int* Visitedmap_pooling;
+	int* Agentp_pooling;
+
+	static vector<vector<int>> Ocp_crop(240, vector<int>(240));
+	static vector<vector<int>> Expp_crop(240, vector<int>(240));
+	static vector<vector<int>> Visitedmap_crop(240, vector<int>(240));
+	static vector<vector<int>> Agentp_crop(240, vector<int>(240));
+
+	static int Ocmap[1440000];
+	static int Expmap[1440000] = {0};
+	static int Agentmap[1200 * 1200] = {0};
+	memset(Ocmap, 1, sizeof(int)*1440000);
 	
 	printf("======== Getting maps data =======\n");
 	// long startt_getoriginmap = get_sys_time_interval();
@@ -197,6 +221,8 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 					map_occupancy[x_origin + x][y_origin + y] = 1;
 					explored_states[x_origin + x][y_origin + y] = 0;
 				}
+				Ocmap[(x_origin + x)*1200 + y_origin + y] = map_occupancy[x_origin + x][y_origin + y];
+				Expmap[(x_origin + x)*1200 + y_origin + y] = explored_states[x_origin + x][y_origin + y];
 
 				// double float_value = map.getCell(x, y);
 			}
@@ -204,6 +230,9 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 		robot__x = x_origin + idx;
 		robot__y = y_origin + idy;
 		agent_status[robot__x][robot__y] = 1;
+		visited_map[robot__x][robot__y] = 1;
+		Agentmap[robot__x*1200 + robot__y] = 1;
+		Visitedmap[robot__x*1200 + robot__y] = 1;
 		expand_type = 0;
 	}
 	// long end_getoriginmap = get_sys_time_interval();
@@ -212,57 +241,21 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 
 
 	printf("======== Getting frontier maps =======\n");
-	// timeval startt_getfrontiermap, end_getfrontiermap;
-	// long startt_getfrontiermap = get_sys_time_interval();
-	frontier_map = get_frontier(explored_states, map_occupancy, 1200, 1200);
-	// long end_getfrontiermap = get_sys_time_interval();
-	// printf("Getting frontier map datas ===================> :%ldms\n", end_getfrontiermap - startt_getfrontiermap);
 	printf("\n");
 
 
 	printf("======== Pooling & Cropping maps =======\n");
 	// timeval start_maxpoolmaps, end_maxpoolmaps, start_cropmaps, end_cropmaps;
-	double* Ocp_pooling;
-	double* Expp_pooling;
-	double* Agentp_pooling;
-	double* Frontp_pooling;
-
-	static vector<vector<double>> Ocp_crop(240, vector<double>(240));
-	static vector<vector<double>> Expp_crop(240, vector<double>(240));
-	static vector<vector<double>> Agentp_crop(240, vector<double>(240));
-	static vector<vector<double>> Frontier_crop(240, vector<double>(240));
-
-	static double Expmap[1440000];
-	static double Ocmap[1440000];
-	static double Agentmap[1200 * 1200];
-	static double Frontmap[1200 * 1200];
-
 
 	printf("======== Getting pooling maps =======\n");
-	// long start_maxpoolmaps = get_sys_time_interval();
-
-	for (int i = 0; i < 1200; i++) {
-		for (int j = 0; j < 1200; j++) {
-			Ocmap[i * 1200 + j] = map_occupancy[i][j];
-			Expmap[i * 1200 + j] = explored_states[i][j];
-			Agentmap[i * 1200 + j] = agent_status[i][j];
-			Frontmap[i * 1200 + j] = frontier_map[i][j];
-		}
-	}
 
 	MaxPolling pool2d;
 	// maps:(1200, 1200) ---> (240, 240)
 	Ocp_pooling = pool2d.poll(Ocmap, 1200, 1200, 5, 5, false);
 	Expp_pooling = pool2d.poll(Expmap, 1200, 1200, 5, 5, false);
 	Agentp_pooling = pool2d.poll(Agentmap, 1200, 1200, 5, 5, false);
-	Frontp_pooling = pool2d.poll(Frontmap, 1200, 1200, 5, 5, false);
+	Visitedmap_pooling = pool2d.poll(Visitedmap, 1200, 1200, 5, 5, false);
 
-	static vector<vector<double>> front_map_pool(240, vector<double>(240));
-	for (int i = 0; i < 240; i++) {
-		for (int j = 0; j < 240; j++) {
-			front_map_pool[i][j] = Frontp_pooling[i * 240 + j];
-		}
-	}
 	// front_map_pool = filter_frontier(front_map_pool, 240, 240, 2);
 	// long end_maxpoolmaps = get_sys_time_interval();
 	// printf("Getting max pooling map datas ===================> :%ldms\n", end_maxpoolmaps - start_maxpoolmaps);
@@ -275,7 +268,7 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	Ocp_crop = crop_map(map_occupancy, robot__x, robot__y, double(1));
 	Expp_crop = crop_map(explored_states, robot__x, robot__y, double(0));
 	Agentp_crop = crop_map(agent_status, robot__x, robot__y, double(0));
-	Frontier_crop = crop_map(frontier_map, robot__x, robot__y, double(0));
+	Visitedmap_crop = crop_map(visited_map, robot__x, robot__y, double(0));
 	// Frontier_crop = filter_frontier(Frontier_crop, 240, 240, 2);
 	// long end_cropmaps = get_sys_time_interval();
 	// printf("Getting croped map datas ===================> :%ldms\n", end_cropmaps - start_cropmaps);
@@ -290,12 +283,12 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 		for (int y = 0; y < 240; y++) {
 			output_maps[0][x][y] = Ocp_crop[x][y];
 			output_maps[1][x][y] = Expp_crop[x][y];
-			output_maps[2][x][y] = Agentp_crop[x][y];
-			output_maps[3][x][y] = Frontier_crop[x][y];
+			output_maps[2][x][y] = Visitedmap_crop[x][y];
+			output_maps[3][x][y] = Agentp_crop[x][y];
 			output_maps[4][x][y] = *(Ocp_pooling + x * 240 + y);
 			output_maps[5][x][y] = *(Expp_pooling + x * 240 + y);
-			output_maps[6][x][y] = *(Agentp_pooling + x * 240 + y);
-			output_maps[7][x][y] = front_map_pool[x][y];
+			output_maps[6][x][y] = *(Visitedmap_pooling + x * 240 + y);
+			output_maps[7][x][y] = *(Agentp_pooling + x * 240 + y);
 		}
 	}
 	// long end_model_input = get_sys_time_interval();
@@ -341,28 +334,35 @@ vector<vector<double>> filter_frontier(vector<vector<double>> map, int row, int 
 	return map;
 }
 
-vector<vector<double>> get_frontier(vector<vector<double>> explored_map,
-	vector<vector<double>> occupancy_map, int row, int column) {
+vector<vector<int>> get_frontier(vector<vector<int>> explored_map,
+	vector<vector<int>> occupancy_map, int row, int column) {
 
 	// global map[0] = map occupancy: -1/100-->1(unexplored space/obstacles); 0-->0(free space) --- expand with 1
 	// global map[1] = explored states: 0/100-->1(free space/obstacles); -1-->0(unexplored space) --- expand with 0
-	vector<vector<double>> map_frontier(1200, vector<double>(1200, 0));
-
-	for (int i = 1; i < 1199; i++) {
-		for (int j = 1; j < 1199; j++) {
-			double tmp = explored_map[i][j - 1] + explored_map[i][j + 1] + explored_map[i - 1][j] + explored_map[i + 1][j];
-			if (explored_map[i][j] == 0 && tmp != 0) {
-				map_frontier[i][j] = 1;
+	static vector<vector<int>> map_frontier(row, vector<int>(column, 0));
+	int tmp_sum;
+	for (int i = 1; i < row; i++) {
+		for (int j = 1; j < column; j++) {
+			int tmp = explored_map[i][j - 1] + explored_map[i][j + 1] + explored_map[i - 1][j] + explored_map[i + 1][j];
+			if (explored_map[i][j] == 1) {
+				if (explored_map[i][j-1]==0 or explored_map[i][j+1]==0 or explored_map[i-1][j]==0 or explored_map[i+1][j]==0){
+					map_frontier[i][j] = 2;  // 2:frontiers && obstacles
+				}
 			}
 		}
 	}
 
-	for (int i = 0; i < 1200; i++) {
-		for (int j = 0; j < 1200; j++) {
-			map_frontier[i][j] = map_frontier[i][j] * occupancy_map[i][j];
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < column; j++) {
+			tmp_sum = map_frontier[i][j] + occupancy_map[i][j];
+			if(tmp_sum==3){ // filter obstacles
+				map_frontier[i][j] = 0;
+			}
+			if(tmp_sum==2){
+				map_frontier[i][j] = 1;
+			}
 		}
 	}
-
 	return map_frontier;
 }
 
