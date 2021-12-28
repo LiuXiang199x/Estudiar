@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11   -w
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/../librknn_api/include 
+CXX_INCLUDES = -I/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_maxpool/test_performance/../librknn_api/include 
 

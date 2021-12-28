@@ -22,6 +22,7 @@
 #include <vector>
 #include <string.h>
 #include <uchar.h>
+#include <numeric>
 
 #include "rknn_api.h"
 
@@ -88,11 +89,9 @@ public:
 			}
 			y++; x = 0;
 		}
-
 		if (show) {
 			showMatrix(result, result_w, result_h);
 		}
-
 		return result;
 	}
 
@@ -109,13 +108,22 @@ public:
 	// 取kernel中最大值
 	template <typename _Tp>
 	_Tp getMax(_Tp* matrix, int matrix_w, int matrix_h, int kernel_size, int x, int y) {
-		int max_value = matrix[y * matrix_w + x];
+		int max_value = 0;
+		max_value = accumulate(matrix + matrix_w * (y + 0) + x + 0, matrix + matrix_w * (y + 0) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 1) + x + 0, matrix + matrix_w * (y + 1) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 2) + x + 0, matrix + matrix_w * (y + 2) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 3) + x + 0, matrix + matrix_w * (y + 3) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 4) + x + 0, matrix + matrix_w * (y + 4) + x + kernel_size, 0);
+		/*
 		for (int i = 0; i < kernel_size; i++) {
 			for (int j = 0; j < kernel_size; j++) {
 				if (max_value < matrix[matrix_w * (y + i) + x + j]) {
 					max_value = matrix[matrix_w * (y + i) + x + j];
 				}
 			}
+		}
+		*/
+		if(max_value==0){
+			max_value = 0;
+		}
+		else{
+			max_value = 1;
 		}
 		return max_value;
 	}
@@ -169,75 +177,37 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	// frontier map: 1-->frontiers; 0-->not frontiers --- expand with 0 before FBE: 1:explored spaces, 0:unexplored spaces
 	// obstacles <-- 0.5 --> free space: threshold = [min_range, max_range]
 
-	static vector<vector<double>> map_occupancy(1200, vector<double>(1200, 1));
-	static vector<vector<double>> explored_states(1200, vector<double>(1200, 0));
-	static vector<vector<double>> agent_status(1200, vector<double>(1200, 0));
-	static vector<vector<double>> frontier_map(1200, vector<double>(1200, 0));
+	static vector<vector<int>> map_occupancy(1200, vector<int>(1200, 1));
+	static vector<vector<int>> explored_states(1200, vector<int>(1200, 0));
+	static vector<vector<int>> agent_status(1200, vector<int>(1200, 0));
+
+	int* Ocp_pooling;
+	int* Expp_pooling;
+	int* Agentp_pooling;
+	int* Frontp_pooling;
+
+	static vector<vector<int>> Ocp_crop(240, vector<int>(240));
+	static vector<vector<int>> Expp_crop(240, vector<int>(240));
+	static vector<vector<int>> Visitedmap_crop(240, vector<int>(240));
+	static vector<vector<int>> Agentp_crop(240, vector<int>(240));
+
+	static int Ocmap[1440000];
+	static int Expmap[1440000] = {0};
+	static int Agentmap[1200 * 1200] = {0};
+	static int Frontmap[1200 * 1200] = {0};
+	memset(Ocmap, 1, sizeof(int)*1440000);
 	
 	printf("======== Getting maps data =======\n");
-	// long startt_getoriginmap = get_sys_time_interval();
-	// map_occupancy / explored_states / agent_status
-	if (size_x == 800 && size_y == 800) {
-		for (int x = 0; x < size_x; x++) {
-			for (int y = 0; y < size_y; y++) {
-				tmp_value = map_data[x][y];
-				/// tmp_value = 0.4;
-				// obstacles
-				if (tmp_value <= min_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 1;
-					explored_states[x_origin + x][y_origin + y] = 1;
-				}
-				// free space
-				if (tmp_value >= max_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 0;
-					explored_states[x_origin + x][y_origin + y] = 1;
-				}
-				// unexplored space
-				if (tmp_value > min_range && tmp_value < max_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 1;
-					explored_states[x_origin + x][y_origin + y] = 0;
-				}
 
-				// double float_value = map.getCell(x, y);
-			}
-		}
-		robot__x = x_origin + idx;
-		robot__y = y_origin + idy;
-		agent_status[robot__x][robot__y] = 1;
-		expand_type = 0;
-	}
 	printf("\n");
 
 
 	printf("======== Pooling & Cropping maps =======\n");
 	// timeval start_maxpoolmaps, end_maxpoolmaps, start_cropmaps, end_cropmaps;
-	double* Ocp_pooling;
-	double* Expp_pooling;
-	double* Agentp_pooling;
-	double* Frontp_pooling;
-
-	static vector<vector<double>> Ocp_crop(240, vector<double>(240));
-	static vector<vector<double>> Expp_crop(240, vector<double>(240));
-	static vector<vector<double>> Agentp_crop(240, vector<double>(240));
-	static vector<vector<double>> Frontier_crop(240, vector<double>(240));
-
-	static double Expmap[1440000];
-	static double Ocmap[1440000];
-	static double Agentmap[1200 * 1200];
-	static double Frontmap[1200 * 1200];
-
 
 	printf("======== Getting pooling maps =======\n");
 	// long start_maxpoolmaps = get_sys_time_interval();
 
-	for (int i = 0; i < 1200; i++) {
-		for (int j = 0; j < 1200; j++) {
-			Ocmap[i * 1200 + j] = map_occupancy[i][j];
-			Expmap[i * 1200 + j] = explored_states[i][j];
-			Agentmap[i * 1200 + j] = agent_status[i][j];
-			Frontmap[i * 1200 + j] = frontier_map[i][j];
-		}
-	}
 
 	MaxPolling pool2d;
 	// maps:(1200, 1200) ---> (240, 240)

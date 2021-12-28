@@ -1,8 +1,8 @@
-# Install script for directory: /home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance
+# Install script for directory: /home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_maxpool/test_performance
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/install/test_performance_maxpool")
+  set(CMAKE_INSTALL_PREFIX "/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_maxpool/test_performance/install/test_performance_maxpool")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,12 +44,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_maxpool"
          RPATH "lib")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE EXECUTABLE FILES "/home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/bin/test_performance_maxpool")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE EXECUTABLE FILES "/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_maxpool/test_performance/bin/test_performance_maxpool")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_maxpool" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_maxpool")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_maxpool"
-         OLD_RPATH "/home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/../librknn_api/lib64:"
+         OLD_RPATH "/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_maxpool/test_performance/../librknn_api/lib64:"
          NEW_RPATH "lib")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/./test_performance_maxpool")
@@ -58,11 +58,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE FILE FILES "/home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/model/ckpt_precompile_20.rknn")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE FILE FILES "/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_maxpool/test_performance/model/ckpt_precompile_20.rknn")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/../librknn_api/lib64/librknn_api.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_maxpool/test_performance/../librknn_api/lib64/librknn_api.so")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -73,5 +73,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xiang/Estudiar/AI部署/test_performance_maxpool/test_performance/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_maxpool/test_performance/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
