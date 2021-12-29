@@ -181,12 +181,13 @@ vector<vector<int>> get_frontier(int *explored_map, int *occupancy_map, int row,
 			}
 		}
 	}
+	/*
 	for(int i=0; i<240;i++){
 		for(int j=0; j<240;j++){
 			cout << map_frontier[i][j] << "";
 		}
 		cout << endl;
-	}
+	}*/
 	return map_frontier;
 }
 
@@ -214,8 +215,8 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	// obstacles <-- 0.5 --> free space: threshold = [min_range, max_range]
 
 	static vector<vector<int>> map_occupancy(1440, vector<int>(1440, 1));
-	static vector<vector<int>> explored_states(1200, vector<int>(1440, 0));
-	static vector<vector<int>> agent_status(1200, vector<int>(1440, 0));
+	static vector<vector<int>> explored_states(1440, vector<int>(1440, 0));
+	static vector<vector<int>> agent_status(1440, vector<int>(1440, 0));
 	static vector<vector<int>> frontier_map(240, vector<int>(240, 0));
 	static vector<vector<vector<int>>> output_maps(9, vector<vector<int>>(240, vector<int>(240)));	
 
@@ -321,6 +322,14 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 		}
 	}
 
+	///////////////////// printf output_maps //////////////////
+	for(int i=0;i<240;i++){
+		for(int j=0;j<240;j++){
+			cout << output_maps[8][i][j] << " ";
+		}
+		cout << endl;
+	}
+
 	// long end_model_input = get_sys_time_interval();
 	// printf("Getting all datas for model ===================> :%ldms\n", end_model_input - start_model_input);
 	return output_maps;
@@ -351,6 +360,7 @@ static unsigned char *load_model(const char *filename, int *model_size)
 }
 
 vector<vector<double>> get_inputs(int &robotx, int &roboty){
+	printf("====== Generate random input data ======\n");
     // srand(time(0));
     static vector<vector<double>> inputs(800, vector<double>(800));
 
@@ -430,7 +440,6 @@ int main(int argc, char** argv)
 		static vector<vector<vector<int>>> data_vector;
 		data_vectorrr = get_inputs(robot_xx, robot_yy);
 		long end_getdata = get_sys_time_interval();
-		printf("====================> robot_xx = %d, robot_yy = %d\n", robot_xx, robot_yy);
 		printf("get random input data--------:%ldms\n",end_getdata - startt_getdata);
 		printf("\n");
 		// =========================================================
