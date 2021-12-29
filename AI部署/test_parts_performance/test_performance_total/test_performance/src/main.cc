@@ -42,10 +42,8 @@ static vector<vector<int>> visited_map(1440, vector<int>(1440, 0));
 static int Visitedmap[1200 * 1200] = {0};
 
 vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int idx, int idy);
-int predictions(vector<vector<vector<double>>> inputs, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy);
 vector<vector<int>> crop_map(vector<vector<int>> tmp, int x, int y, int padding_num);
 vector<vector<int>> get_frontier(vector<vector<int>> explored_map, vector<vector<int>> occupancy_map, int row, int column);
-vector<vector<double>> filter_frontier(vector<vector<double>> map, int row, int column, int minimum_size);
 void pro_target(vector<float> outputs, int expand_type, vector<vector<int>> mask, int &res_idx, int &res_idy);
 
 /*-------------------------------------------
@@ -78,6 +76,7 @@ public:
 	// 最大池化函数
 	template <typename _Tp>
 	_Tp* poll(_Tp* matrix, int matrix_w, int matrix_h, int kernel_size, int stride, bool show) {
+		printf("======== Getting pooling maps =======\n");
 
 		// 池化结果的size
 		int result_w = (matrix_w - kernel_size) / stride + 1, result_h = (matrix_h - kernel_size) / stride + 1;
@@ -138,41 +137,38 @@ public:
 };
 
 vector<vector<int>> crop_map(vector<vector<int>> tmp, int x, int y, int padding_num) {
+	printf("======== Getting croped maps =======\n");
 	// static vector<vector<double>> map(1200 + 240, vector<double>(1200 + 240, padding_num));
 	static vector<vector<int>> map_output(240, vector<int>(240, padding_num));
-	int robot_x = x + 120;
-	int robot_y = y + 120;
-
 
 	for (int i = 0; i < 240; i++) {
-		map_output[i].assign(tmp[i+y-120].begin()+x-120, tmp[i+y-120].begin()+x+120);
-		
+		map_output[i].assign(tmp[i+x-120].begin()+y-120, tmp[i+x-120].begin()+y+120);
 	}
 	return map_output;
 }
 
 // input: explored_map=>[240*240]
-vector<vector<int>> get_frontier(vector<vector<int>> explored_map,
-	vector<vector<int>> occupancy_map, int row, int column) {
-
+vector<vector<int>> get_frontier(int *explored_map, int *occupancy_map, int row, int column) {
+	printf("======== Getting frontier maps =======\n");
 	// global map[0] = map occupancy: -1/100-->1(unexplored space/obstacles); 0-->0(free space) --- expand with 1
 	// global map[1] = explored states: 0/100-->1(free space/obstacles); -1-->0(unexplored space) --- expand with 0
-	vector<vector<int>> map_frontier(row, vector<int>(column, 0));
+	static vector<vector<int>> map_frontier(row, vector<int>(column, 0));
 
 	for (int i = 1; i < row-1; i++) {
 		for (int j = 1; j < column-1; j++) {
-			int tmp = explored_map[i][j - 1] + explored_map[i][j + 1] + explored_map[i - 1][j] + explored_map[i + 1][j];
-			if (explored_map[i][j] == 1) {
-				if (explored_map[i][j-1]==0 or explored_map[i][j+1]==0 or explored_map[i-1][j]==0 or explored_map[i+1][j]==0){
+			int tmp = *(explored_map+(i-1)*240+j) + *(explored_map+(i+1)*240+j) +*(explored_map+i*240+j+1) +*(explored_map+i*240+j-1);
+
+			if (*(explored_map+240*i + j) == 1) {
+				if (*(explored_map+(i-1)*240+j) ==0  or *(explored_map+(i+1)*240+j) ==0 or *(explored_map+i*240+j+1) ==0 or *(explored_map+i*240+j-1)==0){
 					if(tmp!=0){
 						map_frontier[i][j] = 1;
 					}
 				}
 			}
-			if(map_frontier[i][j]==1 && occupancy_map[i][j]==0){
+			if(map_frontier[i][j]==1 && *(occupancy_map+240*i + j)==0){
 					map_frontier[i][j] = 1;
 			}
-			if(map_frontier[i][j]==1 && occupancy_map[i][j]==1){
+			if(map_frontier[i][j]==1 && *(occupancy_map+240*i + j)==1){
 					map_frontier[i][j] = 0;
 			}
 		}
@@ -183,17 +179,22 @@ vector<vector<int>> get_frontier(vector<vector<int>> explored_map,
 			if(tmp_==0){
 				map_frontier[i][j]=0;
 			}
-			
 		}
+	}
+	for(int i=0; i<240;i++){
+		for(int j=0; j<240;j++){
+			cout << map_frontier[i][j] << "";
+		}
+		cout << endl;
 	}
 	return map_frontier;
 }
 
-
+// idx -> vertical;  idy -> horizonal
 vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int idx, int idy) {
 
 	// static vector<vector<double>> map(800, vector<double>(800, 0));
-	printf("======== Start processing datas =======");
+	printf("======== Start processing datas =======\n");
 	int size_x = 800;
 	int size_y = 800;
 	// int size_x = maps_original.getSizeX();
@@ -216,7 +217,7 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	static vector<vector<int>> explored_states(1200, vector<int>(1440, 0));
 	static vector<vector<int>> agent_status(1200, vector<int>(1440, 0));
 	static vector<vector<int>> frontier_map(240, vector<int>(240, 0));
-	static vector<vector<vector<int>>> output_maps(8, vector<vector<int>>(240, vector<int>(240)));	
+	static vector<vector<vector<int>>> output_maps(9, vector<vector<int>>(240, vector<int>(240)));	
 
 	int* Ocp_pooling;
 	int* Expp_pooling;
@@ -237,8 +238,8 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	// long startt_getoriginmap = get_sys_time_interval();
 	// map_occupancy / explored_states / agent_status
 	if (size_x == 800 && size_y == 800) {
-		for (int x = 0; x < size_x; x++) {
-			for (int y = 0; y < size_y; y++) {
+		for (int x = 0; x < size_y; x++) {
+			for (int y = 0; y < size_x; y++) {
 				tmp_value = map_data[x][y];
 				/// tmp_value = 0.4;
 				// obstacles
@@ -276,28 +277,21 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	}
 	// long end_getoriginmap = get_sys_time_interval();
 	// printf("Getting original map datas ===================> :%ldms\n", end_getoriginmap - startt_getoriginmap);
-	printf("\n");
 
 
 	printf("======== Pooling & Cropping maps =======\n");
 	// timeval start_maxpoolmaps, end_maxpoolmaps, start_cropmaps, end_cropmaps;
-
-	printf("======== Getting pooling maps =======\n");
-
 	MaxPolling pool2d;
 	// maps:(1200, 1200) ---> (240, 240)
 	Ocp_pooling = pool2d.poll(Ocmap, 1200, 1200, 5, 5, false);
 	Expp_pooling = pool2d.poll(Expmap, 1200, 1200, 5, 5, false);
 	Agentp_pooling = pool2d.poll(Agentmap, 1200, 1200, 5, 5, false);
 	Visitedmap_pooling = pool2d.poll(Visitedmap, 1200, 1200, 5, 5, false);
-
-	// front_map_pool = filter_frontier(front_map_pool, 240, 240, 2);
+	output_maps[8] = get_frontier(Expp_pooling, Ocp_pooling, 240, 240);
 	// long end_maxpoolmaps = get_sys_time_interval();
 	// printf("Getting max pooling map datas ===================> :%ldms\n", end_maxpoolmaps - start_maxpoolmaps);
-	printf("\n");
 
 
-	printf("======== Getting croped maps =======\n");
 	// long start_cropmaps = get_sys_time_interval();
 	// maps:(1200, 1200) ---> (240, 240)
 	Ocp_crop = crop_map(map_occupancy, robot__x+120, robot__y+120, int(1));
@@ -307,34 +301,28 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	cout << "Ocp_cropppp:::::::" << Ocp_crop.size() << endl;
 	// long end_cropmaps = get_sys_time_interval();
 	// printf("Getting croped map datas ===================> :%ldms\n", end_cropmaps - start_cropmaps);
-	printf("\n");
-
-
-	printf("======== Getting frontier maps =======\n");
-	printf("\n");
 
 
 	printf("======== Reshape all datas to (8,G,G) =======\n");
 	// timeval start_model_input, end_model_input;
 	// double output_maps[8][240][240];
 
+	output_maps[0]  = Ocp_crop;
+	output_maps[1] = Expp_crop;
+	output_maps[2] = Visitedmap_crop;
+	output_maps[3] = Agentp_crop;
+	
 	for (int x = 0; x < 240; x++) {
 		for (int y = 0; y < 240; y++) {
-			output_maps[0][x][y] = Ocp_crop[x][y];
-			output_maps[1][x][y] = Expp_crop[x][y];
-			output_maps[2][x][y] = Visitedmap_crop[x][y];
-			output_maps[3][x][y] = Agentp_crop[x][y];
 			output_maps[4][x][y] = *(Ocp_pooling + x * 240 + y);
 			output_maps[5][x][y] = *(Expp_pooling + x * 240 + y);
 			output_maps[6][x][y] = *(Visitedmap_pooling + x * 240 + y);
 			output_maps[7][x][y] = *(Agentp_pooling + x * 240 + y);
 		}
 	}
+
 	// long end_model_input = get_sys_time_interval();
 	// printf("Getting all datas for model ===================> :%ldms\n", end_model_input - start_model_input);
-	printf("\n");
-	printf("========== ALL DATA PREPARED ==========");
-
 	return output_maps;
 }
 
@@ -384,8 +372,6 @@ vector<vector<double>> get_inputs(int &robotx, int &roboty){
 }
 
 void pro_target(vector<float> outputs, int output_size, vector<vector<int>> mask) {
-
-	cout << "===I am in pro_target func===" << endl;
 	cout << "===Processing outputs with frontier mask===" << endl;
 
 	for(int i=0; i<240; i++){
@@ -411,9 +397,9 @@ void pro_target(vector<float> outputs, int output_size, vector<vector<int>> mask
 	int y = tmp_index % 240 * 5;
 	int x = tmp_index / 240 * 5;
 
-	cout << "=====>target_x=" << x << " ======>target_y=" << y << endl;
-	
-	cout << "====== get target done ======" << endl;
+	cout << "=====> target_x = " << x << " ======> target_y = " << y << endl;
+	printf("\n");
+	printf("\n");
 	// return target_point;
 }
 
@@ -469,13 +455,9 @@ int main(int argc, char** argv)
 		    }
 		}
 		static vector<vector<int>> frontier_mask(240, vector<int>(240, 0));
-		/*
-		for(int i=0; i<240; i++){
-		    for(int j=0; j<240; j++){
-				frontier_mask[i][j] = data_vector[3][i][j];
-		    }
-		}
-		*/
+		
+		frontier_mask = data_vector[8];
+		
 		// const char *img_path2 = argv[3];
 		// unsigned long start_time,end_load_model_time, stop_time;
 		timeval start_time,end_load_model_time,end_init_time,end_run_time,end_process_time, stop_time;
