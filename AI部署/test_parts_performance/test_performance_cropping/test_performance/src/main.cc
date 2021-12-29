@@ -58,37 +58,37 @@ vector<int> CutArrs(vector<int>& Arrs, int begin, int end){ // begin <= end;
         return result;
 }
 
-/*
-先直接一波bug，不管他是否在边缘区域了
+/*先直接一波bug，不管他是否在边缘区域了
 // tmp[map_w*y + x]
 vector<vector<double>> crop_map(vector<vector<double>> tmp, int x, int y, double padding_num) {
-	vector<vector<double>> map(1200 + 240, vector<double>(1200 + 240, padding_num));
-	vector<vector<double>> map_output(240, vector<double>(240));
+	static vector<vector<double>> map_module(1200 + 240, vector<double>(1200 + 240, padding_num));
+	static vector<vector<double>> map(tmp.size(), vector<double>(240, padding_num));
+	static vector<vector<double>> map_output(240, vector<double>(240));
 	int robot_x = x + 120;
 	int robot_y = y + 120;
 
-	for (int i = 0; i < 1200; i++) {
-		map[120 + i].assign(tmp[i].begin(), tmp[i].end());
+	for (int i = 0; i < tmp.size(); i++) {
+		map[i].insert(map[i].begin() + 120, tmp[i].begin(), tmp[i].end());
+		map_module[i + 120].assign(map[i].begin(), map[i].end());
 	}
 
 	for (int i = 0; i < 240; i++) {
-		for (int j = 0; j < 240; j++) {
-			map_output[i][j] = map[robot_y - 120 + i][robot_x - 120 + j];
-		}
+		map_output[i].assign(map_module[i].begin()+robot_x-120, map_module[i].begin()+robot_x+120);
 	}
 	return map_output;
 }
 */
 
-vector<vector<double>> crop_map(svector<vector<double>> tmp, int x, int y, double padding_num) {
-	static vector<vector<double>> map(1200 + 240, vector<double>(1200 + 240, padding_num));
-	static vector<vector<double>> map_output(240, vector<double>(240));
+
+vector<vector<double>> crop_map(vector<vector<double>> tmp, int x, int y, double padding_num) {
+	// static vector<vector<double>> map(1200 + 240, vector<double>(1200 + 240, padding_num));
+	static vector<vector<double>> map_output(240, vector<double>(240, padding_num));
 	int robot_x = x + 120;
 	int robot_y = y + 120;
 
 
 	for (int i = 0; i < 240; i++) {
-		map_output[i].assign(tmp[i+robot_x-120].begin()+robot_y-120, tmp[i].begin()+robot_y+120);
+		map_output[i].assign(tmp[i+y-120].begin()+x-120, tmp[i+y-120].begin()+x+120);
 		
 	}
 	return map_output;
@@ -132,7 +132,9 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	// visited map
 	// global pose = agent status on the map: 1-->robot position; 0-->No --- expand with 0
 	
-
+	robot__x = x_origin + idx;
+	robot__y = y_origin + idy;
+	// agent_status[robot__x][robot__y] = 1;
 	// frontier map: 1-->frontiers; 0-->not frontiers --- expand with 0 before FBE: 1:explored spaces, 0:unexplored spaces
 	// obstacles <-- 0.5 --> free space: threshold = [min_range, max_range]
 
@@ -140,43 +142,11 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	static vector<vector<double>> explored_states(1200, vector<double>(1200, 0));
 	static vector<vector<double>> agent_status(1200, vector<double>(1200, 0));
 	static vector<vector<double>> frontier_map(1200, vector<double>(1200, 0));
-	
-	printf("======== Getting maps data =======\n");
-	// long startt_getoriginmap = get_sys_time_interval();
-	// map_occupancy / explored_states / agent_status
-	if (size_x == 800 && size_y == 800) {
-		for (int x = 0; x < size_x; x++) {
-			for (int y = 0; y < size_y; y++) {
-				tmp_value = map_data[x][y];
-				/// tmp_value = 0.4;
-				// obstacles
-				if (tmp_value <= min_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 1;
-					explored_states[x_origin + x][y_origin + y] = 1;
-				}
-				// free space
-				if (tmp_value >= max_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 0;
-					explored_states[x_origin + x][y_origin + y] = 1;
-				}
-				// unexplored space
-				if (tmp_value > min_range && tmp_value < max_range) {
-					map_occupancy[x_origin + x][y_origin + y] = 1;
-					explored_states[x_origin + x][y_origin + y] = 0;
-				}
 
-				// double float_value = map.getCell(x, y);
-			}
-		}
-		robot__x = x_origin + idx;
-		robot__y = y_origin + idy;
-		agent_status[robot__x][robot__y] = 1;
-		expand_type = 0;
-	}
-	// long end_getoriginmap = get_sys_time_interval();
-	// printf("Getting original map datas ===================> :%ldms\n", end_getoriginmap - startt_getoriginmap);
-	printf("\n");
-
+	static vector<vector<double>> map_occupancy_crop(1440, vector<double>(1440, 1));
+	static vector<vector<double>> explored_states_crop(1440, vector<double>(1440, 0));
+	static vector<vector<double>> agent_status_crop(1440, vector<double>(1440, 0));
+	static vector<vector<double>> frontier_map_crop(1440, vector<double>(1440, 0));
 
 	printf("======== Pooling & Cropping maps =======\n");
 	// timeval start_maxpoolmaps, end_maxpoolmaps, start_cropmaps, end_cropmaps;
@@ -199,10 +169,11 @@ vector<vector<vector<double>>> processTarget(vector<vector<double>> map_data, in
 	printf("======== Getting croped maps =======\n");
 	// long start_cropmaps = get_sys_time_interval();
 	// maps:(1200, 1200) ---> (240, 240)
-	Ocp_crop = crop_map(map_occupancy, robot__x, robot__y, double(1));
-	Expp_crop = crop_map(explored_states, robot__x, robot__y, double(0));
-	Agentp_crop = crop_map(agent_status, robot__x, robot__y, double(0));
-	Frontier_crop = crop_map(frontier_map, robot__x, robot__y, double(0));
+	Ocp_crop = crop_map(map_occupancy_crop, robot__x+120, robot__y+120, double(1));
+	Expp_crop = crop_map(explored_states_crop, robot__x+120, robot__y+120, double(0));
+	Agentp_crop = crop_map(agent_status_crop, robot__x+120, robot__y+120, double(0));
+	Frontier_crop = crop_map(frontier_map_crop, robot__x+120, robot__y+120, double(0));
+	cout << "===================> OCP_CROP:::" << Ocp_crop.size() << " " << Ocp_crop[0].size() << endl;
 	// Frontier_crop = filter_frontier(Frontier_crop, 240, 240, 2);
 	// long end_cropmaps = get_sys_time_interval();
 	// printf("Getting croped map datas ===================> :%ldms\n", end_cropmaps - start_cropmaps);
