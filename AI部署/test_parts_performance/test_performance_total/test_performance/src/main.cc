@@ -23,6 +23,7 @@
 #include <string.h>
 #include <uchar.h>
 #include <numeric>
+#include <algorithm>
 
 #include "rknn_api.h"
 
@@ -36,8 +37,10 @@ using namespace std;
 #define img_height 64
 #define img_channels 3
 
-double min_range = 0.5 - 0.117;
-double max_range = 0.5 + 0.059;
+// double min_range = 0.5 - 0.117;
+// double max_range = 0.5 + 0.059;
+ double min_range = 0.2;
+ double max_range = 0.35;
 static vector<vector<int>> visited_map(1440, vector<int>(1440, 0));
 static int Visitedmap[1200 * 1200] = {0};
 
@@ -233,11 +236,13 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	static int Ocmap[1440000];
 	static int Expmap[1440000] = {0};
 	static int Agentmap[1200 * 1200] = {0};
-	memset(Ocmap, 1, sizeof(int)*1440000);
-	
+	// memset(Ocmap, 1, sizeof(int)*1440000);
+	fill(Ocmap, Ocmap+1440000, 1);
+
 	printf("======== Getting maps data =======\n");
 	// long startt_getoriginmap = get_sys_time_interval();
 	// map_occupancy / explored_states / agent_status
+
 	if (size_x == 800 && size_y == 800) {
 		for (int x = 0; x < size_y; x++) {
 			for (int y = 0; y < size_x; y++) {
@@ -291,8 +296,14 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	output_maps[8] = get_frontier(Expp_pooling, Ocp_pooling, 240, 240);
 	// long end_maxpoolmaps = get_sys_time_interval();
 	// printf("Getting max pooling map datas ===================> :%ldms\n", end_maxpoolmaps - start_maxpoolmaps);
-
-
+	/*
+	for(int i=0;i<240;i++){
+		for(int j=0;j<240;j++){
+			cout << Ocmap[240*i+j] << " ";
+		}
+		cout << endl;
+	}
+	*/
 	// long start_cropmaps = get_sys_time_interval();
 	// maps:(1200, 1200) ---> (240, 240)
 	Ocp_crop = crop_map(map_occupancy, robot__x+120, robot__y+120, int(1));
@@ -323,12 +334,13 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	}
 
 	///////////////////// printf output_maps //////////////////
+	/*
 	for(int i=0;i<240;i++){
 		for(int j=0;j<240;j++){
-			cout << output_maps[8][i][j] << " ";
+			cout << output_maps[4][i][j] << " ";
 		}
 		cout << endl;
-	}
+	}*/
 
 	// long end_model_input = get_sys_time_interval();
 	// printf("Getting all datas for model ===================> :%ldms\n", end_model_input - start_model_input);
@@ -353,9 +365,7 @@ static unsigned char *load_model(const char *filename, int *model_size)
         return NULL;
     }
     *model_size = model_len;
-    if(fp) {
-        fclose(fp);
-    }
+    
     return model;
 }
 
