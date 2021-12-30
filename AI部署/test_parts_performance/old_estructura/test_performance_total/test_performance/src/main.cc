@@ -115,7 +115,7 @@ public:
 	_Tp getMax(_Tp* matrix, int matrix_w, int matrix_h, int kernel_size, int x, int y) {
 		int max_value = 0;
 		max_value = accumulate(matrix + matrix_w * (y + 0) + x + 0, matrix + matrix_w * (y + 0) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 1) + x + 0, matrix + matrix_w * (y + 1) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 2) + x + 0, matrix + matrix_w * (y + 2) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 3) + x + 0, matrix + matrix_w * (y + 3) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 4) + x + 0, matrix + matrix_w * (y + 4) + x + kernel_size, 0);
-		
+		/*
 		for (int i = 0; i < kernel_size; i++) {
 			for (int j = 0; j < kernel_size; j++) {
 				if (max_value < matrix[matrix_w * (y + i) + x + j]) {
@@ -123,7 +123,7 @@ public:
 				}
 			}
 		}
-		
+		*/
 		if(max_value==0){
 			max_value = 0;
 		}
