@@ -13,18 +13,17 @@ add_definitions(-w)
 #1126
 #set(CROSS_COMPILE_TOOL /home/zkj/Documents/Windows_Share/Windows_share/1126-cross-compile-tool/gcc-arm-linux-gnueabihf/bin/arm-linux-gnueabihf)
 
-# set(CROSS_COMPILE_TOOL /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf)
+set(CROSS_COMPILE_TOOL /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf-master/bin/arm-linux-gnueabihf)
 
 # set(CMAKE_C_COMPILER ${CROSS_COMPILE_TOOL}-gcc)
 # set(CMAKE_CXX_COMPILER ${CROSS_COMPILE_TOOL}-g++)
 
 #1806/1808
-set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
-set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
+#set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
+#set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
 
-
-#SET(CMAKE_C_COMPILER "arm-linux-gnueabihf-gcc")
-#SET(CMAKE_CXX_COMPILER "arm-linux-gnueabihf-g++")
+SET(CMAKE_C_COMPILER "arm-linux-gnueabihf-gcc")
+SET(CMAKE_CXX_COMPILER "arm-linux-gnueabihf-g++")
 
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")

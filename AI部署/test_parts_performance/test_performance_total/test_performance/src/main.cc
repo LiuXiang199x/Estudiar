@@ -115,7 +115,7 @@ public:
 	_Tp getMax(_Tp* matrix, int matrix_w, int matrix_h, int kernel_size, int x, int y) {
 		int max_value = 0;
 		max_value = accumulate(matrix + matrix_w * (y + 0) + x + 0, matrix + matrix_w * (y + 0) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 1) + x + 0, matrix + matrix_w * (y + 1) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 2) + x + 0, matrix + matrix_w * (y + 2) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 3) + x + 0, matrix + matrix_w * (y + 3) + x + kernel_size, 0) + accumulate(matrix + matrix_w * (y + 4) + x + 0, matrix + matrix_w * (y + 4) + x + kernel_size, 0);
-		/*
+		
 		for (int i = 0; i < kernel_size; i++) {
 			for (int j = 0; j < kernel_size; j++) {
 				if (max_value < matrix[matrix_w * (y + i) + x + j]) {
@@ -123,7 +123,7 @@ public:
 				}
 			}
 		}
-		*/
+		
 		if(max_value==0){
 			max_value = 0;
 		}
@@ -393,13 +393,13 @@ vector<vector<double>> get_inputs(int &robotx, int &roboty){
 
 void pro_target(vector<float> outputs, int output_size, vector<vector<int>> mask) {
 	cout << "===Processing outputs with frontier mask===" << endl;
-
+	/*
 	for(int i=0; i<240; i++){
 		for(int j=0; j<240; j++){
 			outputs[i*240+j] = outputs[i*240+j]*mask[i][j];
 		}
 	}
-
+	*/
 	double tmp_max = outputs[0];
 	int tmp_index = 0;
 	printf("tmp_max====%f\n",tmp_max);
@@ -438,7 +438,7 @@ int main(int argc, char** argv)
     unsigned char *model;
     srand((unsigned)time(NULL));
 
-    const char *model_path = "../model/ckpt_precompile_20.rknn";
+    const char *model_path = "../model/ckpt_precompile_20_rk161.rknn";
     const char *img_path = argv[2];
 
 	timeval startt_getdata, end_getdata, start_ProcessData, end_ProcessData;
