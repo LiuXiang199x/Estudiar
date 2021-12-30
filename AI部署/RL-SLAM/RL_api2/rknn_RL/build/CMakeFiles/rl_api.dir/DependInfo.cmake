@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xiang/桌面/RL_api/rknn_RL/src/main.cc" "/home/xiang/桌面/RL_api/rknn_RL/build/CMakeFiles/rl_api.dir/src/main.cc.o"
+  "/home/xiang/Estudiar/AI部署/RL-SLAM/RL_api2/rknn_RL/src/main.cc" "/home/xiang/Estudiar/AI部署/RL-SLAM/RL_api2/rknn_RL/build/CMakeFiles/rl_api.dir/src/main.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
