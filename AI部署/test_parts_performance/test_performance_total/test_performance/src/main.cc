@@ -39,8 +39,8 @@ using namespace std;
 
 // double min_range = 0.5 - 0.117;
 // double max_range = 0.5 + 0.059;
- double min_range = 0.2;
- double max_range = 0.35;
+double min_range = 0.2;
+double max_range = 0.35;
 static vector<vector<int>> visited_map(1440, vector<int>(1440, 0));
 static int Visitedmap[1200 * 1200] = {0};
 
@@ -244,30 +244,30 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	// map_occupancy / explored_states / agent_status
 
 	if (size_x == 800 && size_y == 800) {
-		for (int x = 0; x < size_y; x++) {
-			for (int y = 0; y < size_x; y++) {
+		for (int y = 0; y < size_y; y++) {
+			for (int x = 0; x < size_x; x++) {
 				tmp_value = map_data[x][y];
 				/// tmp_value = 0.4;
 				// obstacles
 				if (tmp_value <= min_range) {
-					map_occupancy[x_origin+120+x][y_origin+120+ y] = 1;
-					explored_states[x_origin+120 + x][y_origin+120 + y] = 1;
-					Ocmap[(x_origin + x)*1200 + y_origin + y] = 1;
-					Expmap[(x_origin + x)*1200 + y_origin + y] = 1;
+					map_occupancy[y_origin+120+ y][x_origin+120+x] = 1;
+					explored_states[y_origin+120 + y][x_origin+120 + x] = 1;
+					Ocmap[(y_origin + y)*1200 + x_origin + x] = 1;
+					Expmap[(y_origin + y)*1200 + x_origin + x] = 1;
 				}
 				// free space
 				if (tmp_value >= max_range) {
-					map_occupancy[x_origin+120 + x][y_origin+120 + y] = 0;
-					explored_states[x_origin+120 + x][y_origin+120 + y] = 1;
-					Ocmap[(x_origin + x)*1200 + y_origin + y] = 0;
-					Expmap[(x_origin + x)*1200 + y_origin + y] = 1;
+					map_occupancy[y_origin+120 + y][x_origin+120 + x] = 0;
+					explored_states[y_origin+120 + y][x_origin+120 + x] = 1;
+					Ocmap[(y_origin + y)*1200 + x_origin + x] = 0;
+					Expmap[(y_origin + y)*1200 + x_origin + x] = 1;
 				}
 				// unexplored space
 				if (tmp_value > min_range && tmp_value < max_range) {
-					map_occupancy[x_origin+120 + x][y_origin+120 + y] = 1;
-					explored_states[x_origin+120 + x][y_origin+120 + y] = 0;
-					Ocmap[(x_origin + x)*1200 + y_origin + y] = 1;
-					Expmap[(x_origin + x)*1200 + y_origin + y] = 0;
+					map_occupancy[y_origin+120 + y][x_origin+120 + x] = 1;
+					explored_states[y_origin+120 + y][x_origin+120 + x] = 0;
+					Ocmap[(y_origin + y)*1200 + x_origin + x] = 1;
+					Expmap[(y_origin + y)*1200 + x_origin + x] = 0;
 				}
 
 				// double float_value = map.getCell(x, y);
@@ -275,10 +275,10 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 		}
 		robot__x = x_origin + idx;
 		robot__y = y_origin + idy;
-		agent_status[robot__x+120][robot__y+120] = 1;
-		visited_map[robot__x+120][robot__y+120] = 1;
-		Agentmap[robot__x*1200 + robot__y] = 1;
-		Visitedmap[robot__x*1200 + robot__y] = 1;
+		agent_status[robot__y+120][robot__x+120] = 1;
+		visited_map[robot__y+120][robot__x+120] = 1;
+		Agentmap[robot__y*1200 + robot__x] = 1;
+		Visitedmap[robot__y*1200 + robot__x] = 1;
 		expand_type = 0;
 	}
 	// long end_getoriginmap = get_sys_time_interval();
@@ -319,7 +319,7 @@ vector<vector<vector<int>>> processTarget(vector<vector<double>> map_data, int i
 	// timeval start_model_input, end_model_input;
 	// double output_maps[8][240][240];
 
-	output_maps[0]  = Ocp_crop;
+	output_maps[0] = Ocp_crop;
 	output_maps[1] = Expp_crop;
 	output_maps[2] = Visitedmap_crop;
 	output_maps[3] = Agentp_crop;

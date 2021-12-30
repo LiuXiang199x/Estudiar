@@ -60,15 +60,15 @@ include CMakeFiles/test_performance.dir/flags.make
 CMakeFiles/test_performance.dir/src/main.cc.o: CMakeFiles/test_performance.dir/flags.make
 CMakeFiles/test_performance.dir/src/main.cc.o: ../src/main.cc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_total/test_performance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_performance.dir/src/main.cc.o"
-	arm-linux-gnueabihf-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_performance.dir/src/main.cc.o -c /home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_total/test_performance/src/main.cc
+	aarch64-linux-gnu-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_performance.dir/src/main.cc.o -c /home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_total/test_performance/src/main.cc
 
 CMakeFiles/test_performance.dir/src/main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_performance.dir/src/main.cc.i"
-	arm-linux-gnueabihf-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_total/test_performance/src/main.cc > CMakeFiles/test_performance.dir/src/main.cc.i
+	aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_total/test_performance/src/main.cc > CMakeFiles/test_performance.dir/src/main.cc.i
 
 CMakeFiles/test_performance.dir/src/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_performance.dir/src/main.cc.s"
-	arm-linux-gnueabihf-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_total/test_performance/src/main.cc -o CMakeFiles/test_performance.dir/src/main.cc.s
+	aarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_total/test_performance/src/main.cc -o CMakeFiles/test_performance.dir/src/main.cc.s
 
 CMakeFiles/test_performance.dir/src/main.cc.o.requires:
 
@@ -90,7 +90,7 @@ test_performance_EXTERNAL_OBJECTS =
 
 ../bin/test_performance: CMakeFiles/test_performance.dir/src/main.cc.o
 ../bin/test_performance: CMakeFiles/test_performance.dir/build.make
-../bin/test_performance: ../../librknn_api/lib/librknn_api.so
+../bin/test_performance: ../../librknn_api/lib64/librknn_api.so
 ../bin/test_performance: CMakeFiles/test_performance.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiang/Estudiar/AI部署/test_parts_performance/test_performance_total/test_performance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../bin/test_performance"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_performance.dir/link.txt --verbose=$(VERBOSE)
