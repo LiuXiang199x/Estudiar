@@ -421,6 +421,21 @@ bool processTarget(vector<vector<double>> maps_original, const int &idx, const i
 	}
 
 
+	// const char *img_path2 = argv[3];
+	// unsigned long start_time,end_load_model_time, stop_time;
+	// timeval start_time, end_load_model_time, end_init_time, end_run_time, end_process_time, stop_time;
+	// gettimeofday(&start_time, nullptr);
+	// start_time = GetTickCount();
+	// long startt = get_sys_time_interval();
+
+	// Load image
+	// cv::Mat img = cv::imread(img_path);
+	// img = get_net_work_img(img);
+
+	// memcpy(batch_img_data, img.data, img.cols*img.rows*img.channels());
+	// memcpy(batch_img_data, data, 240 * 240 * 8);
+	// data -> const char*
+
 	printf("===== load input data done =====\n");
 
 	// Load RKNN Model
