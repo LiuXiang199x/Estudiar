@@ -95,7 +95,7 @@ int predictions(vector<vector<vector<int>>> inputs_map, int expand_type, vector<
 	int model_len = 0;
 	unsigned char* model;
 
-	const char* model_path = "/userdata/ckpt_precompile_20_rk161.rknn";
+	const char* model_path = "/userdata/ckpt.rknn";
 	// const char* img_path = argv[2];
 	// vector<vector<vector<double>>> data_vector;
 	// data_vector = get_inputs();

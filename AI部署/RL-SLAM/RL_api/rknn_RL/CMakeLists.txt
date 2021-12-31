@@ -192,7 +192,7 @@ target_link_libraries(rl_api
 # install target and libraries
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install/rl_api)
 install(TARGETS rl_api DESTINATION ./)
-install(FILES model/ckpt_precompile_20_rk161.rknn DESTINATION ./)
+install(FILES model/ckpt.rknn DESTINATION ./)
 # install(FILES model/dog_224x224.jpg DESTINATION ./)
 
 install(PROGRAMS ${RKNN_API_LIB} DESTINATION lib)
