@@ -68,18 +68,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -111,6 +99,18 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
@@ -169,46 +169,6 @@ main_shared/fast:
 	$(MAKE) -f CMakeFiles/main_shared.dir/build.make CMakeFiles/main_shared.dir/build
 .PHONY : main_shared/fast
 
-#=============================================================================
-# Target rules for targets named RlApi_ecx
-
-# Build rule for target.
-RlApi_ecx: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 RlApi_ecx
-.PHONY : RlApi_ecx
-
-# fast build rule for target.
-RlApi_ecx/fast:
-	$(MAKE) -f CMakeFiles/RlApi_ecx.dir/build.make CMakeFiles/RlApi_ecx.dir/build
-.PHONY : RlApi_ecx/fast
-
-src/main.o: src/main.cc.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.cc.o:
-	$(MAKE) -f CMakeFiles/RlApi_ecx.dir/build.make CMakeFiles/RlApi_ecx.dir/src/main.cc.o
-.PHONY : src/main.cc.o
-
-src/main.i: src/main.cc.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cc.i:
-	$(MAKE) -f CMakeFiles/RlApi_ecx.dir/build.make CMakeFiles/RlApi_ecx.dir/src/main.cc.i
-.PHONY : src/main.cc.i
-
-src/main.s: src/main.cc.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cc.s:
-	$(MAKE) -f CMakeFiles/RlApi_ecx.dir/build.make CMakeFiles/RlApi_ecx.dir/src/main.cc.s
-.PHONY : src/main.cc.s
-
 src/rl_api.o: src/rl_api.cpp.o
 
 .PHONY : src/rl_api.o
@@ -243,16 +203,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... main_shared"
-	@echo "... RlApi_ecx"
 	@echo "... edit_cache"
+	@echo "... main_shared"
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
+	@echo "... install/local"
 	@echo "... install"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 	@echo "... src/rl_api.o"
 	@echo "... src/rl_api.i"
 	@echo "... src/rl_api.s"

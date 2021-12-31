@@ -182,18 +182,18 @@ SET(MRPT_LIBS
 
 set(CMAKE_INSTALL_RPATH "lib")
 
-add_executable(RlApi_ecx
-        src/main.cc
+#add_executable(RlApi_ecx
+#        src/main.cc
         #src/opencv_test.cc
         #src/deeplabV3_test.cc
         #src/CDeeplabV3Segamentation.cc
-        )
+#        )
 
 set(Rl_API_PATH /home/xiang/Estudiar/AI/RL-SLAM/RlApi/lib/libRlApi.so)
 
 # install target and libraries
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install/RlApi)
-install(TARGETS RlApi_ecx DESTINATION ./)
+# install(TARGETS RlApi_ecx DESTINATION ./)
 install(FILES model/ckpt.rknn DESTINATION ./)
 # install(FILES model/dog_224x224.jpg DESTINATION ./)
 
@@ -212,14 +212,11 @@ set_target_properties (main_shared PROPERTIES OUTPUT_NAME "RlApi")
 
 set (LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-target_link_libraries(RlApi_ecx
-	
-	${MRPT_LIBS}
-   ${Rl_API_PATH}
-  pthread
-  dl
-)
+#target_link_libraries(RlApi_ecx
+# ${MRPT_LIBS}
+#  ${Rl_API_PATH}
+#  pthread
+#  dl
+#)
 
-
-
-set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+# set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)

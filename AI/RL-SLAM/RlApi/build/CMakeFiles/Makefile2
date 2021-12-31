@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/xiang/Estudiar/AI/RL-SLAM/RlApi/build
 CMakeFiles/main_shared.dir/all:
 	$(MAKE) -f CMakeFiles/main_shared.dir/build.make CMakeFiles/main_shared.dir/depend
 	$(MAKE) -f CMakeFiles/main_shared.dir/build.make CMakeFiles/main_shared.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/Estudiar/AI/RL-SLAM/RlApi/build/CMakeFiles --progress-num=3,4 "Built target main_shared"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/Estudiar/AI/RL-SLAM/RlApi/build/CMakeFiles --progress-num=1,2 "Built target main_shared"
 .PHONY : CMakeFiles/main_shared.dir/all
 
 # Include target in all.
@@ -93,43 +93,6 @@ CMakeFiles/main_shared.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/main_shared.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/RlApi_ecx.dir
-
-# All Build rule for target.
-CMakeFiles/RlApi_ecx.dir/all:
-	$(MAKE) -f CMakeFiles/RlApi_ecx.dir/build.make CMakeFiles/RlApi_ecx.dir/depend
-	$(MAKE) -f CMakeFiles/RlApi_ecx.dir/build.make CMakeFiles/RlApi_ecx.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiang/Estudiar/AI/RL-SLAM/RlApi/build/CMakeFiles --progress-num=1,2 "Built target RlApi_ecx"
-.PHONY : CMakeFiles/RlApi_ecx.dir/all
-
-# Include target in all.
-all: CMakeFiles/RlApi_ecx.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/RlApi_ecx.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI/RL-SLAM/RlApi/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/RlApi_ecx.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiang/Estudiar/AI/RL-SLAM/RlApi/build/CMakeFiles 0
-.PHONY : CMakeFiles/RlApi_ecx.dir/rule
-
-# Convenience name for target.
-RlApi_ecx: CMakeFiles/RlApi_ecx.dir/rule
-
-.PHONY : RlApi_ecx
-
-# clean rule for target.
-CMakeFiles/RlApi_ecx.dir/clean:
-	$(MAKE) -f CMakeFiles/RlApi_ecx.dir/build.make CMakeFiles/RlApi_ecx.dir/clean
-.PHONY : CMakeFiles/RlApi_ecx.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/RlApi_ecx.dir/clean
 
 .PHONY : clean
 
