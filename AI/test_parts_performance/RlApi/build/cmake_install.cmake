@@ -38,22 +38,7 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE FILE FILES "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/model/ckpt_precompile_20_rk161.rknn")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/librknn_api/lib/librknn_api.so")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES
-    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-base.so"
-    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-hwdrivers.so"
-    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-maps.so"
-    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-obs.so"
-    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-scanmatching.so"
-    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-slam.so"
-    )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/rknn_api.h
+stdint.h
+-
+
+../include/rl_api.h
+stdio.h
+-
+stdint.h
+-
+stdlib.h
+-
+fstream
+-
+iostream
+-
+sys/time.h
+-
+vector
+-
+string.h
+-
+uchar.h
+-
+rknn_api.h
+../include/rknn_api.h
+
+/home/xiang/Estudiar/AI/test_parts_performance/test_RlApi/src/main.cc
+rl_api.h
+-
+

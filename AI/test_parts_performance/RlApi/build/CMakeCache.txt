@@ -188,7 +188,7 @@ RlApi_BINARY_DIR:STATIC=/home/xiang/Estudiar/AI/test_parts_performance/RlApi/bui
 RlApi_SOURCE_DIR:STATIC=/home/xiang/Estudiar/AI/test_parts_performance/RlApi
 
 //Dependencies for the target
-main_shared_LIB_DEPENDS:STATIC=general;/home/xiang/Estudiar/AI/test_parts_performance/RlApi/librknn_api/lib/librknn_api.so;general;/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-base.so;general;/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-hwdrivers.so;general;/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-maps.so;general;/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-obs.so;general;/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-scanmatching.so;general;/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-slam.so;general;pthread;general;dl;
+main_shared_LIB_DEPENDS:STATIC=general;/home/xiang/Estudiar/AI/test_parts_performance/RlApi/librknn_api/lib/librknn_api.so;general;pthread;general;dl;
 
 
 ########################

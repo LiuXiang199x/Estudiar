@@ -9,7 +9,7 @@
 #include <string.h>
 #include <uchar.h>
 // #include <COccupancyGridMap2D.h>
-#include <mrpt/slam/COccupancyGridMap2D.h>
+// #include <mrpt/slam/COccupancyGridMap2D.h>
 
 #include "rknn_api.h"
 
@@ -27,8 +27,8 @@ namespace everest
 		class RlApi{
 			public:
 				bool processTarget(std::vector<std::vector<double>> m_map, const int &idx, const int &idy, int &res_idx, int &res_idy);
-			private:
 				std::vector<std::vector<double>> get_inputs(int &robotx, int &roboty);
+			private:
 				uint64_t time_tToTimestamp(const time_t &t);
 				uint64_t get_sys_time_interval();
 				void printRKNNTensor(rknn_tensor_attr *attr);

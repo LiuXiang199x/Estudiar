@@ -1,4 +1,4 @@
-#include <RlApi/include/rl_api.h>
+#include <rl_api.h>
 
 using namespace std;
 using namespace everest;

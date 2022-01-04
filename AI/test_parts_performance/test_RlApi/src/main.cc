@@ -1,4 +1,6 @@
-#include <RlApi/include/rl_api.h>
+#include <rl_api.h>
+
+using namespace std;
 
 int main(){
 	everest::planner::RlApi test;
@@ -6,6 +8,7 @@ int main(){
 	int robotyyy = 0;
 	int result_x;
 	int result_y;
+	vector<vector<double>> inputss;
 	inputss = test.get_inputs(robotxxx, robotyyy);
 
 	test.processTarget(inputss, robotxxx, robotyyy, result_x, result_y);

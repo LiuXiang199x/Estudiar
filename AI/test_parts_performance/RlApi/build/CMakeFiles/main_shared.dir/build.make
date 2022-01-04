@@ -91,12 +91,6 @@ main_shared_EXTERNAL_OBJECTS =
 ../lib/libRlApi.so: CMakeFiles/main_shared.dir/src/rl_api.cpp.o
 ../lib/libRlApi.so: CMakeFiles/main_shared.dir/build.make
 ../lib/libRlApi.so: ../librknn_api/lib/librknn_api.so
-../lib/libRlApi.so: ../mrpt_api/libmrpt-base.so
-../lib/libRlApi.so: ../mrpt_api/libmrpt-hwdrivers.so
-../lib/libRlApi.so: ../mrpt_api/libmrpt-maps.so
-../lib/libRlApi.so: ../mrpt_api/libmrpt-obs.so
-../lib/libRlApi.so: ../mrpt_api/libmrpt-scanmatching.so
-../lib/libRlApi.so: ../mrpt_api/libmrpt-slam.so
 ../lib/libRlApi.so: CMakeFiles/main_shared.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiang/Estudiar/AI/test_parts_performance/RlApi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library ../lib/libRlApi.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main_shared.dir/link.txt --verbose=$(VERBOSE)
