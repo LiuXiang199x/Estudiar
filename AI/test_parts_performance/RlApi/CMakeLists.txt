@@ -19,11 +19,11 @@ set(CROSS_COMPILE_TOOL /home/xiang/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnu
 # set(CMAKE_CXX_COMPILER ${CROSS_COMPILE_TOOL}-g++)
 
 #1806/1808
-set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
-set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
+#set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
+#set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
 
-#SET(CMAKE_C_COMPILER "arm-linux-gnueabihf-gcc")
-#SET(CMAKE_CXX_COMPILER "arm-linux-gnueabihf-g++")
+SET(CMAKE_C_COMPILER "arm-linux-gnueabihf-gcc")
+SET(CMAKE_CXX_COMPILER "arm-linux-gnueabihf-g++")
 
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
@@ -38,21 +38,21 @@ else()
 endif()
 
 # rknn so
-set(RKNN_API_PATH /home/xiang/Estudiar/AI/RL-SLAM/RlApi/librknn_api)
+set(RKNN_API_PATH /home/xiang/Estudiar/AI/test_parts_performance/RlApi/librknn_api)
 # include_directories(${RKNN_API_PATH}/include)
 set(RKNN_API_LIB ${RKNN_API_PATH}/${LIB_ARCH}/librknn_api.so)
 
 message(${RKNN_API_LIB})
 # Rl api & rknn api
-set(RL_API_PATH /home/xiang/Estudiar/AI/RL-SLAM)
+set(RL_API_PATH /home/xiang/Estudiar/AI/test_parts_performance)
 include_directories(${RL_API_PATH})
 
-include_directories(/home/xiang/Estudiar/AI/RL-SLAM/RlApi)
-include_directories(/home/xiang/Estudiar/AI/RL-SLAM/RlApi/mrpt_api/mrpt/maps/include)
+include_directories(/home/xiang/Estudiar/AI/test_parts_performance/RlApi)
+include_directories(/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/mrpt/maps/include)
 
 # mrpt api
 ############## mrpt_base #################
-set(MRPT_PATH /home/xiang/Estudiar/AI/RL-SLAM/RlApi/mrpt_api)
+set(MRPT_PATH /home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api)
 include_directories(${MRPT_PATH}/mrpt/base/include/)
 include_directories(${MRPT_PATH}/mrpt/base/include/gtest/)
 include_directories(${MRPT_PATH}/mrpt/base/include/gtest/internal/)
@@ -182,19 +182,19 @@ SET(MRPT_LIBS
 
 set(CMAKE_INSTALL_RPATH "lib")
 
-add_executable(RlApi_ecx
-        src/main.cc
+#add_executable(RlApi_ecx
+#        src/main.cc
         #src/opencv_test.cc
         #src/deeplabV3_test.cc
         #src/CDeeplabV3Segamentation.cc
-        )
+#        )
 
-set(Rl_API_PATH /home/xiang/Estudiar/AI/RL-SLAM/RlApi/lib/libRlApi.so)
+# set(Rl_API_PATH /home/xiang/Estudiar/AI/RL-SLAM/RlApi/lib/libRlApi.so)
 
 # install target and libraries
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install/RlApi)
-install(TARGETS RlApi_ecx DESTINATION ./)
-install(FILES model/ckpt.rknn DESTINATION ./)
+# install(TARGETS RlApi_ecx DESTINATION ./)
+install(FILES model/ckpt_precompile_20_rk161.rknn DESTINATION ./)
 # install(FILES model/dog_224x224.jpg DESTINATION ./)
 
 install(PROGRAMS ${RKNN_API_LIB} DESTINATION lib)
@@ -219,4 +219,4 @@ set (LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #  dl
 #)
 
-set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+# set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)

@@ -1,8 +1,8 @@
-# Install script for directory: /home/xiang/Estudiar/AI/RL-SLAM/RlApi
+# Install script for directory: /home/xiang/Estudiar/AI/test_parts_performance/RlApi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/install/RlApi")
+  set(CMAKE_INSTALL_PREFIX "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/install/RlApi")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,21 +38,21 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE FILE FILES "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/model/ckpt.rknn")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE FILE FILES "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/model/ckpt_precompile_20_rk161.rknn")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/librknn_api/lib64/librknn_api.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/librknn_api/lib/librknn_api.so")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE PROGRAM FILES
-    "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/mrpt_api/libmrpt-base.so"
-    "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/mrpt_api/libmrpt-hwdrivers.so"
-    "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/mrpt_api/libmrpt-maps.so"
-    "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/mrpt_api/libmrpt-obs.so"
-    "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/mrpt_api/libmrpt-scanmatching.so"
-    "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/mrpt_api/libmrpt-slam.so"
+    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-base.so"
+    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-hwdrivers.so"
+    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-maps.so"
+    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-obs.so"
+    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-scanmatching.so"
+    "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/mrpt_api/libmrpt-slam.so"
     )
 endif()
 
@@ -64,5 +64,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xiang/Estudiar/AI/RL-SLAM/RlApi/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xiang/Estudiar/AI/test_parts_performance/RlApi/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
