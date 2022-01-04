@@ -1,8 +1,8 @@
 import torch
 from rknn.api import RKNN
 
-ONNX_MODEL = "onnx/ckpt.20.onnx"
-RKNN_MODEL = "rknn_sin_precompile/ckpt.20.rknn"
+ONNX_MODEL = "onnx/ckpt.550.onnx"
+RKNN_MODEL = "rknn_sin_precompile/ckpt.550.rknn"
  
 if __name__ == '__main__':
 

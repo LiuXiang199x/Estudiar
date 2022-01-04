@@ -677,6 +677,9 @@ void RlApi::pro_target(vector<float> outputs, int expand_type, vector<vector<dou
 	res_idx = target_point[0];
 	res_idy = target_point[1];
 
+	printf("the target x is===> %d\n", res_idx);
+	printf("the target y is===> %d\n", res_idy);
+
 	cout << "====== get target done ======" << endl;
 	// return target_point;
 }
