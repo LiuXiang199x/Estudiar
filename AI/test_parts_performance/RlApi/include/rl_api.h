@@ -8,7 +8,8 @@
 #include <vector>
 #include <string.h>
 #include <uchar.h>
-// #include <COccupancyGridMap2D.h>
+#include <numeric>
+#include <algorithm>
 // #include <mrpt/slam/COccupancyGridMap2D.h>
 
 #include "rknn_api.h"
@@ -20,6 +21,8 @@
 #define img_height 64
 #define img_channels 3
 
+std::vector<std::vector<int>> visited_map(1440, std::vector<int>(1440, 0));
+static int Visitedmap[1200 * 1200] = {0};
 
 namespace everest
 {
@@ -28,7 +31,7 @@ namespace everest
 		class RlApi{
 			public:
 				bool processTarget(std::vector<std::vector<double>> m_map, const int &idx, const int &idy, int &res_idx, int &res_idy);
-				std::vector<std::vector<double>> get_inputs(int &robotx, int &roboty);
+				std::vector<std::vector<double>> get_inputs(int &robotx, int &roboty, int map_x, int map_y);
 				void release_rknn();
 				int init_rknn();
 			private:
@@ -44,18 +47,16 @@ namespace everest
 
 			private:
 				// mrpt::slam::COccupancyGridMap2D					m_map;
-				double 											m_min_range = 0.5 - 0.117;
-				double 											m_max_range = 0.5 + 0.059;
-				static vector<vector<int>> visited_map(1440, vector<int>(1440, 0));
-				static int 										Visitedmap[1200 * 1200] = {0};
-				rknn_context 									ctx;
-				int 											ret;
-				int 											model_len = 0;
-				unsigned char* 									model;
-				const char* 									model_path = "/userdata/model/ckpt_precompile_20_rk161.rknn";
-				uchar 											batch_img_data[240 * 240 * 8 * BATCH_SIZE];
-				uchar 											data[240 * 240 * 8];
-				rknn_output 									outputs[1];
+				double 									m_min_range = 0.7;
+				double 									m_max_range = 0.8;
+				rknn_context 								ctx;
+				int 									ret;
+				int 									model_len = 0;
+				unsigned char* 								model;
+				const char* 								model_path = "/userdata/model/ckpt_precompile_20_rk161.rknn";
+				uchar 									batch_img_data[240 * 240 * 8 * BATCH_SIZE];
+				uchar 									data[240 * 240 * 8];
+				rknn_output 								outputs[1];
 				rknn_input_output_num 							io_num;
 		};
 

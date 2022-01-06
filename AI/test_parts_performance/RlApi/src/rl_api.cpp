@@ -42,7 +42,7 @@ unsigned char* RlApi::load_model(const char *filename, int *model_size)
     }
     return model;
 }
-
+/*
 int RlApi::predictions(vector<vector<vector<double>>> inputs_map, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy) {
 	// const int img_width = 224;
 	// const int img_height = 224;
@@ -83,6 +83,8 @@ int RlApi::predictions(vector<vector<vector<double>>> inputs_map, int expand_typ
 
 
 }
+*/
+
 
 void RlApi::release_rknn(){
 	// Release rknn_outputs
@@ -181,7 +183,7 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 
 	// static vector<vector<double>> map(800, vector<double>(800, 0));
 	printf("======== Start processing datas =======\n");
-
+	printf("m_max_range = %f, m_min_range = %f\n", m_max_range, m_min_range);
 	// int size_x = m_map.getSizeX();
 	// int size_y = m_map.getSizeY();
 	int size_x = m_map.size();
@@ -206,7 +208,7 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 	static vector<vector<int>> explored_states(1440, vector<int>(1440, 0));
 	static vector<vector<int>> agent_status(1440, vector<int>(1440, 0));
 	static vector<vector<int>> frontier_map(240, vector<int>(240, 0));
-	static vector<vector<vector<int>>> output_maps(8, vector<vector<int>>(240, vector<int>(240)));	
+	// static vector<vector<vector<int>>> output_maps(8, vector<vector<int>>(240, vector<int>(240)));	
 
 	int* Ocp_pooling;
 	int* Expp_pooling;
@@ -219,14 +221,15 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 	static vector<vector<int>> Agentp_crop(240, vector<int>(240));
 
 	static int Ocmap[1440000];
-	static int Expmap[1440000] = {0};
-	static int Agentmap[1200 * 1200] = {0};
+	static int Expmap[1440000];
+	static int Agentmap[1200 * 1200];
 	// memset(Ocmap, 1, sizeof(int)*1440000);
 	fill(Ocmap, Ocmap+1440000, 1);
 
-	printf("======== Getting maps data =======");
+	printf("======== Getting maps data =======\n");
 	// map_occupancy / explored_states / agent_status
 	if (size_x == 800 && size_y == 800) {
+		printf("===== Case 800*800 +++> expand type 0 =====\n");
 		for (int y = 0; y < size_y; y++) {
 			for (int x = 0; x < size_x; x++) {
 				// tmp_value = m_map.getCell(y, x);
@@ -265,6 +268,7 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 		expand_type = 0;
 	}
 	if (size_x == 800 && size_y == 1200) {
+		printf("===== Case 800*1200 +++> expand type 1 =====\n");
 		for (int y = 0; y < size_y; y++) {
 			for (int x = 0; x < size_x; x++) {
 				// tmp_value = m_map.getCell(y, x);
@@ -303,6 +307,7 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 		expand_type = 1;
 	}
 	if (size_x == 1200 && size_y == 800) {
+		printf("===== Case 1200*800 +++> expand type 2 =====\n");
 		for (int y = 0; y < size_y; y++) {
 			for (int x = 0; x < size_x; x++) {
 				// tmp_value = m_map.getCell(y, x);
@@ -341,6 +346,7 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 		expand_type = 2;
 	}
 	if (size_x == 1200 && size_y == 1200) {
+		printf("===== Case 1200*1200 +++> expand type 3 =====\n");
 		for (int y = 0; y < size_y; y++) {
 			for (int x = 0; x < size_x; x++) {
 				// tmp_value = m_map.getCell(y, x);
@@ -349,22 +355,22 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 				if (tmp_value <= m_min_range) {
 					map_occupancy[x+120][y+120] = 1;
 					explored_states[x+120][y+120] = 1;
-					Ocmap[y*1200 + x] = 1;
-					Expmap[y*1200 + x] = 1;
+					// Ocmap[y*1200 + x] = 1;
+					// Expmap[y*1200 + x] = 1;
 				}
 				// free space
 				if (tmp_value >= m_max_range) {
 					map_occupancy[x+120][y+120] = 0;
 					explored_states[x+120][y+120] = 1;
-					Ocmap[y*1200 + x] = 0;
-					Expmap[y*1200 + x] = 1;
+					// Ocmap[y*1200 + x] = 0;
+					// Expmap[y*1200 + x] = 1;
 				}
 				// unexplored space
 				if (tmp_value > m_min_range && tmp_value < m_max_range) {
 					map_occupancy[x+120][y+120] = 1;
 					explored_states[x+120][y+120] = 0;
-					Ocmap[y*1200 + x] = 1;
-					Expmap[y*1200 + x] = 0;
+					// Ocmap[y*1200 + x] = 1;
+					// Expmap[y*1200 + x] = 0;
 				}
 
 				// double float_value = m_map.getCell(x, y);
@@ -384,11 +390,68 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 	// timeval start_maxpoolmaps, end_maxpoolmaps, start_cropmaps, end_cropmaps;
 	MaxPolling pool2d;
 	// maps:(1200, 1200) ---> (240, 240)
+
+
 	Ocp_pooling = pool2d.poll(Ocmap, 1200, 1200, 5, 5, false);
 	Expp_pooling = pool2d.poll(Expmap, 1200, 1200, 5, 5, false);
 	Agentp_pooling = pool2d.poll(Agentmap, 1200, 1200, 5, 5, false);
 	Visitedmap_pooling = pool2d.poll(Visitedmap, 1200, 1200, 5, 5, false);
-	frontier_map = get_frontier(Expp_pooling, Ocp_pooling, 240, 240);
+
+	Ocp_crop = crop_map(map_occupancy, robot__x+120, robot__y+120, int(1));
+	Expp_crop = crop_map(explored_states, robot__x+120, robot__y+120, int(0));
+	Agentp_crop = crop_map(agent_status, robot__x+120, robot__y+120, int(0));
+	Visitedmap_crop = crop_map(visited_map, robot__x+120, robot__y+120, int(0));
+
+	// using crop map
+	int* frontieeer;
+	int* frontierrr;
+	frontieeer = &Expp_crop[0][0];
+	frontierrr = &Ocp_crop[0][0];
+	frontier_map = get_frontier(frontieeer, frontierrr, 240, 240);
+
+	int flag_end = 0;
+	int cout_ocp_pooling = 0;
+	int cout_exp_pooling = 0;	
+	int cout_agent_pooling = 0;
+	int cout_visited_pooling = 0;
+	int cout_ocp_crop = 0;
+	int cout_exp_crop = 0;
+	int cout_agent_crop = 0;
+	int cout_visited_crop = 0;
+
+	for(int i=0; i<frontier_map.size(); i++){
+		for(int j=0; j<frontier_map[0].size(); j++){
+			if(Ocp_crop[i][j] == 0){
+				cout_ocp_crop++;
+			}
+			if(Expp_crop[i][j] == 1){
+				cout_exp_crop++;
+			}
+			if(Agentp_crop[i][j] == 1){
+				cout_agent_crop++;
+			}
+			if(Visitedmap_crop[i][j] == 1){
+				cout_visited_crop++;
+			}
+			if(Ocp_pooling[i*240+j] == 0){
+				cout_ocp_pooling++;
+			}
+			if(Expp_pooling[i*240+j] == 1){
+				cout_exp_pooling++;
+			}
+			if(Agentp_pooling[i*240+j] == 1){
+				cout_agent_pooling++;
+			}
+			if(Visitedmap_pooling[i*240+j] == 1){
+				cout_visited_pooling++;
+			}
+			if(frontier_map[i][j] == 1){
+				flag_end++;
+			}
+		}
+	}
+	printf("======> Value of frontier_map: %d ======\n======> Value of cout_ocp_pooling: %d ======\n======> Value of cout_exp_pooling: %d ======\n======> Value of cout_agent_pooling: %d ======\n======> Value of cout_visited_pooling: %d ======\n======> Value of cout_ocp_crop: %d ======\n======> Value of cout_exp_crop: %d ======\n======> Value of cout_agent_crop: %d ======\n======> Value of cout_visited_crop: %d ======\n", flag_end, cout_ocp_pooling, cout_exp_pooling, cout_agent_pooling, cout_visited_pooling, cout_ocp_crop, cout_exp_crop, cout_agent_crop, cout_visited_crop);
+
 
 	printf("========== ALL DATA PREPARED ==========\n");
 	printf("========== START PREDICTION ==========\n");
@@ -408,7 +471,7 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 			batch_img_data[240*240 * 7 + j * 240 + k] = *(Agentp_pooling + j * 240 + k);
 		}
 	}
-	printf("batch_img_data[0]=%d, batch_img_data[1]=%d, batch_img_data[123]=%d, batch_img_data[351]=%d, batch_img_data[651]=%d\n", batch_img_data[0], batch_img_data[1], batch_img_data[123], batch_img_data[651]);
+	printf("batch_img_data[0]=%d, batch_img_data[1]=%d, batch_img_data[240*5]=%d, batch_img_data[240*240+240*2+2]=%d, batch_img_data[240*240+564]=%d, batch_img_data[240*240*2+354]=%d, batch_img_data[240*240*4+515]=%d, batch_img_data[240*240*6+514]=%d, batch_img_data[240*240*8+261]=%d, batch_img_data[240*240*10+213]=%d, batch_img_data[240*240*12+413]=%d, batch_img_data[240*240*14+113]=%d\n", batch_img_data[0], batch_img_data[1], batch_img_data[240*5], batch_img_data[240*240+240*2+2], batch_img_data[240*240+564], batch_img_data[240*240*2+354], batch_img_data[240*240*4+515], batch_img_data[240*240*6+514], batch_img_data[240*240*8+261], batch_img_data[240*240*10+213], batch_img_data[240*240*12+413], batch_img_data[240*240*14+113]);
 	printf("========== ALL DATA PREPARED ==========\n");
 
 	printf("input tensors:\n");
@@ -520,13 +583,13 @@ vector<vector<double>> RlApi::get_inputs(int &robotx, int &roboty, int map_x, in
 		}
 	}
 
-	int robot_x = rand()%100+300;
-	int robot_y = rand()%100+200;
+	int robot_x = (rand()%100%8)*100+rand()%100;
+	int robot_y = (rand()%100%8)*100+rand()%100;
 	inputs[robot_x][robot_y] = 1;
 	robotx = robot_x;
 	roboty = robot_y;
 	printf("====>robot_x=%d, robot_y=%d<====\n", robot_x, robot_y);
-	printf("====> 800*800 random maps generated !!! <====\n");
+	printf("====> %d * %d random maps generated !!! <====\n", map_x, map_y);
 
     return inputs;
 }
@@ -588,7 +651,7 @@ vector<vector<int>> RlApi::get_frontier(int *explored_map, int *occupancy_map, i
 }
 
 
-void RlApi::pro_target(vector<float> outputs, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy) {
+void RlApi::pro_target(vector<float> outputs, int expand_type, vector<vector<int>> mask, int &res_idx, int &res_idy) {
 
 	printf("==== Model prediction done... Processing target ====\n");
 	for (int i = 0; i < 240; i++) {

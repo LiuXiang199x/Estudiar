@@ -13,7 +13,7 @@ int main(){
 	test.init_rknn();
 
 	for(int i=0; i<10; i++){
-		inputss = test.get_inputs(robotxxx, robotyyy);
+		inputss = test.get_inputs(robotxxx, robotyyy, 800, 800);
 
 		test.processTarget(inputss, robotxxx, robotyyy, result_x, result_y);
 		// test.processTarget(400, 400, res_x, res_y);
