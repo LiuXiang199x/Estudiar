@@ -10,6 +10,8 @@ int main(){
 	int result_y;
 	vector<vector<double>> inputss;
 
+	test.init_rknn();
+
 	for(int i=0; i<10; i++){
 		inputss = test.get_inputs(robotxxx, robotyyy);
 
@@ -17,5 +19,6 @@ int main(){
 		// test.processTarget(400, 400, res_x, res_y);
 
 	}
+	test.release_rknn();
 	return 0;
 }
