@@ -4,6 +4,16 @@ using namespace std;
 using namespace everest;
 using namespace everest::planner;
 
+RlApi::RlApi()
+{
+	visited_map = std::vector<std::vector<int>>(1440, std::vector<int>(1440, 0));
+}
+
+RlApi::~RlApi()
+{
+	
+}
+
 uint64_t RlApi::time_tToTimestamp(const time_t &t ){
     return (((uint64_t)t) * (uint64_t)10000000) + ((uint64_t)116444736*1000000000);
 }
@@ -42,48 +52,7 @@ unsigned char* RlApi::load_model(const char *filename, int *model_size)
     }
     return model;
 }
-/*
-int RlApi::predictions(vector<vector<vector<double>>> inputs_map, int expand_type, vector<vector<double>> mask, int &res_idx, int &res_idy) {
-	// const int img_width = 224;
-	// const int img_height = 224;
-	// const int img_channels = 3;
-	printf("========== START GETTING TARGET ==========\n");
-	// rknn_context ctx;
-	// int ret;
-	// int model_len = 0;
-	// unsigned char* model;
 
-	printf("==== Size of input maps(TOOOO MODEL):::===> inputs_map.size()=%d, inputs_map[0].size()=%d, inputs_map[0][0].size()=%d\n", inputs_map.size(), inputs_map[0].size(), inputs_map[0][0].size());
-	printf("==== Values of input maps:::===> inputs_map[0][0][0]=%f, inputs_map[0][1][2]=%f, inputs_map[1][100][234]=%f, inputs_map[5][100][234]=%f\n", inputs_map[0][0][0], inputs_map[0][1][2], inputs_map[1][100][234], inputs_map[5][100][234]);
-
-	// const char* model_path = "/userdata/model/ckpt_precompile_20_rk161.rknn";
-	// printf("mode path is : %s\n", model_path);
-	
-	// const char* img_path = argv[2];
-	// vector<vector<vector<double>>> data_vector;
-	// data_vector = get_inputs();
-	// uchar batch_img_data[img.cols*img.rows*img.channels() * BATCH_SIZE];
-	
-	//uchar batch_img_data[240 * 240 * 8 * BATCH_SIZE];
-	// uchar data[240 * 240 * 8];
-	for (int i = 0; i < 8; i++) {
-		for (int j = 0; j < 240; j++) {
-			for (int k = 0; k < 240; k++) {
-				data[i * 8 + j * 240 + k] = inputs_map[i][j][k];
-			}
-		}
-	}
-
-	// memcpy(batch_img_data, img.data, img.cols*img.rows*img.channels());
-	memcpy(batch_img_data, data, 240 * 240 * 8);
-	// data -> const char*
-	printf("batch_img_data[0]=%d, batch_img_data[53]=%d, batch_img_data[245]=%d, batch_img_data[465]=%d\n", batch_img_data[0], batch_img_data[53], batch_img_data[245], batch_img_data[465]);
-	printf("===== load input data done =====\n");
-
-
-
-}
-*/
 
 
 void RlApi::release_rknn(){
@@ -179,7 +148,7 @@ void MaxPolling::testMaxPolling() {
 	poll(matrix, 6, 6, 2, 2, true);
 }
 
-bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const int &idy, int &res_idx, int &res_idy) {
+bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const int &idy, int &res_idx, int &res_idy){
 
 	// static vector<vector<double>> map(800, vector<double>(800, 0));
 	printf("======== Start processing datas =======\n");
@@ -196,7 +165,7 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 	int robot__y;
 	int expand_type;
 
-	printf("Original Occupancy2DMaps::====> m_map.getCell(0,0)=%f, m_map.getCell(10,16)=%f, m_map.getCell(178,354)=%f\n", m_map[0][0], m_map[10][16], m_map[178][354]);
+	// printf("Original Occupancy2DMaps::====> m_map.getCell(0,0)=%f, m_map.getCell(10,16)=%f, m_map.getCell(178,354)=%f\n", m_map.getCell(0,0), m_map.getCell(10,16), m_map.getCell(178,354));
 
 	// global map[0] = map occupancy: -1/100-->1(unexplored space/obstacles); 0-->0(free space) --- expand with 1
 	// global map[1] = explored states: 0/100-->1(free space/obstacles); -1-->0(unexplored space) --- expand with 0
@@ -355,22 +324,22 @@ bool RlApi::processTarget(vector<vector<double>> m_map, const int &idx, const in
 				if (tmp_value <= m_min_range) {
 					map_occupancy[x+120][y+120] = 1;
 					explored_states[x+120][y+120] = 1;
-					// Ocmap[y*1200 + x] = 1;
-					// Expmap[y*1200 + x] = 1;
+					Ocmap[y*1200 + x] = 1;
+					Expmap[y*1200 + x] = 1;
 				}
 				// free space
 				if (tmp_value >= m_max_range) {
 					map_occupancy[x+120][y+120] = 0;
 					explored_states[x+120][y+120] = 1;
-					// Ocmap[y*1200 + x] = 0;
-					// Expmap[y*1200 + x] = 1;
+					Ocmap[y*1200 + x] = 0;
+					Expmap[y*1200 + x] = 1;
 				}
 				// unexplored space
 				if (tmp_value > m_min_range && tmp_value < m_max_range) {
 					map_occupancy[x+120][y+120] = 1;
 					explored_states[x+120][y+120] = 0;
-					// Ocmap[y*1200 + x] = 1;
-					// Expmap[y*1200 + x] = 0;
+					Ocmap[y*1200 + x] = 1;
+					Expmap[y*1200 + x] = 0;
 				}
 
 				// double float_value = m_map.getCell(x, y);

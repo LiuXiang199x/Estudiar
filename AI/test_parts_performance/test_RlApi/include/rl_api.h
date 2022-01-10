@@ -8,7 +8,8 @@
 #include <vector>
 #include <string.h>
 #include <uchar.h>
-// #include <COccupancyGridMap2D.h>
+#include <numeric>
+#include <algorithm>
 // #include <mrpt/slam/COccupancyGridMap2D.h>
 
 #include "rknn_api.h"
@@ -19,8 +20,6 @@
 #define img_width 64
 #define img_height 64
 #define img_channels 3
-std::vector<std::vector<int>> visited_map(1440, std::vector<int>(1440, 0));
-static int Visitedmap[1200 * 1200] = {0};
 
 namespace everest
 {
@@ -29,9 +28,15 @@ namespace everest
 		class RlApi{
 			public:
 				bool processTarget(std::vector<std::vector<double>> m_map, const int &idx, const int &idy, int &res_idx, int &res_idy);
+				// bool processTarget(const int &idx, const int &idy, int &res_idx, int &res_idy);
 				std::vector<std::vector<double>> get_inputs(int &robotx, int &roboty, int map_x, int map_y);
 				void release_rknn();
 				int init_rknn();
+
+				// void setGridMap(mrpt::slam::COccupancyGridMap2D &map) {m_map = map;}
+
+				RlApi();
+				~RlApi();
 			private:
 				uint64_t time_tToTimestamp(const time_t &t);
 				uint64_t get_sys_time_interval();
@@ -45,8 +50,8 @@ namespace everest
 
 			private:
 				// mrpt::slam::COccupancyGridMap2D					m_map;
-				double 											m_min_range = 0.7;
-				double 											m_max_range = 0.8;
+				double 											m_min_range = 0.4;
+				double 											m_max_range = 0.6;
 				rknn_context 									ctx;
 				int 											ret;
 				int 											model_len = 0;
@@ -56,6 +61,9 @@ namespace everest
 				uchar 											data[240 * 240 * 8];
 				rknn_output 									outputs[1];
 				rknn_input_output_num 							io_num;
+
+				std::vector<std::vector<int>> 					visited_map;
+				int 											Visitedmap[1200 * 1200] = {0};
 		};
 
 		class MaxPolling {
