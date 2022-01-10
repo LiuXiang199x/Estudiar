@@ -1,0 +1,5 @@
+killall Monitor Monitor-deamon.sh everest-server
+
+./monitor.sh &
+
+./run.sh everest-server
