@@ -1,5 +1,0 @@
-注意pytorch和onnx版本选择：
-onnx opset vertion 会影响转换（选择opset9比较保守，选择opset11比较激进）
-遇到opset不支持的情况可以缩减代码段范围，定位到不支持的位置，进行优化
-pytorch转onnx时对  output slice 操作不友好，避免使用下标操作output
-
