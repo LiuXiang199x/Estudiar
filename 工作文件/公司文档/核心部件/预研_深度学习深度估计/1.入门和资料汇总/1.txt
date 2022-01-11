@@ -1,0 +1,172 @@
+
+转至元数据结尾
+由 彭超创建, 最后修改于十二月 29, 2021 14:26转至元数据起始
+NN基础：
+
+1. 网络结构
+
+CNN：（特殊卷积层：反卷积、分组卷积、空洞卷积、可变性卷积、深度可分离卷积、膨胀卷积、3D卷积，       特殊池化层：）
+
+GAN
+
+RNN、LSTM
+
+Shuffle： （参考Shuffle Net）
+
+Resblock：https://blog.csdn.net/qq_39575835/article/details/99685379
+
+Attention： https://zhuanlan.zhihu.com/p/53682800
+
+Transformer： https://zhuanlan.zhihu.com/p/44121378
+
+Vision Transformer：
+
+
+
+其它概念：
+
+batch_normalize:
+
+dropout
+
+BNN：https://zhuanlan.zhihu.com/p/270184068
+
+SNN：https://zhuanlan.zhihu.com/p/144683881
+
+
+
+2. 损失函数
+
+https://blog.csdn.net/dwenjun/article/details/81914683
+
+
+
+3. 优化器
+
+https://zhuanlan.zhihu.com/p/36378660
+
+
+
+pytorch 教程：
+
+官网：https://pytorch.org/
+
+教程：https://github.com/pytorch/tutorials
+
+例子：https://github.com/pytorch/examples
+
+文档：https://pytorch-cn.readthedocs.io/zh/latest/ 
+
+           https://www.pytorch123.com/
+
+           https://pytorch.apachecn.org
+
+tensorboard：https://tensorflow.google.cn/tensorboard/get_started
+
+
+
+代码：
+
+立体匹配网络：MSN
+
+http://10.110.1.253/Sensor3D/mobilestereonet
+
+光流网络：RIFE
+
+http://10.110.1.253/Sensor3D/rife
+
+
+
+模型可视化：
+
+
+
+模型介绍：
+
+双目：A. 立体匹配算法
+
+光流：3. 深度学习深度估计
+
+单目：
+
+
+
+模型转换：
+
+ONNX介绍：https://zhuanlan.zhihu.com/p/36378660
+
+TensorFlow、TensorFlowLite、Caffe模型格式
+
+
+
+模型量化：
+
+模型量化：8b， 4b，1b
+
+对称量化和非对称量化：https://blog.csdn.net/u010420283/article/details/114483073
+
+量化感知训练（IQA）、静态后量化、动态后量化：
+
+静态量化：scale （标度）和 zero_point（零点位置）需要自定义。量化后的模型，不能训练（不能反向传播），也不能推理，需要解量化后，才能进行运算
+
+动态量化：系统自动选择最合适的scale （标度）和 zero_point（零点位置），不需要自定义。量化后的模型，可以推理运算，但不能训练（不能反向传播）
+
+量化感知训练：伪量化，量化后是经过clipround到8b到浮点模型，以fp进行训练，结果和定点一致
+
+
+
+模型剪裁：
+
+剪枝、权重共享:  https://zhuanlan.zhihu.com/p/134642289
+
+细粒度剪枝：去除神经元连接，（连接重要性评价，小权重设置成0，之后再模型微调）
+
+向量剪枝：卷积核内部剪枝
+
+核剪枝：去除某个卷积核
+
+滤波器剪枝：去除整个卷积核组（通过batchnormal缩放因子衡量通道重要性，推理过程输出特征改变）
+
+
+
+模型蒸馏：
+
+知识蒸馏：https://zhuanlan.zhihu.com/p/353472061
+
+目标蒸馏：模型结果逼近
+
+特征蒸馏：模型结构和特征逼近
+
+
+
+
+
+数据集：
+
+KITTI、SceneFlow等公共数据集放在AI的服务器：
+
+
+
+自己采集的数据也放在AI服务器，在自己的lidar网盘有数据备份：
+
+
+
+评价指标：
+
+
+
+服务器使用指南：
+
+conda管理环境、pycharm远程：5. 服务器使用指南
+
+jupyter notebook
+
+
+
+
+
+
+
+Pycharm 专业版重置试用插件：ide-eval-resetter-2.1.12.jar
+
+安装后可以在菜单中手动重置试用信息来无限期试用

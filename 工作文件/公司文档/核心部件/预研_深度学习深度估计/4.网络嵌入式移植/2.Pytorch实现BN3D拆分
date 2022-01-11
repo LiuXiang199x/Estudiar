@@ -1,0 +1,102 @@
+需要额外手动输入x_in channel:
+实现部分：
+class MSNBatchNorm3d(nn.Module):
+    def __init__(self, cin, xrange):
+        super(MSNBatchNorm3d, self).__init__()
+        self.cin = cin
+        self.bn2d_list = nn.ModuleList([nn.BatchNorm2d(xrange)
+                                        for i in range(0, self.cin)])
+ 
+    def forward(self, input):
+        for i in range(0, self.cin):
+            input[0, i, :, :, :] = self.bn2d_list[i](input[0, i, :, :, :].unsqueeze(0))
+        return input
+
+字典转换部分：
+...
+ 
+    def convert_state(self, state_dict_outside):
+        state_dict_inside_copy = self.state_dict().copy()
+        state_dict_inside = self.state_dict()
+        # mark conv3d dict name prefix
+        conv3d_name_list_out = ['conv3d.0', 'conv3d.3']
+        conv3d_name_list_in = ['conv3d.0', 'conv3d.3']
+ 
+        # find matched
+        for i in range(0, len(conv3d_name_list_out)):
+            key_out = conv3d_name_list_out[i]
+            key_in = conv3d_name_list_in[i]
+ 
+            val_out = None
+            last_w = 0
+            for key_out_iter in state_dict_outside:
+                val_out = state_dict_outside[key_out_iter]
+                if key_out_iter.__contains__(key_out) and key_out_iter.__contains__('weight'):
+                    for key_in_iter in state_dict_inside:
+                        if key_in_iter.__contains__(key_in) and key_in_iter.__contains__('weight'):
+                            match_obj = re.match(r'.*conv2d_list\.(\d+)\.weight', key_in_iter)
+                            idx_in = int(match_obj[1])
+                            shape_out = val_out.shape[0:2]
+                            last_w = shape_out[1]
+                            idx_out = [idx_in // shape_out[1], idx_in % shape_out[1]]
+                            val_in = state_dict_inside[key_in_iter]
+                            state_dict_inside[key_in_iter] = val_out[idx_out[0], idx_out[1], :, :, :].unsqueeze(0)
+                elif key_out_iter.__contains__(key_out) and key_out_iter.__contains__('bias'):
+                    for key_in_iter in state_dict_inside:
+                        if key_in_iter.__contains__(key_in) and key_in_iter.__contains__('bias'):
+                            match_obj = re.match(r'.*conv2d_list\.(\d+)\.bias', key_in_iter)
+                            idx_in = int(match_obj[1])
+                            shape_out = val_out.shape[0]
+                            idx_out = idx_in // last_w
+                            mod_out = idx_in % last_w
+                            if mod_out == 0:
+                                state_dict_inside[key_in_iter] = val_out[idx_out].unsqueeze(0)
+                            else:
+                                state_dict_inside[key_in_iter][0] = 0
+ 
+        bn3d_name_list_out = ['conv3d.1', 'conv3d.4']
+        bn3d_name_list_in = ['conv3d.1', 'conv3d.4']
+ 
+        for i in range(0, len(bn3d_name_list_out)):
+            key_out = bn3d_name_list_out[i]
+            key_in = bn3d_name_list_in[i]
+ 
+            val_out = None
+ 
+            for key_out_iter in state_dict_outside:
+                val_out = state_dict_outside[key_out_iter]
+                if key_out_iter.__contains__(key_out) and key_out_iter.__contains__('weight'):
+                    for key_in_iter in state_dict_inside:
+                        if key_in_iter.__contains__(key_in) and key_in_iter.__contains__('weight'):
+                            match_obj = re.match(r'.*bn2d_list\.(\d+)\.weight', key_in_iter)
+                            idx_in = int(match_obj[1])
+                            for idx_out in range(0, len(state_dict_inside[key_in_iter])):
+                                state_dict_inside[key_in_iter][idx_out] = val_out[idx_in]
+                elif key_out_iter.__contains__(key_out) and key_out_iter.__contains__('bias'):
+                    for key_in_iter in state_dict_inside:
+                        if key_in_iter.__contains__(key_in) and key_in_iter.__contains__('bias'):
+                            match_obj = re.match(r'.*bn2d_list\.(\d+)\.bias', key_in_iter)
+                            idx_in = int(match_obj[1])
+                            shape_out = val_out.shape[0]
+                            for idx_out in range(0, len(state_dict_inside[key_in_iter])):
+                                state_dict_inside[key_in_iter][idx_out] = val_out[idx_in]
+                elif key_out_iter.__contains__(key_out) and key_out_iter.__contains__('running_mean'):
+                    for key_in_iter in state_dict_inside:
+                        if key_in_iter.__contains__(key_in) and key_in_iter.__contains__('running_mean'):
+                            match_obj = re.match(r'.*bn2d_list\.(\d+)\.running_mean', key_in_iter)
+                            idx_in = int(match_obj[1])
+                            for idx_out in range(0, len(state_dict_inside[key_in_iter])):
+                                state_dict_inside[key_in_iter][idx_out] = val_out[idx_in]
+                elif key_out_iter.__contains__(key_out) and key_out_iter.__contains__('running_val'):
+                    for key_in_iter in state_dict_inside:
+                        if key_in_iter.__contains__(key_in) and key_in_iter.__contains__('running_val'):
+                            match_obj = re.match(r'.*bn2d_list\.(\d+)\.running_val', key_in_iter)
+                            idx_in = int(match_obj[1])
+                            for idx_out in range(0, len(state_dict_inside[key_in_iter])):
+                                state_dict_inside[key_in_iter][idx_out] = val_out[idx_in]
+ 
+        self.load_state_dict(state_dict_inside)
+ 
+ 
+...
+
