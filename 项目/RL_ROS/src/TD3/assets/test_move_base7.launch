@@ -1,0 +1,19 @@
+<launch>
+ 
+
+      <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="log">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <rosparam file="$(find multi_robot_scenario)/param/costmap_common_params_waffle_explore.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find multi_robot_scenario)/param/costmap_common_params_waffle_explore.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find multi_robot_scenario)/param/local_costmap_params_explore.yaml" command="load" />
+    <rosparam file="$(find multi_robot_scenario)/param/global_costmap_params_explore.yaml" command="load" />
+    <rosparam file="$(find multi_robot_scenario)/param/move_base_params.yaml" command="load" />
+    <rosparam file="$(find multi_robot_scenario)/param/base_global_planner_params.yaml" command="load" />
+    <rosparam file="$(find multi_robot_scenario)/param/dwa_local_planner_params_waffle_explore.yaml" command="load" />
+    <remap from="cmd_vel" to="cmd_vel"/>
+    <remap from="odom" to="odom"/>
+    <param name="DWAPlannerROS/min_vel_x" value="-0.15" if="true" />
+  </node>
+
+</launch>

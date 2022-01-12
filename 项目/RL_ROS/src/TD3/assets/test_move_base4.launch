@@ -1,0 +1,17 @@
+<launch>
+  <arg name="gz_world" default="TD3-2.world" />
+
+   <!-- Gazebo  -->
+    <!-- Robot with diff drive -->
+  <include file="$(find multi_robot_scenario)/launch/r1.gazebo.launch">
+    <arg name="robot_name" value="r1" />
+    <arg name="x_pos" default="0.0"/>
+    <arg name="y_pos" default="0.0"/>
+    <arg name="z_pos" default="0.0"/>
+    <arg name="gz_world_name" value="$(arg gz_world)" />
+  </include>
+  
+  <!-- RVIZ -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find multi_robot_scenario)/launch/pioneer3dx_1.rviz" />
+
+</launch>

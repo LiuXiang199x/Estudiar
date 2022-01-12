@@ -1,0 +1,23 @@
+<launch>
+
+<arg name="gui" value="true"/>
+   <!-- Gazebo  -->
+  <include file="$(find multi_robot_scenario)/launch/empty_world.launch" />
+
+    <!-- Robot with diff drive -->
+  <include file="$(find multi_robot_scenario)/launch/r1.gazebo.launch">
+    <arg name="robot_name" value="r1" />
+    <arg name="robot_position" value="-x 0.0 -y -0.0 -z 0.01 -R 0.0 -P 0.0 -Y +0.00" />
+  </include>
+  
+  <!-- RVIZ -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find multi_robot_scenario)/launch/pioneer3dx.rviz" />
+ 
+  <node pkg="slam_karto" type="slam_karto" name="turtlebot3_slam_gmapping">
+    <remap from="scan" to="/r1/scan"/>
+    <param name="base_frame" value="/r1/base_footprint"/>
+    <param name="odom_frame" value="/r1/odom"/>
+    <rosparam command="load" file="$(find turtlebot3_slam)/config/karto_mapper_params.yaml" />
+  </node>
+
+</launch>
