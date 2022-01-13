@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "name": "linux-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "linux-gcc-x64",
+      "compilerArgs": []
+    }
+  ],
+  "version": 4
+}
+
+// c_cpp_properties.json如果你确定不需要使用别人的库，则现在的版本（0.18.0之后）不需要创建这个文件了，cpptools会自动使用默认的设置。所以本文也不再包含此文件的配置。
+// 如果你自己编写了头文件又不在workspaceFolder下，或是使用别人的库，就需要手动创建这个文件放到.vscode下了。模板可以参考：Microsoft/vscode-cpptools。
+// 一些曾经的经验：库的路径要加到includePath和browse里如果需要递归包含，末尾加/**。
+// 这个json不允许有注释，其实按照json标准本来就不能有compilerPath好像必需是MinGW的完整路径，精确到gcc.exe，否则会提示找不到头文件；
+// Linux下是/usr/bin/gcc；但我很久没有测试过了Windows下的目录分隔符为反斜杠，原本应使用两个反斜杠来转义，但直接用斜杠这里也接受除了配置这个文件，还需要进行别的操作。一部分可以参考下文的“多文件编译”
