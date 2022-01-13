@@ -122,7 +122,7 @@ class Datasets():
 
 
 
-        self.map_exp_9 = [34952, 32405, 32234, 31012, 29995, 19533, 26050, 28998, 25611, 32423, 28239],
+        self.map_exp_9 = [34952, 32405, 32234, 31012, 29995, 19533, 26050, 28998, 25611, 32423, 28239]
         self.map_path_9 = [[2, 1, 1, 1, 1, 1, 4, 57, 11, 115, 21, 17, 116, 121, 44, 17, 153, 35, 13, 15, 64, 15, 63, 103, 11, 92, 60, 13, 11, 247],
                     [2, 4, 54, 3, 11, 55, 24, 23, 22, 5, 42, 20, 197, 22, 155, 19, 70, 8, 99, 117, 24, 4, 175, 30, 37, 23, 44, 28, 10, 1, 1],
                     [2, 1, 1, 1, 1, 3, 2, 58, 8, 65, 45, 1, 139, 21, 38, 124, 19, 172, 16, 78, 15, 25, 2, 8, 17, 110, 61, 68, 132, 11, 97, 42, 242, 8],
@@ -135,5 +135,30 @@ class Datasets():
                     [2, 1, 4, 5, 50, 11, 58, 55, 26, 7, 18, 67, 11, 0, 12, 161, 11, 4, 11, 1, 22, 34, 28, 18, 15, 1, 8, 9, 58, 4, 17, 4, 3, 32, 68, 1, 2, 38, 7, 44, 25, 6, 1, 33, 20, 14, 34, 14, 3, 1]]
 
 
-#    def get_datas(self, num):
-#        return self.map_exp_+"num" self.
+    def get_sum(self):
+        area_sum = []
+        path_sum = []
+
+        area_sum.append(np.sum(self.map_exp_0[1:11]))
+        area_sum.append(np.sum(self.map_exp_1[1:11]))
+        area_sum.append(np.sum(self.map_exp_2[1:11]))
+        area_sum.append(np.sum(self.map_exp_3[1:11]))
+        area_sum.append(np.sum(self.map_exp_4[1:11]))
+        area_sum.append(np.sum(self.map_exp_5[1:11]))
+        area_sum.append(np.sum(self.map_exp_6[1:11]))        
+        area_sum.append(np.sum(self.map_exp_7[1:11]))
+        area_sum.append(np.sum(self.map_exp_8[1:11]))
+        area_sum.append(np.sum(self.map_exp_9[1:11]))
+
+        path_sum.append(np.sum(np.sum(self.map_path_0)))
+        path_sum.append(np.sum(np.sum(self.map_path_1)))
+        path_sum.append(np.sum(np.sum(self.map_path_2)))
+        path_sum.append(np.sum(np.sum(self.map_path_3)))
+        path_sum.append(np.sum(np.sum(self.map_path_4)))
+        path_sum.append(np.sum(np.sum(self.map_path_5)))
+        path_sum.append(np.sum(np.sum(self.map_path_6)))
+        path_sum.append(np.sum(np.sum(self.map_path_7)))
+        path_sum.append(np.sum(np.sum(self.map_path_8)))
+        path_sum.append(np.sum(np.sum(self.map_path_9)))
+        
+        return area_sum, path_sum
