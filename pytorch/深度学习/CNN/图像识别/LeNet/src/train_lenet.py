@@ -2,16 +2,25 @@ from numpy.lib.arraysetops import union1d
 import torch
 import torch.nn as nn
 import torchvision
+import os
 from LeNet_Net import CNN
 import matplotlib.pyplot as plt
 import torchvision
 import torch.utils.data as Data
 from torchvision import datasets, transforms
+from tensorboardX import SummaryWriter
 
-save_model_path = "../models/Lenet5_cpu.pth"
 
-# device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-device = torch.device("cpu")
+# 然后定义一个SummaryWriter() 实例。看到SummaryWriter()的参数为：def __init__(self, log_dir=None, comment='', **kwargs):
+# log_dir = os.path.join("tensorboard", "Loss")
+loss_writer = SummaryWriter(log_dir="tensorboard", comment="Loss")
+# log_dir为生成的文件所放的目录，comment为文件名称。
+
+save_model_path = "/home/agent/Estudiar/pytorch/深度学习/CNN/图像识别/LeNet/models/Lenet5_gpu.pth"
+
+# Free condition:  GPU 374/440, CPU:0
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")   # 324s CPU 103%, GPU 880/4400
+# device = torch.device("cpu")   # 767s     # cpu 750%     gpu:350/4400
 print(device)
 
 net = CNN().to(device)
@@ -63,7 +72,7 @@ import time
  
 start_time = time.time()
 
-for epoch in range(10):
+for epoch in range(100):
     running_loss = 0.0 #初始化loss
     for i, (inputs, labels) in enumerate(trainloader, 0):
  
@@ -88,6 +97,9 @@ for epoch in range(10):
         if i % 2000 == 1999: # 每2000个batch打印一下训练状态
             print('[%d, %5d] loss: %.3f' % (epoch+1, i+1, running_loss / 2000))
             running_loss = 0.0
+
+        # 第一个参数：保存图片的名称； 第二个参数：Y轴数据； 第三个参数：X轴数据
+        loss_writer.add_scalar("Loss", loss.item(), epoch)
 
 stop_time = time.time()
 print('Finished Training 耗时： ', (stop_time - start_time), '秒')
