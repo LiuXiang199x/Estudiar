@@ -13,7 +13,10 @@ from torchvision.transforms import ToPILImage
 DOWNLOAD = False
 device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 print("===============> Device:",device)
-save_model_path = "./AllModels/Lenet_Cifar10.pth"
+
+# this model is a simple model with 2 expoch training
+# save_model_path = "./AllModels/Lenet_Cifar10.pth"   # 56%
+save_model_path = "./AllModels/Lenet_Cifar10_2.pth"  # 59%
 
 show = ToPILImage()         #可以把Tensor转成Image,方便进行可视化
 # 把数据变为tensor并且归一化range [0, 255] -> [0.0,1.0]
