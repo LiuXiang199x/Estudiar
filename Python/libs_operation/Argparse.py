@@ -84,4 +84,20 @@ def test_mine():
 
     # metavar 就是让显示的信息更加好看
  
-test_mine()
+def nargs_action():
+    # ArgumentParser对象通常将一个动作与一个命令行参数关联。
+    # nargs关键字参数将一个动作与不同数目的命令行参数关联在一起
+    print("nargs: =\"N\", =\"*\"，=\"+\", =\"?\"")
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('--tolist', action='append')
+    # python arg_action.py --tolist 1 --tolist 2 --tolist 3
+    # output: ['1', '2', '3']
+
+    parser.add_argument('--tolistt', action='append', nargs='+')
+    args = parser.parse_args()
+    print(args.tolistt)
+    print(args.tolist)
+
+
+nargs_action()
