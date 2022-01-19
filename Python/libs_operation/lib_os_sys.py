@@ -1,4 +1,5 @@
 import os
+import sys
 
 def lib_os():
     print(" =======> LIBS:os <======= ")
@@ -49,6 +50,12 @@ def lib_os():
     
 def lib_sys():
     print(" =======> LIBS:sys <======= ")
+    print(sys.version)
+    print(sys.path)
+    # sys.argv 都是以 str形式输入的
+    for item in sys.argv:
+        print(item)
+        print(type(item))
     """
     sys: This module provides access to some variables used or maintained by 
     the interpreter and to functions that interact strongly with the interpreter.

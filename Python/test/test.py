@@ -1,5 +1,10 @@
-def fifi(*args, **kwargs):
-    print(args)
-    print(kwargs)
+def func(*args, **kwargs):
+    print("args:", args)
+    print("kwargs:", kwargs)
     
-fifi(a="echo")
+sum = 0
+a = ['2','-23.3']
+for item in a:
+    sum += float(item)
+    
+print(sum)
