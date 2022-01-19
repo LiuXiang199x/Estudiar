@@ -53,7 +53,11 @@ def lib_sys():
     print(sys.version)
     print(sys.path)
     # sys.argv 都是以 str形式输入的
+    # sys.argv 是默认长度为1的，自带一个自己文件路径 ['lib_os_sys.py']
     for item in sys.argv:
+        print("we are in sys.argv loop")
+        print(len(sys.argv))
+        print(sys.argv)
         print(item)
         print(type(item))
     """
