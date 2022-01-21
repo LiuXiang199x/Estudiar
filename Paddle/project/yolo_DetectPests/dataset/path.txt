@@ -1,0 +1,46 @@
+# download it on paddlepaddle.org.cn
+# /home/agent/PaddleDetection/dataset/insect
+
+insects
+|---train
+|         |---annotations
+|         |         |---xmls
+|         |                  |---100.xml
+|         |                  |---101.xml
+|         |                  |---...
+|         |
+|         |---images
+|                   |---100.jpeg
+|                   |---101.jpeg
+|                   |---...
+|
+|---val
+|        |---annotations
+|        |         |---xmls
+|        |                  |---1221.xml
+|        |                  |---1277.xml
+|        |                  |---...
+|        |
+|        |---images
+|                  |---1221.jpeg
+|                  |---1277.jpeg
+|                  |---...
+|
+|---test
+         |---images
+                   |---1833.jpeg
+                   |---1838.jpeg
+                   |---...
+
+# insects包含train、val和test三个文件夹。
+# train/annotations/xmls目录下存放着图片的标注。
+# 每个xml文件是对一张图片的说明，包括图片尺寸、包含的昆虫名称、在图片上出现的位置等信息。
+
+size：图片尺寸。
+object：图片中包含的物体，一张图片可能中包含多个物体。
+– name：昆虫名称；
+– bndbox：物体真实框；
+– difficult：识别是否困难。
+
+# 因为神经网络里面计算时需要的输入类型是数值型的，所以需要将字符串表示的类别转化成具体的数字。
+# 昆虫类别名称的列表是：[‘Boerner’, ‘Leconte’, ‘Linnaeus’, ‘acuminatus’, ‘armandi’, ‘coleoptera’, ‘linnaeus’]，这里我们约定此列表中：'Boerner’对应类别0，'Leconte’对应类别1，…，'linnaeus’对应类别6。
