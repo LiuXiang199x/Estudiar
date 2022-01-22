@@ -12,7 +12,7 @@ import cv2 as cv
 # and(AB) / or (A+B)不多解释了。not非(^A)，按位取反。xor异或=^AB+A^B
 
 # cv.addWeighted()  给图片某些通道加上数值，增加亮度
-
+# 阿斯顿萨
 img_path1 = "Image/opencv.jpeg"
 img_path2 = "Image/test.jpg"
 img1 = cv.imread(img_path1)
