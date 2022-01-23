@@ -1,4 +1,5 @@
 import cv2 as cv
+from torch import mul, std
 
 # 像素的   逻辑运算，算术运算等等
 # add / subtract / multiply / divide
@@ -13,11 +14,12 @@ import cv2 as cv
 
 # cv.addWeighted()  给图片某些通道加上数值，增加亮度
 # 阿斯顿萨
-img_path1 = "Image/opencv.jpeg"
-img_path2 = "Image/test.jpg"
+img_path1 = "./OpenCV/Image/opencv.jpeg"
+img_path2 = "./OpenCV/Image/test.jpg"
+img_path3 = "./OpenCV/Image/opencv_gray.jpeg"
 img1 = cv.imread(img_path1)
 img2 = cv.imread(img_path2)
-img3 = cv.imread("Image/opencv_gray.jpeg")
+img3 = cv.imread(img_path3)
 
 # cv.imshow("src", src)
 # cv.waitKey(0)
@@ -26,35 +28,76 @@ def add(img1, img2):
     dat = cv.add(img1, img2)
     cv.imshow("addddd", dat)
     cv.waitKey(0)
-    print(img1.shape)
-    print(img2.shape)
+    print("img1.shape:", img1.shape)
+    print("img1[0][0][0]:", img1[0][0][0])
+    print("img2.shape:", img2.shape)
+    print("img2[0][0][0]:", img2[0][0][0])
     print("datttt::", dat.shape)
+    print("datttt[0][0][0]:", dat[0][0][0])
 
 
 def subtract(img1, img2):
     dat = cv.subtract(img1, img2)
     cv.imshow("addddd", dat)
     cv.waitKey(0)
-    print(img1.shape)
-    print(img2.shape)
+    print("img1.shape:", img1.shape)
+    print("img1[0][0][0]:", img1[0][0][0])
+    print("img2.shape:", img2.shape)
+    print("img2[0][0][0]:", img2[0][0][0])
     print("datttt::", dat.shape)
+    print("datttt[0][0][0]:", dat[0][0][0])
 
 def divide(img1, img2):
     dat = cv.divide(img1, img2)
     cv.imshow("addddd", dat)
     cv.waitKey(0)
-    print(img1.shape)
-    print(img2.shape)
+    print("img1.shape:", img1.shape)
+    print("img1[0][0][0]:", img1[0][0][0])
+    print("img2.shape:", img2.shape)
+    print("img2[0][0][0]:", img2[0][0][0])
     print("datttt::", dat.shape)
+    print("datttt[0][0][0]:", dat[0][0][0])
 
 def multiply(img1, img2):
     dat = cv.multiply(img1, img2)
     cv.imshow("addddd", dat)
     cv.waitKey(0)
-    print(img1.shape)
-    print(img2.shape)
+    print("img1.shape:", img1.shape)
+    print("img1[0][0][0]:", img1[0][0][0])
+    print("img2.shape:", img2.shape)
+    print("img2[0][0][0]:", img2[0][0][0])
     print("datttt::", dat.shape)
+    print("datttt[0][0][0]:", dat[0][0][0])
 
 
+def mean_stddev_meanStdDev(img1, img2):
+    mean_img1 = cv.mean(img1)
+    mean_img2 = cv.mean(img2)
 
-subtract(img1, img3)
+    a, b  = cv.meanStdDev(img1)  # return (array, array)
+    stddev_img2 = cv.meanStdDev(img2)
+
+    print("mean_img1:", mean_img1)
+    print("stddev_img2:", a, b)
+
+    cv.imshow("addddd", mean_img1)
+    cv.waitKey(0)
+
+
+def bitwise(img1, img2):
+    dat_and = cv.bitwise_and(img1, img2)
+    dat_or = cv.bitwise_or(img1, img2)
+    dat_not = cv.bitwise_not(img1, img2)
+    dat_xo = cv.bitwise_xor(img1, img2)
+
+    cv.imshow("addddd", dat_not)
+    cv.waitKey(0)
+
+    print("img1.shape:", img1.shape)
+    print("img1[0][0][0]:", img1[0][0][0])
+    print("img2.shape:", img2.shape)
+    print("img2[0][0][0]:", img2[0][0][0])
+    print("datttt::", dat_not.shape)
+    print("datttt[0][0][0]:", dat_not[0][0][0])
+
+bitwise(img1, img3)
