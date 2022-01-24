@@ -1,6 +1,11 @@
-def func(*args, **kwargs):
-    print("args:", args)
-    print("kwargs:", kwargs)
-    
-a = 0.71481028151774+0.91129721415142+0.87334593572778+0.85954670329670+0.92506150674911+0.87266143633071+0.80693069306930+0.54545454545454+0.93265132139812+0.80039721946375+0.43599033816425
-print(a/11)
+import os
+import sys
+
+names = ["frontier", "frontier+freemask"]
+
+for item in names:
+    os.mkdir("/home/agent/test_dataset/input_4/"+item)
+    for i in range(131, 141):
+       os.mkdir("/home/agent/test_dataset/input_4/"+item+"/"+str(i))
+       open("/home/agent/test_dataset/input_4/"+item+"/"+str(i)+"/map.txt", "w")
+       open("/home/agent/test_dataset/input_4/"+item+"/"+str(i)+"/path.txt", "w")
