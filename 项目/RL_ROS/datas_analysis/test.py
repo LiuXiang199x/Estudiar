@@ -104,3 +104,5 @@ class Datasets():
 a = Datasets()
 print(a.map_exp_0)
 print(a.map_path_0)
+a= [1,2,3,4]
+print(a/[2,2,2,2])

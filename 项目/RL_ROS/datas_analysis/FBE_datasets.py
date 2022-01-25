@@ -2,7 +2,7 @@ import numpy as np
 import os
 
 
-class Datasets():
+class Datasets_FBE():
     def __init__(self):
         self.map_exp_0 = [23407, 6221, 22780, 3570, 18496, 22629, 15956, 22526, 22538, 13529, 18496]
         self.map_path_0 = [[2, 4, 14, 17, 1, 1, 1, 1],
@@ -139,26 +139,40 @@ class Datasets():
         area_sum = []
         path_sum = []
 
-        area_sum.append(np.sum(self.map_exp_0[1:11]))
-        area_sum.append(np.sum(self.map_exp_1[1:11]))
-        area_sum.append(np.sum(self.map_exp_2[1:11]))
-        area_sum.append(np.sum(self.map_exp_3[1:11]))
-        area_sum.append(np.sum(self.map_exp_4[1:11]))
-        area_sum.append(np.sum(self.map_exp_5[1:11]))
-        area_sum.append(np.sum(self.map_exp_6[1:11]))        
-        area_sum.append(np.sum(self.map_exp_7[1:11]))
-        area_sum.append(np.sum(self.map_exp_8[1:11]))
-        area_sum.append(np.sum(self.map_exp_9[1:11]))
+        area_sum.append(np.sum(self.map_exp_0[1:11])*0.05*0.05)
+        area_sum.append(np.sum(self.map_exp_1[1:11])*0.05*0.05)
+        area_sum.append(np.sum(self.map_exp_2[1:11])*0.05*0.05)
+        area_sum.append(np.sum(self.map_exp_3[1:11])*0.05*0.05)
+        area_sum.append(np.sum(self.map_exp_4[1:11])*0.05*0.05)
+        area_sum.append(np.sum(self.map_exp_5[1:11])*0.05*0.05)
+        area_sum.append(np.sum(self.map_exp_6[1:11])*0.05*0.05) 
+        area_sum.append(np.sum(self.map_exp_7[1:11])*0.05*0.05)
+        area_sum.append(np.sum(self.map_exp_8[1:11])*0.05*0.05)
+        area_sum.append(np.sum(self.map_exp_9[1:11])*0.05*0.05)
 
-        path_sum.append(np.sum(np.sum(self.map_path_0)))
-        path_sum.append(np.sum(np.sum(self.map_path_1)))
-        path_sum.append(np.sum(np.sum(self.map_path_2)))
-        path_sum.append(np.sum(np.sum(self.map_path_3)))
-        path_sum.append(np.sum(np.sum(self.map_path_4)))
-        path_sum.append(np.sum(np.sum(self.map_path_5)))
-        path_sum.append(np.sum(np.sum(self.map_path_6)))
-        path_sum.append(np.sum(np.sum(self.map_path_7)))
-        path_sum.append(np.sum(np.sum(self.map_path_8)))
-        path_sum.append(np.sum(np.sum(self.map_path_9)))
+        path_sum.append(np.sum(np.sum(self.map_path_0))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_1))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_2))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_3))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_4))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_5))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_6))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_7))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_8))*0.05)
+        path_sum.append(np.sum(np.sum(self.map_path_9))*0.05)
         
         return area_sum, path_sum
+
+    def return_realarea(self):
+        tmp = []
+        tmp.append(self.map_exp_0[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_1[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_2[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_3[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_4[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_5[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_6[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_7[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_8[0]*0.05*0.05*10)
+        tmp.append(self.map_exp_9[0]*0.05*0.05*10)
+        return tmp

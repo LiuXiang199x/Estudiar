@@ -3,7 +3,7 @@ import os
 
 file_path = "/home/agent/test_dataset/input_8/test_data_frontiermask/"
 
-class Datasets():
+class Datasets_8F():
     def __init__(self):
         self.map_exp_0 = []
         self.map_path_0 =[]
