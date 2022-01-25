@@ -101,30 +101,6 @@ class Datasets():
                 for item2 in file2:
                     self.map_path_9.append(eval(item2))
 
-    def get_sum(self):
-        area_sum = []
-        path_sum = []
-
-        area_sum.append(np.sum(self.map_exp_0[1:11]))
-        area_sum.append(np.sum(self.map_exp_1[1:11]))
-        area_sum.append(np.sum(self.map_exp_2[1:11]))
-        area_sum.append(np.sum(self.map_exp_3[1:11]))
-        area_sum.append(np.sum(self.map_exp_4[1:11]))
-        area_sum.append(np.sum(self.map_exp_5[1:11]))
-        area_sum.append(np.sum(self.map_exp_6[1:11]))        
-        area_sum.append(np.sum(self.map_exp_7[1:11]))
-        area_sum.append(np.sum(self.map_exp_8[1:11]))
-        area_sum.append(np.sum(self.map_exp_9[1:11]))
-
-        path_sum.append(np.sum(np.sum(self.map_path_0)))
-        path_sum.append(np.sum(np.sum(self.map_path_1)))
-        path_sum.append(np.sum(np.sum(self.map_path_2)))
-        path_sum.append(np.sum(np.sum(self.map_path_3)))
-        path_sum.append(np.sum(np.sum(self.map_path_4)))
-        path_sum.append(np.sum(np.sum(self.map_path_5)))
-        path_sum.append(np.sum(np.sum(self.map_path_6)))
-        path_sum.append(np.sum(np.sum(self.map_path_7)))
-        path_sum.append(np.sum(np.sum(self.map_path_8)))
-        path_sum.append(np.sum(np.sum(self.map_path_9)))
-        
-        return area_sum, path_sum
+a = Datasets()
+print(a.map_exp_0)
+print(a.map_path_0)
