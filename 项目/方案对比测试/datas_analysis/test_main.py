@@ -1,4 +1,7 @@
 from turtle import width
+from cv2 import mean
+
+from matplotlib.colors import makeMappingArray
 from FBE_datasets import Datasets_FBE
 from Input8_F import Datasets_8F
 from Input8_FF import Datasets_8FF
@@ -222,3 +225,41 @@ class Visualization_data():
         plt.legend()
         plt.show()
 
+    def meanArea_10maps(self):
+        tmp_real = self.datasets_fbe.return_realarea()
+        tmp_area_fbe, tmp_path_fbe = self.datasets_fbe.get_sum()
+        tmp_area_i8f, tmp_path_i8f = self.datasets_8if.get_sum()
+        tmp_area_i8ff, tmp_path_i8ff = self.datasets_8iff.get_sum()
+        tmp_area_i4f, tmp_path_i4f = self.datasets_4if.get_sum()
+        tmp_area_i4ff, tmp_path_i4ff = self.datasets_4iff.get_sum()
+        
+        meanMap_real = np.sum(tmp_real)
+        meanMap_fbe = np.sum(tmp_area_fbe)   # [num]
+        meanMap_i8f = np.sum(tmp_area_i8f)   # [num]
+        meanMap_i8ff = np.sum(tmp_area_i8ff)   # [num]
+        meanMap_i4f = np.sum(tmp_area_i4f)   # [num]
+        meanMap_i4ff = np.sum(tmp_area_i4ff)   # [num]
+        
+        meanPath_fbe = np.sum(tmp_path_fbe)   # [num]
+        meanPath_i8f = np.sum(tmp_path_i8f)   # [num]
+        meanPath_i8ff = np.sum(tmp_path_i8ff)   # [num]
+        meanPath_i4f = np.sum(tmp_path_i4f)   # [num]
+        meanPath_i4ff = np.sum(tmp_path_i4ff)   # [num]
+        
+        print("=================== Mean Map(m^2) =======================")
+        print("=====> meanMap_fbe: {:.2f}".format(meanMap_fbe/100))
+        print("=====> meanMap_i4f: {:.2f}".format(meanMap_i4f/100))
+        print("=====> meanMap_i4ff: {:.2f}".format(meanMap_i4ff/100))
+        print("=====> meanMap_i8f: {:.2f}".format(meanMap_i8f/100))
+        print("=====> meanMap_i8ff: {:.2f}".format(meanMap_i8ff/100))
+        print("====================================================")
+        
+        print("\n=================== Mean path(m) =======================")
+        print("=====> meanPath_fbe: {:.2f}".format(meanPath_fbe/100))
+        print("=====> meanPath_i4f: {:.2f}".format(meanPath_i4f/100))
+        print("=====> meanPath_i4ff: {:.2f}".format(meanPath_i4ff/100))
+        print("=====> meanPath_i8f: {:.2f}".format(meanPath_i8f/100))
+        print("=====> meanPath_i8ff: {:.2f}".format(meanPath_i8ff/100))
+        print("====================================================")
+        
+Visualization_data().meanArea_10maps()
