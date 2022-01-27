@@ -89,5 +89,10 @@ def lib_sys():
 
 if __name__ == "__main__":
     # lib_os()
-    lib_sys()
-    
+    # lib_sys()
+    print("os.path:", os.path)
+    print(os.path.join("aa","bb","cc"))
+    print(os.listdir())
+    print(os.getcwd())
+    print(os.walk("/home/agent/Estudiar/"))
+    print(os.listdir("/home/agent"))

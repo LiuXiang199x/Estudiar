@@ -25,4 +25,5 @@ def read2txt():
 a = torch.tensor(2)
 print(a)
 print(int(a))
-print(a.int())
+print(a.int()[0])
+print(a)
