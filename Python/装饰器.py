@@ -38,7 +38,71 @@ def test2(name = "ni da ye"):
         return greet
     else:
         return welcome
-a = test2()
-print(a)  # <function test2.<locals>.greet at 0x7fb81e97b0d0>
-# print(a) 打印不出东西很正常，因为a是一个函数
-print(a())
+
+
+def decorator_test1():
+    print("decorator它们封装一个函数，并且用这样或者那样的方式来修改它的行为。")
+
+    def funA(desA):
+        print("It's funA")
+    
+    def funB(desB):
+        print("It's funB")
+
+    # 只能放在函数前，所以被他修饰的一定是在他后面的函数
+    @funA
+    def funC():
+        print("It's funC")
+    """
+    @funA 修饰函数定义def funC()，将funC()赋值给funA()的形参。
+    执行的时候由上而下，先定义funA、funB，然后运行funA(funC())。
+    此时desA=funC()，然后funA()输出‘It's funA'。
+    """
+
+    # funB(funA(funD()))
+    @funB
+    @funA
+    def funD():
+        print("It's funD")
+    # @funB 修饰装饰器@funA，@funA 修饰函数定义def funD()，
+    # 将funD()赋值给funA()的形参，再将funA(funD())赋值给funB()。
+    # 执行的时候由上而下，先定义funA、funB，然后运行funB(funA(funD()))。
+    # 此时desA=funD()，然后funA()输出‘It's funA'；
+    # desB=funA(funD())，然后funB()输出‘It's funB'。
+
+
+def decorator_test2():
+    def funA(desA):
+        print("It's funA")
+
+        print('---')
+        print(desA)
+        desA()
+        print('---')
+
+    def funB(desB):
+        print("It's funB")
+
+    @funB
+    @funA
+    
+    def funC():
+        print("It's funC")
+
+def decorator_test3():
+    def funA(desA):
+        print("It's funA")
+
+    def funB(desB):
+        print("It's funB")
+        print('---')
+        print(desB)
+
+    @funB
+    @funA
+    def funC():
+        print("It's funC")
+        
+# 上面将funC()作为参数传给funA，那么funA(funC())怎么传给funB()呢？
+# 打印desB，发现并没有参数传递。
+# 是否可以理解为当‘装饰器' 修饰 ‘装饰器'时，仅是调用函数。
