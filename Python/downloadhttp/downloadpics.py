@@ -41,7 +41,7 @@ if __name__ == '__main__':
             thread.join()
 
 
-
+##
 #
 # path = r'C:\Users\97102\Desktop\新建文件夹'
 # txt = r'C:\Users\97102\Downloads\task.txt'
