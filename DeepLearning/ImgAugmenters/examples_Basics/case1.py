@@ -5,7 +5,7 @@ import imgaug.augmenters as iaa
 import cv2 as cv
 
 
-im = cv.imread("/home/agent/Estudiar/DeepLearning/ImgAugmenters/bedroom.jpg")
+im = cv.imread("/home/marco/Estudiar/DeepLearning/ImgAugmenters/bedroom.jpg")
 print(im.shape)
 width, heigth = im.shape[:2]
 # im = cv.resize(im, (224, 224)).astype(np.int8)
