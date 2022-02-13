@@ -66,4 +66,5 @@ example()
         img = aug_imgs[i]
         # print(img.shape)(224, 224, 3)
         cv2.imwrite("aug_%d.jpg"%i,img)
+https://aistudio.baidu.com/aistudio/projectdetail/288691
 """
