@@ -1,7 +1,8 @@
 import numpy as np
 import imgaug as ia
-import imgaug.augmenters as iaa
 from imgaug import augmenters as iaa #引入数据增强的包
+import cv2
+
 sometimes = lambda aug: iaa.Sometimes(0.5, aug) #建立lambda表达式，
 seq = iaa.Sequential(
     [
@@ -98,13 +99,22 @@ seq = iaa.Sequential(
     ],
     random_order=True # 随机的顺序把这些操作用在图像上
 )
-images = cv2.imread("base.png")
-img=np.array(images)
-images=img.reshape(1,images.shape[0],images.shape[1],images.shape[2])
-images_aug = seq.augment_images(images) #实现图像增强
-cv2.imwrite("new2.png",images_aug[0])
+images = cv2.imread("/home/agent/Estudiar/DeepLearning/ImgAugmenters/bedroom.jpg")
+# img=np.array(images)
+# images=img.reshape(1,images.shape[0],images.shape[1],images.shape[2])
+# images_aug = seq.augment_images(images) #实现图像增强
+images_aug2 = [seq(image=images) for _ in range(9)]  # (9. 360, 640, 3)
+# images_aug2 = seq(image=images)  # (360, 640, 3)
 
-from matplotlib import pyplot as plt
-img1 = cv2.imread("new2.png")
-img2 = img1[:,:,::-1] # 必须为 ::-1
-plt.imshow(img2)
+# cv2.imwrite("new2.png",images_aug[0])
+# ia.imshow(np.hstack(images_aug2))
+print(type(images_aug2))
+for i in range(np.array(images_aug2).shape[0]):
+    img = images_aug2[i]
+    cv2.imshow("qweqwe", img)
+    cv2.waitKey(0)
+
+# from matplotlib import pyplot as plt
+# img1 = cv2.imread("/home/agent/Estudiar/DeepLearning/ImgAugmenters/bedroom.jpg")
+# img2 = img1[:,:,::-1] # 必须为 ::-1
+# plt.imshow(img2)
