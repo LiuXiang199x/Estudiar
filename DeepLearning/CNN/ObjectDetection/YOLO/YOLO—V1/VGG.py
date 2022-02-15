@@ -56,7 +56,7 @@ class VGG(nn.Module):
          x_avg = x
          x = x.view(x.size(0),-1)
          x = self.classifier(x)
-         return x,x_fea,x_avg
+         return x, x_fea, x_avg
      
     def extractor(self,x):
          x = self.features(x)

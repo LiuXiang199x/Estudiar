@@ -28,16 +28,23 @@ class YOLOV1(nn.Module):
            elif isinstance(m,nn.Linear):
                nn.init.normal_(m.weight,0,0.01)
                nn.init.constant_(m.bias,0)
+               
     def forward(self,x):
         x = self.extractor(x)
+        print("In yolo after extractor:", x.shape)
         #import pdb
         #pdb.set_trace()
         x = self.avgpool(x)
+        print("In yolo after avgpool(AdaptiveMaxPool):", x.shape)
         x = x.view(x.size(0),-1)
+        print("In yolo after view():", x.shape)
         x = self.detector(x)
+        print("In yolo after detector:", x.shape)
+
         b,_ = x.shape
-        #x = x.view(b,7,7,30)
+        # x = x.view(b,7,7,30)
         x = x.view(b,7,7,5)
         
         #x = x.view(b,1,1,5)
         return x
+    
