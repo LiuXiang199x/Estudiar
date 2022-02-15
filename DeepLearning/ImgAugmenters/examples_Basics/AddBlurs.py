@@ -11,13 +11,13 @@ def add_blur(img_path):
     img2 = [img_path for _ in range(20)]
     seq = iaa.Sequential([
         iaa.OneOf([
-            iaa.MotionBlur(k=50, angle=0),
-            iaa.MotionBlur(k=50, angle=45),
-            iaa.MotionBlur(k=50, angle=90),
+            # iaa.MotionBlur(k=20, angle=0),
+            # iaa.MotionBlur(k=20, angle=45),
+            iaa.MotionBlur(k=20, angle=90),
             
-            iaa.LinearContrast(0.5),
-            iaa.Multiply(0.5,per_channel=0.5),
-            iaa.Multiply(2,per_channel=0.5),
+            #iaa.LinearContrast(0.5),
+            #iaa.Multiply(0.5,per_channel=0.5),
+            #iaa.Multiply(2,per_channel=0.5),
         ]),
     ])
     img_aug = seq(images=img2)
