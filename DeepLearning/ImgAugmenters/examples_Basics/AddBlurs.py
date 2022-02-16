@@ -13,7 +13,7 @@ def add_blur(img_path):
         iaa.OneOf([
             # iaa.MotionBlur(k=20, angle=0),
             # iaa.MotionBlur(k=20, angle=45),
-            iaa.MotionBlur(k=20, angle=90),
+            iaa.MotionBlur(k=120, angle=90),
             
             #iaa.LinearContrast(0.5),
             #iaa.Multiply(0.5,per_channel=0.5),
