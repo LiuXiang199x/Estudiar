@@ -1,0 +1,13 @@
+单阶段、双阶段、anchor-based、anchor-free这四者之间联系与区别
+
+1. 单阶段和双阶段划分依据是是否存在显式的 roi 特征提取过程
+典型的双阶段算法是 faster rcnn，其包括 RPN 和 RCNN 两个模块，RPN 模块负责提取 ROI，然后通过 roipool 或者 roialign 进行 roi 特征切割提取，最后在输入到 RCNN 中进行识别和定位。
+
+
+2. anchor-based、anchor-free 是从是否需要显式定义先验 anchor 角度区分
+    2.1 如果需要定义 anchor 那么就是 anchor-base，
+    目前主流算法大部分都是这个类型，例如 faster rcnn、retinanet 和 yolo 等等；
+    
+    2.2 anchor-free 是从 2019 年开始慢慢流行，其最大优势是不需要设置麻烦且有重大影响的 anchor，
+    输出是对每个输出特征图上点进行分类和定位建模，参数稍微少一些，更加容易理解，
+    典型算法是 fcos、atss 和 sabl 等等。
