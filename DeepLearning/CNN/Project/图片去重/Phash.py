@@ -10,6 +10,8 @@ By Guanpx
 from PIL import Image
 from os import listdir
 
+from pyparsing import unicode_string, unicodeString
+
 
 def picPostfix():  # 相册后缀的集合
     postFix = set()
@@ -47,19 +49,21 @@ if __name__ == '__main__':
 
     width = 32
     high = 32  # 压缩后的大小
-    dirName = ""  # 相册路径
+    dirName = "DeepLearning/CNN/Project/图片去重/test_img"  # 相册路径
     allDiff = []
     postFix = picPostfix()  #  图片后缀的集合
     # print(postFix)
 
-"""
     dirList = listdir(dirName)
     cnt = 0
+
     for i in dirList:
         cnt += 1
         print(cnt)  # 可以不打印 表示处理的文件计数
+        print(i)
         if str(i).split('.')[-1] in postFix:  # 判断后缀是不是照片格式
-            im = Image.open(r'%s\%s' % (dirName, unicode(str(i), "utf-8")))
+            print(i)
+            im = Image.open(dirName+"/"+i)
             diff = getDiff(width, high, im)
             allDiff.append((str(i), diff))
             
@@ -69,4 +73,3 @@ if __name__ == '__main__':
                 ans = getHamming(allDiff[i][1], allDiff[j][1])
                 if ans <= 5:  # 判别的汉明距离，自己根据实际情况设置
                     print(allDiff[i][0], "and", allDiff[j][0], "maybe same photo...")
-"""
