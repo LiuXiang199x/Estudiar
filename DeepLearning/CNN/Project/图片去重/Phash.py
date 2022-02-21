@@ -1,75 +1,56 @@
-# -*- coding:utf-8 -*-
+import cv2
+import numpy as np
+from itertools import chain
 
-"""
-用dhash判断是否相同照片
-基于渐变比较的hash
-hash可以省略(本文省略)
-By Guanpx
-"""
-
-from PIL import Image
-from os import listdir
-
-from pyparsing import unicode_string, unicodeString
-
-
-def picPostfix():  # 相册后缀的集合
-    postFix = set()
-    postFix.update(['bmp', 'jpg', 'png', 'tiff', 'gif', 'pcx', 'tga', 'exif',
-                    'fpx', 'svg', 'psd', 'cdr', 'pcd', 'dxf', 'ufo', 'eps', 'JPG', 'raw', 'jpeg'])
-    return postFix
-
-
-def getDiff(width, high, image):  # 将要裁剪成w*h的image照片 
-    diff = []
-    im = image.resize((width, high))
-    imgray = im.convert('L')  # 转换为灰度图片 便于处理
-    pixels = list(imgray.getdata())  # 得到像素数据 灰度0-255
-
-    for row in range(high): # 逐一与它左边的像素点进行比较
-        rowStart = row * width  # 起始位置行号
-        for index in range(width - 1):
-            leftIndex = rowStart + index  
-            rightIndex = leftIndex + 1  # 左右位置号
-            diff.append(pixels[leftIndex] > pixels[rightIndex])
-
-    return diff  #  *得到差异值序列 这里可以转换为hash码*
-
-
-def getHamming(diff=[], diff2=[]):  # 暴力计算两点间汉明距离
-    hamming_distance = 0
-    for i in range(len(diff)):
-        if diff[i] != diff2[i]:
-            hamming_distance += 1
-
-    return hamming_distance
-
-
+# Perceptual hashing
+ 
+class PHash(object):
+    @staticmethod
+    def pHash(img_name):
+        """
+        get image pHash value
+        """
+        # 加载并调整图片为32x32灰度图片
+        img = cv2.imread(img_name, 0)
+        img = cv2.resize(img, (64, 64), interpolation=cv2.INTER_CUBIC)
+ 
+        # 创建二维列表
+        h, w = img.shape[:2]
+        vis0 = np.zeros((h, w), np.float32)
+        vis0[:h, :w] = img  # 填充数据
+ 
+        # 二维Dct变换
+        vis1 = cv2.dct(cv2.dct(vis0))
+        # cv.SaveImage('a.jpg',cv.fromarray(vis0)) #保存图片
+        vis1.resize((32, 32), refcheck=False)
+ 
+        # 把二维list变成一维list
+        img_list = list(chain.from_iterable(vis1))
+ 
+        # 计算均值
+        avg = sum(img_list) * 1. / len(img_list)
+        avg_list = ['0' if i < avg else '1' for i in img_list]
+ 
+        # 得到哈希值，转成256位16进制数
+        return ''.join(['%x' % int(''.join(avg_list[x:x + 4]), 2) for x in range(0, 32 * 32, 4)])
+ 
+    @staticmethod
+    def hammingDist(s1, s2):
+        """
+        计算两张图片的汉明距离
+        """
+        assert len(s1) == len(s2)
+        return sum([ch1 != ch2 for ch1, ch2 in zip(s1, s2)])
+ 
 if __name__ == '__main__':
-
-    width = 32
-    high = 32  # 压缩后的大小
-    dirName = "DeepLearning/CNN/Project/图片去重/test_img"  # 相册路径
-    allDiff = []
-    postFix = picPostfix()  #  图片后缀的集合
-    # print(postFix)
-
-    dirList = listdir(dirName)
-    cnt = 0
-
-    for i in dirList:
-        cnt += 1
-        print(cnt)  # 可以不打印 表示处理的文件计数
-        print(i)
-        if str(i).split('.')[-1] in postFix:  # 判断后缀是不是照片格式
-            print(i)
-            im = Image.open(dirName+"/"+i)
-            diff = getDiff(width, high, im)
-            allDiff.append((str(i), diff))
-            
-    for i in range(len(allDiff)):
-        for j in range(i + 1, len(allDiff)):
-            if i != j:
-                ans = getHamming(allDiff[i][1], allDiff[j][1])
-                if ans <= 5:  # 判别的汉明距离，自己根据实际情况设置
-                    print(allDiff[i][0], "and", allDiff[j][0], "maybe same photo...")
+    HASH1 = PHash.pHash('DeepLearning/CNN/Project/图片去重/test_img2/2.png')
+    HASH2 = PHash.pHash('DeepLearning/CNN/Project/图片去重/test_img2/2_2.png')
+    # print(HASH1)
+ 
+    #计算hanmming距离
+    distance = PHash.hammingDist(HASH1, HASH2)
+    #计算不一样的个数
+    print('distance:',distance)
+    out_score = 1 - distance * 1. / (32 * 32 / 4)
+    #计算相似度
+    print('similarity:',out_score)
