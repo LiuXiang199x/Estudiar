@@ -196,6 +196,12 @@ if __name__ == "__main__":
     # model.load_state_dict(model_zoo.load_url(model_urls['resnet50']))
     
     fc_inputs = model.fc.in_features
+    # resnet中全连接层的输入，fc是resnet的属性，如下
+    # self.fc = nn.Linear(512 * block.expansion, num_classes)
+    # in_features 是Linear类的属性；  所以最终是model.fc.in_features来修改全连接层的输入
+    
+    # 全连接的输入fc不变，但是输出改为我们想要的 num_classes
+    # 因为 torch中的resnet50全连接最后输出是1000，我们定义自己模型的时候改成我们的输出类别数量即可
     model.fc = nn.Linear(fc_inputs, num_classes)
     model = model.cuda()
     

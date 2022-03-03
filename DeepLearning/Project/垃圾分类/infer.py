@@ -15,10 +15,12 @@ def softmax(x):
     softmax_x = exp_x / np.sum(exp_x, 0)
     return softmax_x
     
-with open('dir_label.txt', 'r', encoding='utf-8') as f:
+with open('/home/agent/Estudiar/DeepLearning/Project/垃圾分类/datasets/dir_label.txt', 'r', encoding='utf-8') as f:
     labels = f.readlines()
     labels = list(map(lambda x:x.strip().split('\t'), labels))
     
+# labels: [['其他垃圾_PE塑料袋', '0', '0'], ['其他垃圾_U型回形针', '1', '0'],...]     
+
 if __name__ == "__main__":
     test_list = '/home/agent/Estudiar/DeepLearning/Project/垃圾分类/datasets/test.txt'
     test_data = Garbage_Loader(test_list, train_flag=False)
@@ -38,9 +40,12 @@ if __name__ == "__main__":
         image = image.cuda() 
         label = label.cuda() 
         pred = model(image)
+        # print("pred:", len(pred)) # 214_[[-1.2, 3.1, -2.1, ...]]
         pred = pred.data.cpu().numpy()[0]
         score = softmax(pred)
+        print("score:", len(score)) # 214
         pred_id = np.argmax(score)
-        plt.imshow(src)
+        # plt.imshow(src)
         print('预测结果：', labels[pred_id][0])
-        plt.show()
+        # plt.show()
+        break
