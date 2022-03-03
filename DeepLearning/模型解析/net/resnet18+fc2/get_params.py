@@ -6,9 +6,44 @@ from torch.utils.data import Dataset, DataLoader
 from resnet import resnet18
 
 
-
 content = torch.load("/home/agent/Estudiar/DeepLearning/模型解析/models/resnet18+fc2/resnet18_latest_combined_v9.pth.tar")
 content2 = torch.load("/home/agent/Estudiar/DeepLearning/模型解析/models/DRL/ckpt.999.pth")
+
+f_cobj_weight = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pramas/obj_fc_weight.txt", "w")
+f_cobj_bias = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pramas/obj_fc_bias.txt", "w")
+f_cclass_weight = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pramas/class_fc_weight.txt", "w")
+f_cclass_bias = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pramas/class_fc_bias.txt", "w")
+
+def save_params():
+    c = content
+    print("c.keys():", c.keys())
+    c_obj = c['obj_state_dict']
+    c_class = c['classifier_state_dict']
+    print(c_obj.keys())
+    print(c_class.keys())
+    print(c_class['module.fc.bias'])   
+    print(c_obj['module.fc.bias'])
+    print("c_obj['module.fc.weight'].shape:", c_obj['module.fc.weight'].shape)
+    print("c_class['module.fc.weight'].shape:", c_class['module.fc.weight'].shape) 
+    print("c_obj['module.fc.bias'].shape:", c_obj['module.fc.bias'].shape)
+    print("c_class['module.fc.bias'].shape:", c_class['module.fc.bias'].shape)
+    
+    for i in c_class['module.fc.bias']:
+        print(i.item())
+        f_cclass_bias.writelines(str(i.item())+"\n")
+        
+    for i in c_class['module.fc.weight']:
+        f_cclass_weight.writelines(str(i.cpu().numpy())+"\n")
+        
+    for i in c_obj['module.fc.bias']:
+        f_cobj_bias.writelines(str(i.item())+"\n")
+        
+    for i in c_obj['module.fc.weight']:
+        f_cobj_weight.writelines(str(i.cpu().numpy())+"\n")
+            
+save_params()
+
+###### torch.load 把网络中的{{{}}}数据读出来 ######### 然后 model.load_state_dict() 把torch.load读出来的东西加载到网络上去
 # print(type(content))  # dict
 # print(type(content2)) # dict
 
