@@ -13,6 +13,7 @@ f_cobj_weight = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pram
 f_cobj_bias = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pramas/obj_fc_bias.txt", "w")
 f_cclass_weight = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pramas/class_fc_weight.txt", "w")
 f_cclass_bias = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pramas/class_fc_bias.txt", "w")
+f_test = open("/home/agent/Estudiar/DeepLearning/模型解析/models/pramas/test.txt", "w")
 
 def save_params():
     c = content
@@ -23,24 +24,42 @@ def save_params():
     print(c_class.keys())
     print(c_class['module.fc.bias'])   
     print(c_obj['module.fc.bias'])
-    print("c_obj['module.fc.weight'].shape:", c_obj['module.fc.weight'].shape)
-    print("c_class['module.fc.weight'].shape:", c_class['module.fc.weight'].shape) 
-    print("c_obj['module.fc.bias'].shape:", c_obj['module.fc.bias'].shape)
-    print("c_class['module.fc.bias'].shape:", c_class['module.fc.bias'].shape)
+    print("c_obj['module.fc.weight'].shape:", c_obj['module.fc.weight'].shape)  # c_obj['module.fc.weight'].shape: torch.Size([512, 13])
+    print("c_class['module.fc.weight'].shape:", c_class['module.fc.weight'].shape)  # c_class['module.fc.weight'].shape: torch.Size([5, 1024])
+    print("c_obj['module.fc.bias'].shape:", c_obj['module.fc.bias'].shape) # c_obj['module.fc.bias'].shape: torch.Size([512])
+    print("c_class['module.fc.bias'].shape:", c_class['module.fc.bias'].shape) # c_class['module.fc.bias'].shape: torch.Size([5])
     
     for i in c_class['module.fc.bias']:
         print(i.item())
         f_cclass_bias.writelines(str(i.item())+"\n")
-        
-    for i in c_class['module.fc.weight']:
-        f_cclass_weight.writelines(str(i.cpu().numpy())+"\n")
-        
+
     for i in c_obj['module.fc.bias']:
         f_cobj_bias.writelines(str(i.item())+"\n")
         
-    for i in c_obj['module.fc.weight']:
-        f_cobj_weight.writelines(str(i.cpu().numpy())+"\n")
+    for i in c_class['module.fc.weight']:\
+        # f_cclass_weight.writelines(str(i.cpu().numpy())+"\n")
+        counter_class = 0
+        for item in i.cpu().numpy():
+            f_cclass_weight.write(str(item))
+            counter_class += 1
+            if counter_class<1024:
+                f_cclass_weight.write(",") 
+            else:
+                f_cclass_weight.write("\n")
+                counter_class = 0
             
+    for i in c_obj['module.fc.weight']:
+        # f_cobj_weight.writelines(str(i.cpu().numpy())+"\n")
+        counter_obj = 0
+        for item in i.cpu().numpy():
+            f_cobj_weight.write(str(item))
+            counter_obj += 1
+            if counter_obj<13:
+                f_cobj_weight.write(",") 
+            else:
+                f_cobj_weight.write("\n")
+                counter_obj = 0
+             
 save_params()
 
 ###### torch.load 把网络中的{{{}}}数据读出来 ######### 然后 model.load_state_dict() 把torch.load读出来的东西加载到网络上去
