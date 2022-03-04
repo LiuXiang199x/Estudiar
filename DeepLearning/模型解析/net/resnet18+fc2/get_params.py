@@ -31,10 +31,10 @@ def save_params():
     
     for i in c_class['module.fc.bias']:
         print(i.item())
-        f_cclass_bias.writelines(str(i.item())+"\n")
+        f_cclass_bias.writelines(str(i.item())+","+"\n")
 
     for i in c_obj['module.fc.bias']:
-        f_cobj_bias.writelines(str(i.item())+"\n")
+        f_cobj_bias.writelines(str(i.item())+","+"\n")
         
     for i in c_class['module.fc.weight']:\
         # f_cclass_weight.writelines(str(i.cpu().numpy())+"\n")
@@ -45,7 +45,7 @@ def save_params():
             if counter_class<1024:
                 f_cclass_weight.write(",") 
             else:
-                f_cclass_weight.write("\n")
+                f_cclass_weight.write(","+"\n")
                 counter_class = 0
             
     for i in c_obj['module.fc.weight']:
@@ -57,7 +57,7 @@ def save_params():
             if counter_obj<13:
                 f_cobj_weight.write(",") 
             else:
-                f_cobj_weight.write("\n")
+                f_cobj_weight.write(","+"\n")
                 counter_obj = 0
              
 save_params()
