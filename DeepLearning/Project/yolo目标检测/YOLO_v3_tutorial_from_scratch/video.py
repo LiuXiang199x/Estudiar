@@ -14,6 +14,7 @@ import pickle as pkl
 import pandas as pd
 import random
 
+
 def arg_parse():
     """
     Parse arguements to the detect module
