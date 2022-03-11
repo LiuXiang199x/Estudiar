@@ -13,8 +13,9 @@ class AA(Dataset):
         return self.a[index]
     
 a=AA(a)
+print(type(a))
 for item in a:
-    print(item)
+    print("item:", item)
 # a会自己变成一个list
 
 

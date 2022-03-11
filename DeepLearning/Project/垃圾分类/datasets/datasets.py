@@ -93,6 +93,7 @@ if __name__ == "__main__":
     for item in train_dataset:
         # 这里也可以选择 url， label in train_dataset这种迭代方式，这样item作为一个tuple就被分开了
         # print("item:", item) # tuple: (tensor([3,224,224]), 46)
+        print(item)
         print("type(item[0]):", type(item[0]))
         print("item[0].size():", item[0].size()) # torch.Size([3, 224, 224])
         break
