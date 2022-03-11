@@ -105,3 +105,6 @@ if __name__ == "__main__":
         print("image.shape:", image.shape)  # torch.Size([1, 3, 224, 224])
         print("label:", label)  # label: tensor([93])  # if batch_size = 2: label: tensor([183, 209])
         break
+    
+    
+    
