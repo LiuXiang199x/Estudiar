@@ -1,6 +1,6 @@
 from email.encoders import encode_noop
 import torch
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from PIL import Image
 import cv2 as cv
@@ -36,8 +36,8 @@ class Mydataset(Dataset):
     # 这个方法是必须要有的，用于按照索引读取每个元素的具体内容
     def __getitem__(self, index):
         url, label = self.imgs_info[index]
-        print("index", index)
-        print(self.imgs_info[index])
+        # print("index", index)
+        # print(self.imgs_info[index])
         img = Image.open(url).convert("RGB")
         img = self.train_tf(img)
         # label = self.train_tf(label)
@@ -55,5 +55,8 @@ img_path = "/home/agent/Estudiar/DeepLearning/Project/build_load_MyDatas/img_txt
 c = Mydataset(img_path)
 a,b = c.imgs_info[0]
 print(a, "___", b)
-for i in c:
-    print(i)
+
+train_set = DataLoader(dataset=c, batch_size=1)
+print(train_set)
+for i in train_set:
+    print(type(i))
