@@ -5,5 +5,10 @@
 # conclusion：
     该论文在时序性很强的文字上有很好的研究效果，作者也预测了可以把transformer时序弱化，然后应用到其他方向（图片等）
     （当然，后续很多其他人将transformer应用到了图片等，效果确实巨好！）
-    
 
+# background
+    multi head:多头机制，因为想用卷积去替换时序序列，卷积的特点是可以有多个输出（不同channel）所以高个多头来增加输出
+    （多头是根据CNN来的）
+
+# Model Architecture
+    目前比较好的模型就是  encoder-decoder
