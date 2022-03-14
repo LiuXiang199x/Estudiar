@@ -281,3 +281,4 @@ def colorhash(image, binbits=3):
 
 
 # end
+# 0
