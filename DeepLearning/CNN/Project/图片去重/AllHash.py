@@ -278,6 +278,3 @@ def colorhash(image, binbits=3):
 	for v in values:
 		bitarray += [v // (2**(binbits-i-1)) % 2**(binbits-i) > 0 for i in range(binbits)]
 	return ImageHash(numpy.asarray(bitarray).reshape((-1, binbits)))
-
-
-# endd
