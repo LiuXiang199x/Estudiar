@@ -280,5 +280,4 @@ def colorhash(image, binbits=3):
 	return ImageHash(numpy.asarray(bitarray).reshape((-1, binbits)))
 
 
-# end
-# 0
+# end.
