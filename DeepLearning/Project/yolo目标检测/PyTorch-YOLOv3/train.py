@@ -29,6 +29,13 @@ import torch.optim as optim
 --data_config config/coco.data  
 --pretrained_weights weights/darknet53.conv.74
 """
+"""
+比如coco数据集很大，有十几个G，那么我们就不能一口气全输入到模型里面去，
+模型里面也没有那么大的显存，内存用来存放这么多数据集
+所以我们有一个 Generator，这个Generator就是一个迭代器，
+model每次训练需要多少数据，generator就可以给他丢多少数据。读取数据的时候是训练的时候才会读取数据
+"""
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -104,6 +111,9 @@ if __name__ == "__main__":
     for epoch in range(opt.epochs):
         model.train()
         start_time = time.time()
+
+        # 从dataloader里面分批次读如我们训练模型所需要的数据
+        # 读入到模型的数据是训练的时候实时读取进入模型的
         for batch_i, (_, imgs, targets) in enumerate(dataloader):
             batches_done = len(dataloader) * epoch + batch_i
 
