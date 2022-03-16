@@ -7,7 +7,7 @@ from PIL import Image
 import torch
 import torch.nn.functional as F
 
-from utils.augmentations import horisontal_flip
+# from utils.augmentations import horisontal_flip
 from torch.utils.data import Dataset
 import torchvision.transforms as transforms
 
@@ -84,6 +84,7 @@ class ListDataset(Dataset):
         img_path = 'E:\\eclipse-workspace\\PyTorch\\PyTorch-YOLOv3\\data\\coco' + img_path
         #print (img_path)
         # Extract image as PyTorch tensor
+        # 不管是png，jpg等等所有格式，都统一为RGB格式
         img = transforms.ToTensor()(Image.open(img_path).convert('RGB'))
 
         # Handle images with less than three channels
@@ -126,12 +127,12 @@ class ListDataset(Dataset):
 
             targets = torch.zeros((len(boxes), 6))
             targets[:, 1:] = boxes
-
+        """
         # Apply augmentations
         if self.augment:
             if np.random.random() < 0.5:
                 img, targets = horisontal_flip(img, targets)
-
+        """
         return img_path, img, targets
 
     def collate_fn(self, batch):
@@ -152,3 +153,6 @@ class ListDataset(Dataset):
 
     def __len__(self):
         return len(self.img_files)
+
+
+a = ListDataset()
