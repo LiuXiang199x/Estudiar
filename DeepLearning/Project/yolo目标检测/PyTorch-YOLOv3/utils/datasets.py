@@ -155,4 +155,4 @@ class ListDataset(Dataset):
         return len(self.img_files)
 
 
-a = ListDataset()
+a = ListDataset("/home/marco/Datasets/COCO2017/imgs/")
