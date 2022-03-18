@@ -24,6 +24,5 @@ def decode_json(json_folder_path, json_name):
 if __name__ == "__main__":
     json_folder_path = "/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme"
     json_names = os.listdir(json_folder_path)
-    for item in json_names:
-        print(item)
+    print(os.path.join(json_folder_path, json_names[0]))
 
