@@ -21,11 +21,20 @@ def decode_json(json_folder_path, json_name):
         if (i['shape_type'] == "rectangle"):
             x1 = int(i['points'][0][0])
 
+def visual_json(jsonPath):
+    data = json.load(open(jsonPath))
+    # dict_keys(['version', 'flags', 'shapes', 'imagePath', 
+    # 'imageData', 'imageHeight', 'imageWidth'])
+    print(data.keys())
+
+
 if __name__ == "__main__":
     json_folder_path = "/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme"
     json_names = os.listdir(json_folder_path)
     for item in json_names:
         print("============> ", item)
-        decode_json(json_folder_path, item)
+        # decode_json(json_folder_path, item)
         break
+    # visual_json(os.path.join(json_folder_path, json_names[0]))
+
 
