@@ -7,7 +7,7 @@ name2id = {"person": 0, "cloud": 1}
 
 def decode_json(json_folder_path, json_name):
 
-    txt_name = "" + json_name[0:-5] + ".txt"
+    txt_name = "/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme/txt/" + json_name[0] + ".txt"
     txt_file = open(txt_name, "w")
 
     json_path = os.path.join(json_folder_path, json_name)
@@ -27,4 +27,5 @@ if __name__ == "__main__":
     for item in json_names:
         print("============> ", item)
         decode_json(json_folder_path, item)
+        break
 
