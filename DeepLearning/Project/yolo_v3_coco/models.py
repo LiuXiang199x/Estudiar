@@ -134,7 +134,7 @@ class YOLOLayer(nn.Module):
 
     def forward(self, x, targets=None, img_dim=None):
         # Tensors for cuda support
-        print (x.shape)
+        print ("x.shape: ", x.shape)
         FloatTensor = torch.cuda.FloatTensor if x.is_cuda else torch.FloatTensor
         LongTensor = torch.cuda.LongTensor if x.is_cuda else torch.LongTensor
         ByteTensor = torch.cuda.ByteTensor if x.is_cuda else torch.ByteTensor
@@ -148,7 +148,7 @@ class YOLOLayer(nn.Module):
             .permute(0, 1, 3, 4, 2)
             .contiguous()
         )
-        print (prediction.shape)
+        print ("prediction.shape: ", prediction.shape)
         # Get outputs
         x = torch.sigmoid(prediction[..., 0])  # Center x
         y = torch.sigmoid(prediction[..., 1])  # Center y
