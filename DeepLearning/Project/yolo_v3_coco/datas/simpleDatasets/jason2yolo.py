@@ -5,7 +5,7 @@ import os
 
 name2id = {"person": 0, "cloud": 1}
 
-
+# convert xml/jason points coord to yolo's data(x_, y_, w_, h_)
 def yolo_convert(img_size, box):
 
     # (img_w, img_h) (x1, y1, x2, y2)
