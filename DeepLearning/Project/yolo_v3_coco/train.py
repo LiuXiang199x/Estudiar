@@ -122,8 +122,8 @@ if __name__ == "__main__":
 
             imgs = Variable(imgs.to(device))
             targets = Variable(targets.to(device), requires_grad=False)
-            print ('imgs',imgs.shape)
-            print ('targets',targets.shape)
+            print ('imgs shape: ',imgs.shape)  # torch.Size([4, 3, 384, 384])
+            print ('targets: ',targets.shape)  # torch.Size([21, 6])
             loss, outputs = model(imgs, targets)
             loss.backward()
 

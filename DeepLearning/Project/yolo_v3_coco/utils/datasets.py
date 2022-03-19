@@ -141,9 +141,9 @@ class ListDataset(Dataset):
             if np.random.random() < 0.5:
                 img, targets = horisontal_flip(img, targets)
         """
-        print("img_path: ", img_path)
-        print("img: ", img)
-        print("targets: ", targets)
+        # print("img_path: ", img_path)
+        # print("img: ", img)
+        # print("targets: ", targets)
         return img_path, img, targets
 
     def collate_fn(self, batch):
