@@ -61,10 +61,19 @@ class ListDataset(Dataset):
         with open(list_path, "r") as file:
             self.img_files = file.readlines()
 
-        self.label_files = [
-            path.replace("images", "labels").replace(".png", ".txt").replace(".jpg", ".txt")
-            for path in self.img_files
-        ]
+        print(self.img_files)
+
+        # self.label_files = [
+        #     path.replace("images", "labels").replace(".png", ".txt").replace(".jpg", ".txt")
+        #     for path in self.img_files
+        # ]
+
+        self.label_files = ['/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme/txt/1.txt', 
+                            '/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme/txt/2.txt', 
+                            '/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme/txt/3.txt', 
+                            '/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme/txt/4.txt']
+
+        print(self.label_files)
         self.img_size = img_size
         self.max_objects = 100
         self.augment = augment
@@ -103,8 +112,7 @@ class ListDataset(Dataset):
         # ---------
 
         label_path = self.label_files[index % len(self.img_files)].rstrip()
-        label_path = 'E:\\eclipse-workspace\\PyTorch\\PyTorch-YOLOv3\\data\\coco\\labels' + label_path
-        #print (label_path)
+        print(label_path)
 
         targets = None
         if os.path.exists(label_path):
@@ -153,3 +161,10 @@ class ListDataset(Dataset):
 
     def __len__(self):
         return len(self.img_files)
+
+
+a = ListDataset("/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/train.txt")
+print(a.label_files)
+for i in a:
+    print(i)
+    break

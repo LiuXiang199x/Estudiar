@@ -57,6 +57,7 @@ if __name__ == "__main__":
     logger = Logger("logs")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("========> device: ", device)
 
     os.makedirs("output", exist_ok=True)
     os.makedirs("checkpoints", exist_ok=True)
@@ -70,6 +71,7 @@ if __name__ == "__main__":
     # Initiate model
     model = Darknet(opt.model_def).to(device)
     model.apply(weights_init_normal)
+
 
     # If specified we start from checkpoint
     if opt.pretrained_weights:
