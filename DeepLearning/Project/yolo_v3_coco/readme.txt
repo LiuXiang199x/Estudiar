@@ -29,5 +29,9 @@
 			--checkpoint_model checkpoints/yolov3_ckpt_100.pth
 			--class_path data/custom/classes.names   # 画图的时候把框上显示出来，把index值转换为实际的name
 		
-		
+=======================================================================================================
 
+个人感觉：
+	1. 准备数据集，修改数据集格式，转换为yolo的格式：txt（label，x_,y_,w_,h_）；txt放img路径。需要对xml，jason格式熟悉。
+	2. 数据集的准备加载和前处理。（加载到DataLoader中，打包好成tensor准备训练）。
+	3. 准备config文件，包括模型config，数据集路径config，class_names的config，是否预训练等。

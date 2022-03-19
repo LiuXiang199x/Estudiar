@@ -73,7 +73,6 @@ class ListDataset(Dataset):
                             '/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme/txt/3.txt', 
                             '/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/labelme/txt/4.txt']
 
-        print(self.label_files)
         self.img_size = img_size
         self.max_objects = 100
         self.augment = augment
@@ -91,7 +90,7 @@ class ListDataset(Dataset):
 
         img_path = self.img_files[index % len(self.img_files)].rstrip()
         img_path = img_path
-        #print (img_path)
+        print("img_path===> ", img_path)
         # Extract image as PyTorch tensor
         # 不管是png，jpg等等所有格式，都统一为RGB格式
         img = transforms.ToTensor()(Image.open(img_path).convert('RGB'))
@@ -112,11 +111,12 @@ class ListDataset(Dataset):
         # ---------
 
         label_path = self.label_files[index % len(self.img_files)].rstrip()
-        print(label_path)
+        print("label_path===> ", label_path)
 
         targets = None
         if os.path.exists(label_path):
             boxes = torch.from_numpy(np.loadtxt(label_path).reshape(-1, 5))
+            print("bboxes: ", boxes)
             # Extract coordinates for unpadded + unscaled image
             x1 = w_factor * (boxes[:, 1] - boxes[:, 3] / 2)
             y1 = h_factor * (boxes[:, 2] - boxes[:, 4] / 2)
@@ -141,6 +141,9 @@ class ListDataset(Dataset):
             if np.random.random() < 0.5:
                 img, targets = horisontal_flip(img, targets)
         """
+        print("img_path: ", img_path)
+        print("img: ", img)
+        print("targets: ", targets)
         return img_path, img, targets
 
     def collate_fn(self, batch):
@@ -166,5 +169,7 @@ class ListDataset(Dataset):
 a = ListDataset("/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/train.txt")
 print(a.label_files)
 for i in a:
-    print(i)
-    break
+    print("===============================================")
+    print(i)   # tuple, 3, (img_pth-str, img-tensor, yolos-tensor), yolos-tensor=(label, x_, y_, w_, h_)
+    print(len(i))
+    print("===============================================")
