@@ -166,10 +166,10 @@ class ListDataset(Dataset):
         return len(self.img_files)
 
 
-a = ListDataset("/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/train.txt")
-print(a.label_files)
-for i in a:
-    print("===============================================")
-    print(i)   # tuple, 3, (img_pth-str, img-tensor, yolos-tensor), yolos-tensor=(label, x_, y_, w_, h_)
-    print(len(i))
-    print("===============================================")
+# a = ListDataset("/home/marco/Estudiar/DeepLearning/Project/yolo_v3_coco/datas/simpleDatasets/train.txt")
+# print(a.label_files)
+# for i in a:
+#     print("===============================================")
+#     print(i)   # tuple, 3, (img_pth-str, img-tensor, yolos-tensor), yolos-tensor=(label, x_, y_, w_, h_)
+#     print(len(i))
+#     print("===============================================")

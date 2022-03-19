@@ -110,6 +110,7 @@ if __name__ == "__main__":
         "conf_noobj",
     ]
 
+    print("=====================")
     for epoch in range(opt.epochs):
         model.train()
         start_time = time.time()
