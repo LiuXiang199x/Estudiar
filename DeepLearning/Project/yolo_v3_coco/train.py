@@ -165,7 +165,7 @@ if __name__ == "__main__":
             time_left = datetime.timedelta(seconds=epoch_batches_left * (time.time() - start_time) / (batch_i + 1))
             log_str += f"\n---- ETA {time_left}"
 
-            print(log_str)
+            print("log_str: ", log_str)
 
             model.seen += imgs.size(0)
 
