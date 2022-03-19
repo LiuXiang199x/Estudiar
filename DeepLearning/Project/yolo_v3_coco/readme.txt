@@ -11,8 +11,23 @@
 	----------------------------------- 准备好了所有数据集和格式 -----------------------------------------------
 
 	5. train.txt, val.txt准备好代码:
-		5.1 --model_def config/yolov3-custom.cfg
+	（配置模型参数路径，数据和标签路径，预训练权重路径）
+		5.1 train.py里面要设置的参数
+			--model_def config/yolov3-custom.cfg
 			--data_config config/custom.data
 			--pretrained_weights weights/darknet53.conv.74
+			--checkpoint_interval 隔多少个epoch训练保存一次
+			--evaluation_interval 隔多少个epoch去验证一次
+			--epoches，--batch_size
 
+		5.2 训练参数
+		
+		
+		
+		5.3 预测参数
+			--image_folder data/samples/   # 把需要预测的数据放到这,把整个文件夹都预测一遍
+			--checkpoint_model checkpoints/yolov3_ckpt_100.pth
+			--class_path data/custom/classes.names   # 画图的时候把框上显示出来，把index值转换为实际的name
+		
+		
 
