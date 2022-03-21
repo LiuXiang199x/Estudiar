@@ -21,7 +21,7 @@ def one_hot(cls_num,i):
 
 class YoloDataSet(Dataset):
     def __init__(self):
-        f=open('/home/marco/Estudiar/DeepLearning/Project/yolo-v3/data.txt','r')
+        f=open('/home/agent/Estudiar/DeepLearning/Project/yolo-v3/data.txt','r')
         self.dataset=f.readlines()
 
     def __len__(self):
@@ -36,7 +36,7 @@ class YoloDataSet(Dataset):
         # 我们选择对图像进行resize，基于左上角去做填充。
         # 比如：640*416，我们会选max生成640*640，然后多余的区域用黑色去填充
         # 虽然改了图像大小，但是坐标其实不用变，因为原点是左上角，而且resize图像也是从左上角开始粘贴的。
-        img=make_416_image(os.path.join('/home/marco/Estudiar/DeepLearning/Project/yolo-v3/dataset/img',temp_data[0]))
+        img=make_416_image(os.path.join('/home/agent/Estudiar/DeepLearning/Project/yolo-v3/dataset/img',temp_data[0]))
         
         # 计算缩放比
         w,h=img.size
