@@ -175,8 +175,11 @@ class Yolo_V3_Net(nn.Module):
 
 if __name__ == '__main__':
     net = Yolo_V3_Net()
+    net.load_state_dict(torch.load("/home/agent/Estudiar/DeepLearning/Project/yolo-v3/params/net.pt"))
     x = torch.randn(1, 3, 416, 416)
     y = net(x)
     print(y[0].shape)
     print(y[1].shape)
     print(y[2].shape)
+    torch.save(net, "/home/agent/Estudiar/DeepLearning/Project/yolo-v3/params/net_all.pkl")
+    torch.save(net.state_dict(), "/home/agent/Estudiar/DeepLearning/Project/yolo-v3/params/net_params.pth")
