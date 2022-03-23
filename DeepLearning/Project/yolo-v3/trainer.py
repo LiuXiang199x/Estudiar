@@ -8,7 +8,12 @@ from yolo_v3_net import *
 from torch.utils.tensorboard import SummaryWriter
 
 def loss_fun(output, target, c):
+    # permute的中文意思是，“排列组合”。permute()可以对某个张量的任意维度进行调换。
+    # # torch.Size([2, 45, 13, 13]),  torch.Size([2, 13, 13, 3, 8])
+    # output.permute: ([2, 13, 13, 45])
     output = output.permute(0, 2, 3, 1)
+    
+    # ([2, 13, 13, 45]) --> ([2, 13, 13, 3, 15]) --> 15包括三个anchor box
     output = output.reshape(output.size(0), output.size(1), output.size(2), 3, -1)
 
     mask_obj = target[..., 0] > 0
@@ -33,10 +38,10 @@ if __name__ == '__main__':
     dataset = YoloDataSet()
     data_loader = DataLoader(dataset, batch_size=2, shuffle=True)
 
-    weight_path = 'params/net.pt'
+    # weight_path = 'params/net.pt'
     net = Yolo_V3_Net().to(device)
-    if os.path.exists(weight_path):
-        net.load_state_dict(torch.load(weight_path))
+    # if os.path.exists(weight_path):
+    #    net.load_state_dict(torch.load(weight_path))
 
     opt = optim.Adam(net.parameters())
 
@@ -48,7 +53,12 @@ if __name__ == '__main__':
                 device), img_data.to(device)
 
             output_13, output_26, output_52 = net(img_data)
-
+            print(output_13.size())  # torch.Size([2, 45, 13, 13])
+            # print(output_26.size())  # torch.Size([2, 45, 13, 13])
+            # print(output_52.size())  # torch.Size([2, 45, 13, 13])
+            print(target_13.size())  # torch.Size([2, 13, 13, 3, 8])
+            
+            break
             loss_13 = loss_fun(output_13.float(), target_13.float(), 0.7)
             loss_26 = loss_fun(output_26.float(), target_26.float(), 0.7)
             loss_52 = loss_fun(output_52.float(), target_52.float(), 0.7)
@@ -63,6 +73,7 @@ if __name__ == '__main__':
             summary_writer.add_scalar('train_loss',loss,index)
             index+=1
 
-        torch.save(net.state_dict(),'params/net.pt')
-        print('模型保存成功')
-        epoch+=1
+        # torch.save(net.state_dict(),'/home/agent/Estudiar/DeepLearning/Project/yolo-v3/params/net.pt')
+        # print('模型保存成功')
+        # epoch+=1
+        break

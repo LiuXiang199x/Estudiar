@@ -72,3 +72,5 @@ if __name__ == '__main__':
     print(dataset[0][0].shape)  # (13, 13, 3, 8)
     print(dataset[0][1].shape)  # (26, 26, 3, 8)
     print(dataset[0][2].shape)  # (52, 52, 3, 8)
+    
+    print(dataset[0][0])
