@@ -33,6 +33,10 @@ class YoloDataSet(Dataset):
         _boxes=np.array([float(x) for x in temp_data[1:]])
         boxes=np.split(_boxes,len(_boxes)//5)
 
+        # print("data:",data)   # 000017.jpg 0 47 68 94 137 1 156 129 313 258
+        # print("temp_data:", temp_data)  # ['000017.jpg', '0', '47', '68', '94', '137', '1', '156', '129', '313', '258']
+        # print("_boxes:", _boxes)   # [  0.  47.  68.  94. 137.   1. 156. 129. 313. 258.]
+        # print("boxes:", boxes)  # [array([  0.,  47.,  68.,  94., 137.]), array([  1., 156., 129., 313., 258.])]
         # 我们选择对图像进行resize，基于左上角去做填充。
         # 比如：640*416，我们会选max生成640*640，然后多余的区域用黑色去填充
         # 虽然改了图像大小，但是坐标其实不用变，因为原点是左上角，而且resize图像也是从左上角开始粘贴的。
@@ -49,16 +53,20 @@ class YoloDataSet(Dataset):
 
             for box in boxes:
                 # 得到原图上的坐标
-                cls,cx,cy,w,h=box
+                cls, cx, cy, w, h = box
                 # 进行缩放
-                cx, cy,w,h=cx*case,cy*case,w*case,h*case
+                cx, cy, w, h = cx*case,cy*case,w*case,h*case
 
                 # 计算偏移量，中心点的偏移量
-                _x,x_index=math.modf(cx*feature_size/DATA_WIDTH)
-                _y,y_index=math.modf(cx*feature_size/DATA_HEIGHT)
+                # modf: 返回x的整数部分与小数部分
+                _x, x_index = math.modf(cx*feature_size/DATA_WIDTH)
+                _y, y_index = math.modf(cy*feature_size/DATA_HEIGHT)
+                
+                # (0, (13, [[168, 302], [57, 221], [336, 284]]))
+                # (0, [[168, 302], [57, 221], [336, 284]])
                 for i,antor in enumerate(_antors):
-                    area=w*h
-                    iou=min(area,ANTORS_AREA[feature_size][i])/max(area,ANTORS_AREA[feature_size][i])
+                    area = w*h
+                    iou = min(area,ANTORS_AREA[feature_size][i])/max(area,ANTORS_AREA[feature_size][i])
                     
                     # 计算 w和h 的偏移量，就是用真实的w和h去除以建议的w和h
                     p_w, p_h = w / antor[0], h / antor[1]
@@ -73,4 +81,4 @@ if __name__ == '__main__':
     print(dataset[0][1].shape)  # (26, 26, 3, 8)
     print(dataset[0][2].shape)  # (52, 52, 3, 8)
     
-    print(dataset[0][0])
+    print(dataset[0][0][0][0][0])

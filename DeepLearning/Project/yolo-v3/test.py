@@ -1,11 +1,13 @@
 from random import triangular
+from re import L
 import torch
 from torch import mode
 from yolo_v3_net import *
 from dataset import *
 from torch.utils.data import DataLoader
+from config import *
 
-model_path = "/home/agent/Estudiar/DeepLearning/Project/yolo-v3/params/net.pt"
+# model_path = "/home/agent/Estudiar/DeepLearning/Project/yolo-v3/params/net.pt"
 
 # params = torch.load(model_path)
 # print(type(params))
@@ -25,8 +27,9 @@ model_path = "/home/agent/Estudiar/DeepLearning/Project/yolo-v3/params/net.pt"
 #     print(type(i))  # list  # (4, 2, 13, 13)
 #     break
 
-a = torch.randn(2,3,5)
-b = a.permute(1,2,0)
-print(a)
-print(b)
-print(b.shape)
+for i in antors:
+    print(antors)
+    
+for a,b in antors.items():
+    print(a)
+    print(b)
