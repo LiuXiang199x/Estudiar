@@ -18,7 +18,7 @@ def loss_fun(output, target, c):
 
     mask_obj = target[..., 0] > 0
     mask_no_obj = target[..., 0] == 0
-
+    
     loss_p_fun = nn.BCELoss()
     loss_p = loss_p_fun(torch.sigmoid(output[..., 0]), target[..., 0])
 
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     summary_writer=SummaryWriter('logs')
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     dataset = YoloDataSet()
-    data_loader = DataLoader(dataset, batch_size=2, shuffle=True)
+    data_loader = DataLoader(dataset, batch_size=1, shuffle=True)
 
     # weight_path = 'params/net.pt'
     net = Yolo_V3_Net().to(device)
@@ -52,19 +52,26 @@ if __name__ == '__main__':
             target_13, target_26, target_52, img_data = target_13.to(device), target_26.to(device), target_52.to(
                 device), img_data.to(device)
 
+            print("target_13: ", target_13.size())
+            print("img_data: ", img_data.size())
             output_13, output_26, output_52 = net(img_data)
+            
             # print(output_13.size())  # torch.Size([2, 45, 13, 13])
             # print(output_26.size())  # torch.Size([2, 45, 13, 13])
             # print(output_52.size())  # torch.Size([2, 45, 13, 13])
             # print(target_13.size())  # torch.Size([2, 13, 13, 3, 8])
             
-            break
+            
             loss_13 = loss_fun(output_13.float(), target_13.float(), 0.7)
             loss_26 = loss_fun(output_26.float(), target_26.float(), 0.7)
             loss_52 = loss_fun(output_52.float(), target_52.float(), 0.7)
 
-            loss=loss_13+loss_26+loss_52
-
+            loss = loss_13 + loss_26 + loss_52
+            print("loss_13: ", loss_13)
+            print("loss_26: ", loss_26)
+            print("loss_52: ", loss_52)
+            print("loss: ", loss)
+            break
             opt.zero_grad()
             loss.backward()
             opt.step()
