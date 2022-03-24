@@ -53,10 +53,10 @@ if __name__ == '__main__':
                 device), img_data.to(device)
 
             output_13, output_26, output_52 = net(img_data)
-            print(output_13.size())  # torch.Size([2, 45, 13, 13])
+            # print(output_13.size())  # torch.Size([2, 45, 13, 13])
             # print(output_26.size())  # torch.Size([2, 45, 13, 13])
             # print(output_52.size())  # torch.Size([2, 45, 13, 13])
-            print(target_13.size())  # torch.Size([2, 13, 13, 3, 8])
+            # print(target_13.size())  # torch.Size([2, 13, 13, 3, 8])
             
             break
             loss_13 = loss_fun(output_13.float(), target_13.float(), 0.7)
