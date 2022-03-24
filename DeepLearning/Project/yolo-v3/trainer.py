@@ -16,6 +16,7 @@ def loss_fun(output, target, c):
     # ([2, 13, 13, 45]) --> ([2, 13, 13, 3, 15]) --> 15包括三个anchor box
     output = output.reshape(output.size(0), output.size(1), output.size(2), 3, -1)
 
+    # 看每个输出的
     mask_obj = target[..., 0] > 0
     mask_no_obj = target[..., 0] == 0
     
