@@ -37,3 +37,4 @@ for a,b in antors.items():
 aar = torch.randn(1,3)
 print(aar)
 print(aar[...,0])
+print()
