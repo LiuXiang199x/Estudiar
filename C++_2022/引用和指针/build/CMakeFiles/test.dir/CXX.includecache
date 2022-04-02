@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/allLibs.h
+iostream
+-
+string
+-
+cstring
+-
+fstream
+-
+
+../include/func_pointer.h
+allLibs.h
+../include/allLibs.h
+
+../include/pointer_arr_doublearr.h
+allLibs.h
+../include/allLibs.h
+
+/home/agent/C-_Project/C++_2022/引用和指针/src/func_pointer.cpp
+func_pointer.h
+/home/agent/C-_Project/C++_2022/引用和指针/src/func_pointer.h
+
+/home/agent/C-_Project/C++_2022/引用和指针/src/main.cc
+func_pointer.h
+/home/agent/C-_Project/C++_2022/引用和指针/src/func_pointer.h
+
+/home/agent/C-_Project/C++_2022/引用和指针/src/pointer_arr_doublearr.cpp
+pointer_arr_doublearr.h
+/home/agent/C-_Project/C++_2022/引用和指针/src/pointer_arr_doublearr.h
+

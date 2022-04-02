@@ -1,0 +1,57 @@
+https://www.runoob.com/cplusplus/cpp-dynamic-memory.html
+http://c.biancheng.net/view/7596.html
+
+1. void open(const char* szFileName, int mode)
+    第一个参数是指向文件名的指针，第二个参数是文件的打开模式标记。
+
+2. file.close()
+
+3. open() and close():
+    关闭没什么好说的
+    open()需要注意有两个参数, open(路径, 模式)
+    ios::in --- 打开文件用于读取数据。如果文件不存在，则打开出错。
+    ios::out --- 打开文件用于写入数据。如果文件不存在，则新建该文件；如果文件原来就存在，则打开时清除原来的内容。
+    ios::app --- 打开文件，用于在其尾部添加数据。如果文件不存在，则新建该文件。
+    ios::ate --- 打开一个已有的文件，并将文件读指针指向文件末尾。如果文件不存在，则打开出错。
+    ios::binary	--- 以二进制方式打开文件。若不指定此模式，则以文本模式打开。
+
+4. 文件的读写: 
+    文件中存储的数据并没有类型上的分别，统统都是字符。所谓以文本形式读/写文件，
+    就是直白地将文件中存储的字符（或字符串）读取出来，以及将目标字符（或字符串）存储在文件中。
+    对文件的读/写操作又可以细分为2类，分别是以"文本形式"读写文件和以"二进制形式"读写文件。
+    
+    4.1 ">>" 和 "<<":
+        ifstream F1(xxx, ios::in);
+        ofstream F2(xxx, ios::out);  // 注意 out 与 app区别
+        if(!F1){}; if(!F2){};
+        从文件中读数据：F1 >> x;
+        数据存储到文件：x << F2;
+
+5. 二进制文件读写:
+    正常文件txt存储如下格式:
+        Micheal Jackson 110923412 17
+        Tom Hanks 110923413 18
+        ......
+    这种存储浪费空间，后期不利于查找指定的信息（查找效率低下），每个信息所占用的字节数不同。
+    以二进制形式将学生信息存储到文件中,可以解决这些问题,这意味着每个信息都只占用 sizeof(CStudent) 个字节。
+    二进制读写不能用 "<<" 与 ">>", 要用 "read()" 与 "write()":
+
+6. "get()" 和 "put()" 读写文件:
+    打开文件: ofstream outFile(xx, ios::out|ios::binary);
+    输入字符到文件put(): char c, while(cin >> c){ outFile.put(c) };
+    从文件读取字符get(): char c, c=inFile.get()&&c!=EOF, EOF是末尾返回值。这样只会读取一行。
+
+7. "getline()"从文件中读取一行字符串:
+    ifstream inFile, char c[N],这里要指定大小。 inFile.getline(c, N).超过N就会读取失败
+    getline只能读取一行！！！
+    istream & getline(char* buf, int bufSize);
+    istream & getline(char* buf, int bufSize, char delim)//delim为终止字符
+
+    多行读取：while(inFile.getline(c, 40)){...}
+
+8. "指针"移动读写文件:
+
+注意事项：
+由于文件存放在硬盘中，硬盘的访问速度远远低于内存。如果每次写一个字节都要访问硬盘，那么文件的读写速度就会慢得不可忍受。
+因此，操作系统在接收到 put() 方法写文件的请求时，会先将指定字符存储在一块指定的内存空间中（称为文件流输出缓冲区），
+等刷新该缓冲区（缓冲区满、关闭文件、手动调用 flush() 方法等，都会导致缓冲区刷新）时，才会将缓冲区中存储的所有字符“一股脑儿”全写入文件。

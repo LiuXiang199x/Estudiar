@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/allLibs.h
+iostream
+-
+string
+-
+string.h
+-
+
+../include/overload.h
+allLibs.h
+../include/allLibs.h
+
+/home/agent/C-_Project/C++_2022/继承与重载/src/main.cc
+overload.h
+/home/agent/C-_Project/C++_2022/继承与重载/src/overload.h
+
+/home/agent/C-_Project/C++_2022/继承与重载/src/overload.cpp
+overload.h
+/home/agent/C-_Project/C++_2022/继承与重载/src/overload.h
+

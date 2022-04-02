@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/allLibs.h
+iostream
+-
+string
+-
+string.h
+-
+
+../include/encapsulation.h
+allLibs.h
+../include/allLibs.h
+
+/home/agent/C-_Project/C++_2022/封装/src/main.cc
+encapsulation.h
+/home/agent/C-_Project/C++_2022/封装/src/encapsulation.h
+

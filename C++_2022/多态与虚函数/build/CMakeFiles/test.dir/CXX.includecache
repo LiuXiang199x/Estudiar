@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/allLibs.h
+iostream
+-
+string
+-
+string.h
+-
+
+../include/polymorphism.h
+allLibs.h
+../include/allLibs.h
+
+/home/agent/C-_Project/C++_2022/多态与虚函数/src/main.cc
+polymorphism.h
+/home/agent/C-_Project/C++_2022/多态与虚函数/src/polymorphism.h
+iostream
+-
+

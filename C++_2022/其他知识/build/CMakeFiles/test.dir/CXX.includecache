@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/allLibs.h
+iostream
+-
+string
+-
+string.h
+-
+
+../include/const.h
+allLibs.h
+../include/allLibs.h
+
+/home/agent/C-_Project/C++_2022/其他知识/src/const.cpp
+const.h
+/home/agent/C-_Project/C++_2022/其他知识/src/const.h
+

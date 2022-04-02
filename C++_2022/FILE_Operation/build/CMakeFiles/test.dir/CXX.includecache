@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/pointerRW.h
+iostream
+-
+fstream
+-
+cstring
+-
+
+/home/agent/C-_Project/C++_2022/FILE_Operation/src/pointerRW.cpp
+pointerRW.h
+/home/agent/C-_Project/C++_2022/FILE_Operation/src/pointerRW.h
+

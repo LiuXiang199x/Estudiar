@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Union.h
+allLibs.h
+../include/allLibs.h
+
+../include/allLibs.h
+iostream
+-
+string
+-
+string.h
+-
+
+/home/agent/C-_Project/C++_2022/StructUnionEnum/src/Union.cpp
+Union.h
+/home/agent/C-_Project/C++_2022/StructUnionEnum/src/Union.h
+
