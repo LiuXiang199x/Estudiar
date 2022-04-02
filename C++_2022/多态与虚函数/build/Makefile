@@ -150,6 +150,33 @@ src/main.cc.s:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/main.cc.s
 .PHONY : src/main.cc.s
 
+src/polymor_real.o: src/polymor_real.cpp.o
+
+.PHONY : src/polymor_real.o
+
+# target to build an object file
+src/polymor_real.cpp.o:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/polymor_real.cpp.o
+.PHONY : src/polymor_real.cpp.o
+
+src/polymor_real.i: src/polymor_real.cpp.i
+
+.PHONY : src/polymor_real.i
+
+# target to preprocess a source file
+src/polymor_real.cpp.i:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/polymor_real.cpp.i
+.PHONY : src/polymor_real.cpp.i
+
+src/polymor_real.s: src/polymor_real.cpp.s
+
+.PHONY : src/polymor_real.s
+
+# target to generate assembly for a file
+src/polymor_real.cpp.s:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/polymor_real.cpp.s
+.PHONY : src/polymor_real.cpp.s
+
 src/polymorphism.o: src/polymorphism.cpp.o
 
 .PHONY : src/polymorphism.o
@@ -189,6 +216,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/polymor_real.o"
+	@echo "... src/polymor_real.i"
+	@echo "... src/polymor_real.s"
 	@echo "... src/polymorphism.o"
 	@echo "... src/polymorphism.i"
 	@echo "... src/polymorphism.s"

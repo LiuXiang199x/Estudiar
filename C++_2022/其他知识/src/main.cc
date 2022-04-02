@@ -1,10 +1,10 @@
-#include "const.h"
+#include "this_pointer.h"
 
 using namespace std;
 
 int main(){
 
-    const_funcParams();
+    test_this();
 
     return 0;
 }

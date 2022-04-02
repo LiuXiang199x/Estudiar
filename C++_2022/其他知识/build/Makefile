@@ -177,6 +177,60 @@ src/main.cc.s:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/main.cc.s
 .PHONY : src/main.cc.s
 
+src/static_data_func.o: src/static_data_func.cpp.o
+
+.PHONY : src/static_data_func.o
+
+# target to build an object file
+src/static_data_func.cpp.o:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/static_data_func.cpp.o
+.PHONY : src/static_data_func.cpp.o
+
+src/static_data_func.i: src/static_data_func.cpp.i
+
+.PHONY : src/static_data_func.i
+
+# target to preprocess a source file
+src/static_data_func.cpp.i:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/static_data_func.cpp.i
+.PHONY : src/static_data_func.cpp.i
+
+src/static_data_func.s: src/static_data_func.cpp.s
+
+.PHONY : src/static_data_func.s
+
+# target to generate assembly for a file
+src/static_data_func.cpp.s:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/static_data_func.cpp.s
+.PHONY : src/static_data_func.cpp.s
+
+src/this_pointer.o: src/this_pointer.cpp.o
+
+.PHONY : src/this_pointer.o
+
+# target to build an object file
+src/this_pointer.cpp.o:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/this_pointer.cpp.o
+.PHONY : src/this_pointer.cpp.o
+
+src/this_pointer.i: src/this_pointer.cpp.i
+
+.PHONY : src/this_pointer.i
+
+# target to preprocess a source file
+src/this_pointer.cpp.i:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/this_pointer.cpp.i
+.PHONY : src/this_pointer.cpp.i
+
+src/this_pointer.s: src/this_pointer.cpp.s
+
+.PHONY : src/this_pointer.s
+
+# target to generate assembly for a file
+src/this_pointer.cpp.s:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/this_pointer.cpp.s
+.PHONY : src/this_pointer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +246,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/static_data_func.o"
+	@echo "... src/static_data_func.i"
+	@echo "... src/static_data_func.s"
+	@echo "... src/this_pointer.o"
+	@echo "... src/this_pointer.i"
+	@echo "... src/this_pointer.s"
 .PHONY : help
 
 
