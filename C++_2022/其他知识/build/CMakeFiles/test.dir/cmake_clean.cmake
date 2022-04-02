@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/test.dir/src/const.cpp.o"
   "CMakeFiles/test.dir/src/main.cc.o"
   "CMakeFiles/test.dir/src/static_data_func.cpp.o"
+  "CMakeFiles/test.dir/src/switch_case_label.cpp.o"
   "CMakeFiles/test.dir/src/this_pointer.cpp.o"
 )
 

@@ -6,12 +6,16 @@ CMakeFiles/test.dir/src/const.cpp.o: ../include/const.h
 CMakeFiles/test.dir/src/const.cpp.o: ../src/const.cpp
 
 CMakeFiles/test.dir/src/main.cc.o: ../include/allLibs.h
-CMakeFiles/test.dir/src/main.cc.o: ../include/this_pointer.h
+CMakeFiles/test.dir/src/main.cc.o: ../include/switch_case_label.h
 CMakeFiles/test.dir/src/main.cc.o: ../src/main.cc
 
 CMakeFiles/test.dir/src/static_data_func.cpp.o: ../include/allLibs.h
 CMakeFiles/test.dir/src/static_data_func.cpp.o: ../include/static_data_func.h
 CMakeFiles/test.dir/src/static_data_func.cpp.o: ../src/static_data_func.cpp
+
+CMakeFiles/test.dir/src/switch_case_label.cpp.o: ../include/allLibs.h
+CMakeFiles/test.dir/src/switch_case_label.cpp.o: ../include/switch_case_label.h
+CMakeFiles/test.dir/src/switch_case_label.cpp.o: ../src/switch_case_label.cpp
 
 CMakeFiles/test.dir/src/this_pointer.cpp.o: ../include/allLibs.h
 CMakeFiles/test.dir/src/this_pointer.cpp.o: ../include/this_pointer.h

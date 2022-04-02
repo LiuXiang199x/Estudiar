@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/agent/C-_Project/C++_2022/其他知识/src/const.cpp" "/home/agent/C-_Project/C++_2022/其他知识/build/CMakeFiles/test.dir/src/const.cpp.o"
   "/home/agent/C-_Project/C++_2022/其他知识/src/main.cc" "/home/agent/C-_Project/C++_2022/其他知识/build/CMakeFiles/test.dir/src/main.cc.o"
   "/home/agent/C-_Project/C++_2022/其他知识/src/static_data_func.cpp" "/home/agent/C-_Project/C++_2022/其他知识/build/CMakeFiles/test.dir/src/static_data_func.cpp.o"
+  "/home/agent/C-_Project/C++_2022/其他知识/src/switch_case_label.cpp" "/home/agent/C-_Project/C++_2022/其他知识/build/CMakeFiles/test.dir/src/switch_case_label.cpp.o"
   "/home/agent/C-_Project/C++_2022/其他知识/src/this_pointer.cpp" "/home/agent/C-_Project/C++_2022/其他知识/build/CMakeFiles/test.dir/src/this_pointer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

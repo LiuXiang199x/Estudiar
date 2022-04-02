@@ -204,6 +204,33 @@ src/static_data_func.cpp.s:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/static_data_func.cpp.s
 .PHONY : src/static_data_func.cpp.s
 
+src/switch_case_label.o: src/switch_case_label.cpp.o
+
+.PHONY : src/switch_case_label.o
+
+# target to build an object file
+src/switch_case_label.cpp.o:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/switch_case_label.cpp.o
+.PHONY : src/switch_case_label.cpp.o
+
+src/switch_case_label.i: src/switch_case_label.cpp.i
+
+.PHONY : src/switch_case_label.i
+
+# target to preprocess a source file
+src/switch_case_label.cpp.i:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/switch_case_label.cpp.i
+.PHONY : src/switch_case_label.cpp.i
+
+src/switch_case_label.s: src/switch_case_label.cpp.s
+
+.PHONY : src/switch_case_label.s
+
+# target to generate assembly for a file
+src/switch_case_label.cpp.s:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/switch_case_label.cpp.s
+.PHONY : src/switch_case_label.cpp.s
+
 src/this_pointer.o: src/this_pointer.cpp.o
 
 .PHONY : src/this_pointer.o
@@ -249,6 +276,9 @@ help:
 	@echo "... src/static_data_func.o"
 	@echo "... src/static_data_func.i"
 	@echo "... src/static_data_func.s"
+	@echo "... src/switch_case_label.o"
+	@echo "... src/switch_case_label.i"
+	@echo "... src/switch_case_label.s"
 	@echo "... src/this_pointer.o"
 	@echo "... src/this_pointer.i"
 	@echo "... src/this_pointer.s"
