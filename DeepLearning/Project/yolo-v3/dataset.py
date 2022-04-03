@@ -69,6 +69,7 @@ class YoloDataSet(Dataset):
                     iou = min(area,ANTORS_AREA[feature_size][i])/max(area,ANTORS_AREA[feature_size][i])
                     
                     # 计算 w和h 的偏移量，就是用真实的w和h去除以建议的w和h
+                    # label[N][y_index][x_index][i] = 
                     p_w, p_h = w / antor[0], h / antor[1]
                     labels[feature_size][int(y_index),int(x_index),i]=np.array([iou,_x,_y,np.log(p_w),np.log(p_h),*one_hot(CLASS_NUM,int(cls))])
 
