@@ -46,6 +46,7 @@ if __name__ == '__main__':
 
     opt = optim.Adam(net.parameters())
 
+    #
     epoch=0
     index = 0
     while True:
