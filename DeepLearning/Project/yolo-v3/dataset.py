@@ -50,9 +50,11 @@ class YoloDataSet(Dataset):
         labels={}
 
         # 开始历遍先验框：如果有三种大小框那就是三种尺寸维度。N个类别，就会有N种聚类结果，一个维度就有N个框。总共3*N个先验框。
+        # antors={ 13: [[168,302], [57,221], [336,284]], 26: [[175,225], [279,160], [249,271]], 52: [[129,209], [85,413], [44,42]]}
         for feature_size,_antors in antors.items():
             labels[feature_size]=np.zeros(shape=(feature_size,feature_size,3,5+CLASS_NUM))
 
+            # 读取图片， boxes=[[], [], [], ..] 包含一个图上所有框，历遍一个图上所有的标记框
             for box in boxes:
                 # 得到原图上的坐标
                 cls, cx, cy, w, h = box
@@ -66,6 +68,7 @@ class YoloDataSet(Dataset):
                 
                 # (0, (13, [[168, 302], [57, 221], [336, 284]]))
                 # (0, [[168, 302], [57, 221], [336, 284]])
+                # 历遍一个 feature_size中的每一个先验框
                 for i,antor in enumerate(_antors):
                     area = w*h
                     iou = min(area,ANTORS_AREA[feature_size][i])/max(area,ANTORS_AREA[feature_size][i])
