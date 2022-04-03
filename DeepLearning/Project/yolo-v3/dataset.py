@@ -48,6 +48,8 @@ class YoloDataSet(Dataset):
         img=img.resize((DATA_WIDTH,DATA_HEIGHT))
         img_data=tf(img)
         labels={}
+
+        # 开始历遍先验框：如果有三种大小框那就是三种尺寸维度。N个类别，就会有N种聚类结果，一个维度就有N个框。总共3*N个先验框。
         for feature_size,_antors in antors.items():
             labels[feature_size]=np.zeros(shape=(feature_size,feature_size,3,5+CLASS_NUM))
 
