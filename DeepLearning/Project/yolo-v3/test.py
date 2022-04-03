@@ -27,13 +27,4 @@ from config import *
 #     print(type(i))  # list  # (4, 2, 13, 13)
 #     break
 
-for i in antors:
-    print(antors)
-    
-for a,b in antors.items():
-    print(a)
-    print(b)
-
-aar = torch.randn(1,3)
-print(aar)
-print(aar[...,0])
+print(math.modf(1.23))

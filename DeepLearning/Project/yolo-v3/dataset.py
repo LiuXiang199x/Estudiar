@@ -21,7 +21,7 @@ def one_hot(cls_num,i):
 
 class YoloDataSet(Dataset):
     def __init__(self):
-        f=open('/home/agent/Estudiar/DeepLearning/Project/yolo-v3/data.txt','r')
+        f=open('/home/marco/Estudiar/DeepLearning/Project/yolo-v3/data.txt','r')
         self.dataset=f.readlines()
 
     def __len__(self):
@@ -40,7 +40,7 @@ class YoloDataSet(Dataset):
         # 我们选择对图像进行resize，基于左上角去做填充。
         # 比如：640*416，我们会选max生成640*640，然后多余的区域用黑色去填充
         # 虽然改了图像大小，但是坐标其实不用变，因为原点是左上角，而且resize图像也是从左上角开始粘贴的。
-        img=make_416_image(os.path.join('/home/agent/Estudiar/DeepLearning/Project/yolo-v3/dataset/img',temp_data[0]))
+        img=make_416_image(os.path.join('/home/marco/Estudiar/DeepLearning/Project/yolo-v3/dataset/img',temp_data[0]))
         
         # 计算缩放比
         w,h=img.size
@@ -53,6 +53,7 @@ class YoloDataSet(Dataset):
         # antors={ 13: [[168,302], [57,221], [336,284]], 26: [[175,225], [279,160], [249,271]], 52: [[129,209], [85,413], [44,42]]}
         for feature_size,_antors in antors.items():
             labels[feature_size]=np.zeros(shape=(feature_size,feature_size,3,5+CLASS_NUM))
+            print("label size: ", labels.shape)
 
             # 读取图片， boxes=[[], [], [], ..] 包含一个图上所有框，历遍一个图上所有的标记框
             for box in boxes:
@@ -62,7 +63,7 @@ class YoloDataSet(Dataset):
                 cx, cy, w, h = cx*case,cy*case,w*case,h*case
 
                 # 计算偏移量，中心点的偏移量
-                # modf: 返回x的整数部分与小数部分
+                # modf(x): 返回x的小数部分与整数部分; 例：math.modf(1.23) -> 0.23 | 1
                 _x, x_index = math.modf(cx*feature_size/DATA_WIDTH)
                 _y, y_index = math.modf(cy*feature_size/DATA_HEIGHT)
                 
@@ -81,10 +82,11 @@ class YoloDataSet(Dataset):
         return labels[13],labels[26],labels[52],img_data
 
 if __name__ == '__main__':
-    dataset=YoloDataSet()
+    dataset=YoloDataSet()       # ()
     print(dataset[0][3].shape)  # torch.Size([3, 416, 416])
     print(dataset[0][0].shape)  # (13, 13, 3, 8)
     print(dataset[0][1].shape)  # (26, 26, 3, 8)
     print(dataset[0][2].shape)  # (52, 52, 3, 8)
     
-    print(dataset[0][0][0][0][0])
+    print(len(dataset[0][0][0]))   # (10, 4, 13, 13, 3. 8)
+    # (No_pic, 4, feature_size, feature_size, pre_box, 5+num_class)
