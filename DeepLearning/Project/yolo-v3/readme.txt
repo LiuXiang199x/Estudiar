@@ -34,3 +34,5 @@ yolo系列（多目标检测）：
                         算cx，cy在每个 feature_size 上的位置。可以得到 整数具体index和中心点偏移量x_,y_
                         算 w和h  相对于  先验框w‘和h’的偏移量 p_w = w/w'; p_h = h/h'.
                         计算w，h，cx，cy偏差。以一个矩阵形式返回, 
+                        
+	4. 
