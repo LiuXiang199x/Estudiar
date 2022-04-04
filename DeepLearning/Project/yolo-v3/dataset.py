@@ -53,7 +53,14 @@ class YoloDataSet(Dataset):
         # antors={ 13: [[168,302], [57,221], [336,284]], 26: [[175,225], [279,160], [249,271]], 52: [[129,209], [85,413], [44,42]]}
         for feature_size,_antors in antors.items():
             labels[feature_size]=np.zeros(shape=(feature_size,feature_size,3,5+CLASS_NUM))
-            print("label size: ", labels.shape)
+            
+            # (13, 13, 3, 8); (26, 26, 3, 8); (52, 52, 3, 8)
+            # print("labels size: ", labels[feature_size].shape)  
+            
+            # print("label is a dict, keys: ", labels.keys())
+            # label is a dict, keys:  dict_keys([13])
+            # label is a dict, keys:  dict_keys([13, 26])
+            # label is a dict, keys:  dict_keys([13, 26, 52])
 
             # 读取图片， boxes=[[], [], [], ..] 包含一个图上所有框，历遍一个图上所有的标记框
             for box in boxes:
@@ -83,6 +90,9 @@ class YoloDataSet(Dataset):
 
 if __name__ == '__main__':
     dataset=YoloDataSet()       # ()
+    # print(type(dataset))   # <class '__main__.YoloDataSet'>
+    # print(type(dataset[0]))   # tuple
+    # print(type(dataset[0][0]))   # array
     print(dataset[0][3].shape)  # torch.Size([3, 416, 416])
     print(dataset[0][0].shape)  # (13, 13, 3, 8)
     print(dataset[0][1].shape)  # (26, 26, 3, 8)

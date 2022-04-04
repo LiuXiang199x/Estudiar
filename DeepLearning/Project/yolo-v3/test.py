@@ -28,3 +28,7 @@ from config import *
 #     break
 
 print(math.modf(1.23))
+labels = {}
+
+labels[13] = [[1,2],[2,3]]
+print(labels)
