@@ -97,6 +97,7 @@ if __name__ == '__main__':
     print(dataset[0][0].shape)  # (13, 13, 3, 8)
     print(dataset[0][1].shape)  # (26, 26, 3, 8)
     print(dataset[0][2].shape)  # (52, 52, 3, 8)
+    print(dataset[0][3].shape)  # (3， 416， 416)
     
     print(len(dataset[0][0][0]))   # (10, 4, 13, 13, 3. 8)
     # (No_pic, 4, feature_size, feature_size, pre_box, 5+num_class)
