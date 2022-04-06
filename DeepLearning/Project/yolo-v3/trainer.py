@@ -16,11 +16,16 @@ def loss_fun(output, target, c):
     # ([2, 13, 13, 45]) --> ([2, 13, 13, 3, 15]) --> 15包括三个anchor box
     output = output.reshape(output.size(0), output.size(1), output.size(2), 3, -1)
 
-    # 看每个输出的
+    # loss可分为loss_obj, loss_noobj, loss_cls, loss_coor4个部分
     mask_obj = target[..., 0] > 0
     mask_no_obj = target[..., 0] == 0
     
+    # 用的时候需要在该层前面加上Sigmoid函数，因为只有正例和反例，且两者的概率和为 1，那么只需要预测一个概率就好了
     loss_p_fun = nn.BCELoss()
+
+    # 这个公式tx,ty为何要sigmoid一下啊？前面讲到了在yolov3中没有让Gx - Cx后除以Pw得到tx，而是直接Gx - Cx得到tx，
+    # 这样会有问题是导致tx比较大且很可能>1.(因为没有除以Pw归一化尺度)。用sigmoid将tx,ty压缩到[0,1]区间內，
+    # 可以有效的确保目标中心处于执行预测的网格单元中，防止偏移过多。
     loss_p = loss_p_fun(torch.sigmoid(output[..., 0]), target[..., 0])
 
     loss_box_fun = nn.MSELoss()
@@ -39,6 +44,9 @@ if __name__ == '__main__':
     dataset = YoloDataSet()
     data_loader = DataLoader(dataset, batch_size=1, shuffle=True)
 
+    # print(data_loader)
+    # print(type(data_loader))  # <class 'torch.utils.data.dataloader.DataLoader'>
+
     # weight_path = 'params/net.pt'
     net = Yolo_V3_Net().to(device)
     # if os.path.exists(weight_path):
@@ -54,14 +62,14 @@ if __name__ == '__main__':
             target_13, target_26, target_52, img_data = target_13.to(device), target_26.to(device), target_52.to(
                 device), img_data.to(device)
 
-            print("target_13: ", target_13.size())
-            print("img_data: ", img_data.size())
+            print("target_13: ", target_13.size())  # torch.Size([1, 13, 13, 3, 8])
+            print("img_data: ", img_data.size())   # torch.Size([1, 3, 416, 416])
             output_13, output_26, output_52 = net(img_data)
             
-            # print(output_13.size())  # torch.Size([2, 45, 13, 13])
-            # print(output_26.size())  # torch.Size([2, 45, 13, 13])
-            # print(output_52.size())  # torch.Size([2, 45, 13, 13])
-            # print(target_13.size())  # torch.Size([2, 13, 13, 3, 8])
+            # print(output_13.size())  # torch.Size([1, 45, 13, 13])
+            # print(output_26.size())  # torch.Size([1, 45, 13, 13])
+            # print(output_52.size())  # torch.Size([1, 45, 13, 13])
+            # print(target_13.size())  # torch.Size([1, 13, 13, 3, 8])
             
             
             loss_13 = loss_fun(output_13.float(), target_13.float(), 0.7)

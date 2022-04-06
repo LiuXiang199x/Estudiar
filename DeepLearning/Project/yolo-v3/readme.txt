@@ -29,14 +29,17 @@ yolo系列（多目标检测）：
                 for box in boxes:
                     原图上的c_x, c_y, w, h进行缩放等操作固定好尺寸。
                     计算中心点偏差和index，因为得到缩放后的两组参数后，在不同feature_size上可以去计算整数部分=index，小数部分就是中心点偏移量_x,_y
+                    (上面就是计算出来了哪个cell/grid来负责检测目标。也得到了中心点偏移量)
 
-                    // 一个feature_size里面有多个或一个先验框，这个取决于你的类别数量（先验框聚类得到）
+                    // 一个feature_size map中每个grid/cell里面有多个或一个先验框，这个取决于你的类别数量（先验框聚类得到）
+                    上面知道了是哪个cell来负责检测，每个grid里面有N个anchor box，下面就是要的到具体哪个anchor来负责检测（哪个先验框）
                     for pre_box in all_pre:
                         每个图片尺寸不一样，先固定到一个 M*M 固定尺寸；同时同比例缩放w，h，cx，cy
                         算cx，cy在每个 feature_size 上的位置。可以得到 整数具体index和中心点偏移量x_,y_
                         算 w和h  相对于  先验框w‘和h’的偏移量 p_w = w/w'; p_h = h/h'.
                         计算w，h，cx，cy偏差。以一个矩阵形式返回, 
       					(重点：搞清数据集的获取过程，组成，具体在matrix中组成形式)
+
         一个实际的dataset:[图片数量， 4， fs, fs, preBox, 5+NumClass]
         比如 》一张图4个数据为 "三个fs + 1个picData": 
             picData就是一个（3， 416， 416）矩阵。
@@ -48,7 +51,11 @@ yolo系列（多目标检测）：
                 1个fs会计算一次中心点偏移量，N个先验框(1个fs中)会有N个IOU，p_w, p_h.
                 可以想象：13*13个像素格子，每个格子中有N条数据，一条是一个5+NumClass的一维数组。当然其他也一样，只不过其他都为0.
 
-                一个13*13*N*8的全零初始化矩阵，只有1*1*N*8条是有数据的，其他都为0.
+                一个13*13*N*8的全零初始化矩阵，只有1*1*N*8条是有数据的，其他都为0. 13*13个grid，每个grid里面都有N个anchor box(pre_box)
+                对于训练图片中的ground truth，若其中心点落在某个cell内，那么该cell内的3个anchor box负责预测它，具体是哪个anchor box预测它，
+                需要在训练中确定，即由那个与ground truth的IOU最大的anchor box预测它，而剩余的2个anchor box不与该ground truth匹配。
+                YOLOv3需要假定每个cell至多含有一个grounth truth，而在实际上基本不会出现多于1个的情况。
+                与ground truth匹配的anchor box计算坐标误差、置信度误差（此时target为1）以及分类误差，而其它的anchor box只计算置信度误差（此时target为0）。
 
 
     4. 
