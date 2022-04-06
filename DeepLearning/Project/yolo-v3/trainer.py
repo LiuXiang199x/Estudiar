@@ -15,10 +15,15 @@ def loss_fun(output, target, c):
     
     # ([2, 13, 13, 45]) --> ([2, 13, 13, 3, 15]) --> 15包括三个anchor box
     output = output.reshape(output.size(0), output.size(1), output.size(2), 3, -1)
-
-    # loss可分为loss_obj, loss_noobj, loss_cls, loss_coor4个部分
+    # iou_scores：真实值与最匹配的anchor的IOU得分值 class_mask：分类正确的索引  
+    # obj_mask：目标框所在位置的最好anchor置为1 noobj_mask obj_mask那里置0，
+    # 还有计算的iou大于阈值的也置0，其他都为1 tx, ty, tw, th, 
+    # 对应的对于该大小的特征图的xywh目标值也就是我们需要拟合的值 tconf 目标置信度
+    # loss可分为loss_obj, loss_noobj, loss_cls, loss_coor4个部分边界框坐标损失、置信度损失和分类损失
     mask_obj = target[..., 0] > 0
-    mask_no_obj = target[..., 0] == 0
+    mask_no_obj = target[..., 0] == 0  # 判断当前网格中是否检测到物体，有为True
+    # print("mask_obj.shape", mask_obj.shape)  # (1, 13, 13 ,3)
+    # print("mask_np_obj.shape", mask_no_obj.shape)  # (1, 13, 13, 3)
     
     # 用的时候需要在该层前面加上Sigmoid函数，因为只有正例和反例，且两者的概率和为 1，那么只需要预测一个概率就好了
     loss_p_fun = nn.BCELoss()
@@ -28,9 +33,12 @@ def loss_fun(output, target, c):
     # 可以有效的确保目标中心处于执行预测的网格单元中，防止偏移过多。
     loss_p = loss_p_fun(torch.sigmoid(output[..., 0]), target[..., 0])
 
+
+    # 坐标的损失。有目标的像素格子才是我们要考虑的
     loss_box_fun = nn.MSELoss()
     loss_box = loss_box_fun(output[mask_obj][..., 1:5], target[mask_obj][..., 1:5])
 
+    # 分类损失：
     loss_segment_fun = nn.CrossEntropyLoss()
     loss_segment = loss_segment_fun(output[mask_obj][..., 5:],
                                     torch.argmax(target[mask_obj][..., 5:], dim=1, keepdim=True).squeeze(dim=1))
@@ -71,7 +79,7 @@ if __name__ == '__main__':
             # print(output_52.size())  # torch.Size([1, 45, 13, 13])
             # print(target_13.size())  # torch.Size([1, 13, 13, 3, 8])
             
-            
+            # 0.7 作为NMS阈值
             loss_13 = loss_fun(output_13.float(), target_13.float(), 0.7)
             loss_26 = loss_fun(output_26.float(), target_26.float(), 0.7)
             loss_52 = loss_fun(output_52.float(), target_52.float(), 0.7)
