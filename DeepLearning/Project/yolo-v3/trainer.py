@@ -70,6 +70,7 @@ if __name__ == '__main__':
             target_13, target_26, target_52, img_data = target_13.to(device), target_26.to(device), target_52.to(
                 device), img_data.to(device)
 
+            # 一个target = 标注图片与N个先验框的差
             print("target_13: ", target_13.size())  # torch.Size([1, 13, 13, 3, 8])
             print("img_data: ", img_data.size())   # torch.Size([1, 3, 416, 416])
             output_13, output_26, output_52 = net(img_data)
