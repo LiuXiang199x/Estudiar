@@ -27,7 +27,7 @@ yolo系列（多目标检测）：
 
                 // 一张图上可能有多个框，历遍一张图上额的每个框。（这个可和上面的互换顺序都行）  
                 for box in boxes:
-
+                    原图上的c_x, c_y, w, h进行缩放等操作固定好尺寸。
                     // 一个feature_size里面有多个或一个先验框，这个取决于你的类别数量（先验框聚类得到）
                     for pre_box in all_pre:
                         每个图片尺寸不一样，先固定到一个 M*M 固定尺寸；同时同比例缩放w，h，cx，cy
@@ -39,7 +39,9 @@ yolo系列（多目标检测）：
         比如 》一张图4个数据为 "三个fs + 1个picData": 
             picData就是一个（3， 416， 416）矩阵。
             多个fs组成一个labels字典，比如13*13的检测框：
-                labels[13]: [13, 13, 3, 8]
+                labels[13]: [13, 13, 3, 8], [y_index, x_index, i, ??]；
+                此处的i是，一个feature_size, 比如13*13，这个维度里面有三个先验框（3个class）
+                ？？存的就是数据 [iox, c_x, c_y, log(p_w), log(p_h), one_hot(NumClass)],one_hot(NumClass)是个1*N的一维矩阵。
 
 
     4. 

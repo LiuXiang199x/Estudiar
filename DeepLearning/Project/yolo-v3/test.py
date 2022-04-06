@@ -27,8 +27,6 @@ from config import *
 #     print(type(i))  # list  # (4, 2, 13, 13)
 #     break
 
-print(math.modf(1.23))
-labels = {}
-
-labels[13] = [[1,2],[2,3]]
-print(labels)
+a = torch.rand([13,13,5,8])
+print(a[10,4,2])
+print(a[10][4][2])
