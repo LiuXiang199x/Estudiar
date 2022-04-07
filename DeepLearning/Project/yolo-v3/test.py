@@ -30,3 +30,8 @@ from config import *
 a = torch.rand([13,13,5,8])
 print(a[10,4,2])
 print(a[10][4][2])
+
+a = 13 * 13 * 3
+print(a)
+print(a*4)
+print(a*4*4)
