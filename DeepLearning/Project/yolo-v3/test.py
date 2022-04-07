@@ -35,3 +35,8 @@ a = 13 * 13 * 3
 print(a)
 print(a*4)
 print(a*4*4)
+
+print(608/32)
+print(608/416 * 13)
+
+print(a + a*4 + a*16)
