@@ -1,4 +1,5 @@
 from ast import Break
+from cgi import test
 from pkgutil import ImpImporter
 import cv2
 import matplotlib
@@ -172,35 +173,26 @@ class Models:
         plt.imshow(img_RGB)
         plt.show()
 
-test = Models(modelWeight_path_, modelCfg_path_, cocoNames_path_)
-img_input = cv2.imread("/home/marco/Estudiar/DeepLearning/Project/yolo3_opencv/4.png")
-imgg = test.run_prediction(img_input)
-test.look_img(imgg)
 
+def test_img():
+    test = Models(modelWeight_path_, modelCfg_path_, cocoNames_path_)
+    img_input = cv2.imread("/home/marco/Estudiar/DeepLearning/Project/yolo3_opencv/4.png")
+    imgg = test.run_prediction(img_input)
+    test.look_img(imgg)
 
-cap = cv2.VideoCapture(1)
+def test_video():
+    test = Models(modelWeight_path_, modelCfg_path_, cocoNames_path_)
 
-cap.open(0)
+    cap = cv2.VideoCapture(0)
+    while 1:
+        ret, frame = cap.read()
+        frame = test.run_prediction(frame)
 
-while cap.isOpened():
+        cv2.imshow("cap1", frame)
+        if cv2.waitKey(100) & 0xff == ord('q'):
+            break
+    cap.release()
+    cv2.destroyAllWindows()
 
-    ret, frame = cap.read()
-    if not ret:
-        print("ERROR!!")
-        break
-    start_time = time.time()
-
-    # !!处理帧函数
-    frame = test.run_prediction(frame)
-
-    # 展示处理后的三通道图像
-    cv2.namedWindow("Image")
-    cv2.imshow("my_window", frame)
-
-    if cv2.waitKey(1) in [ord("q"), 27]:  # 按下键盘上的q或者esc退出
-        break
-
-# 关闭摄像头
-cap.release()
-#关闭图像窗口
-cv2.destroyAllWindows()
+test_img()
+test_video()
