@@ -49,8 +49,8 @@ class Models:
         layersNames = self.net.getLayerNames()
         print("layersNames: ", layersNames)
 
-        # output_layers_names = [layersNames[i[0]-1] for i in net.getUnconnectedOutLayers()]
-        output_layers_names = ["yolo_82", "yolo_94", "yolo_106"]
+        output_layers_names = [layersNames[i[0]-1] for i in self.net.getUnconnectedOutLayers()]
+        # output_layers_names = ["yolo_82", "yolo_94", "yolo_106"]
         print("output_layers_names: ", output_layers_names)
 
         # 输入 yolo3神经网络，前向推断预测
@@ -115,7 +115,6 @@ class Models:
                 class_names.append(class_name)
                 class_probs.append(class_prob)
 
-        print("boxes: ", boxes)
         print("len(boxes): ", len(boxes))
         print("len(objectness): ", len(objectness))
 
@@ -176,7 +175,7 @@ class Models:
 
 def test_img():
     test = Models(modelWeight_path_, modelCfg_path_, cocoNames_path_)
-    img_input = cv2.imread("/home/marco/Estudiar/DeepLearning/Project/yolo3_opencv/4.png")
+    img_input = cv2.imread("/home/marco/Estudiar/DeepLearning/Project/yolo3_opencv/dog.jpg")
     imgg = test.run_prediction(img_input)
     test.look_img(imgg)
 
@@ -195,4 +194,4 @@ def test_video():
     cv2.destroyAllWindows()
 
 test_img()
-test_video()
+# test_video()
