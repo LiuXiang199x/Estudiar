@@ -1,3 +1,5 @@
+import torch
+
 def focal(alpha=0.25, gamma=2.0):
     def _focal(y_true, y_pred):
         # y_true [batch_size, num_anchor, num_classes+1]
