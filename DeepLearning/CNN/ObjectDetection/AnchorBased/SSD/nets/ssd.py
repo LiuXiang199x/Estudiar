@@ -3,8 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.nn.init as init
 
-from nets.mobilenetv2 import InvertedResidual, mobilenet_v2
-from nets.vgg import vgg as add_vgg
+from mobilenetv2 import InvertedResidual, mobilenet_v2
+from vgg import vgg as add_vgg
 
 
 class L2Norm(nn.Module):
@@ -176,3 +176,5 @@ class SSD300(nn.Module):
             conf.view(conf.size(0), -1, self.num_classes),
         )
         return output
+a = SSD300(21, "vgg")
+print(a.vgg)
