@@ -69,11 +69,13 @@ class SSD300(nn.Module):
             loc_layers      = []
             conf_layers     = []
             backbone_source = [21, -2]
+            # 因为22层是经过RELU激活函数，-1层也是激活函数，所以这两层没法直接获得通道数
             #---------------------------------------------------#
             #   在add_vgg获得的特征层里
             #   第21层和-2层可以用来进行回归预测和分类预测。
             #   分别是conv4-3(38,38,512)和conv7(19,19,1024)的输出
             #---------------------------------------------------#
+            # 两个预测头的构建，这个位置只是 38 * 38 和 19* 19两个特征层的预测头
             for k, v in enumerate(backbone_source):
                 loc_layers  += [nn.Conv2d(self.vgg[v].out_channels, mbox[k] * 4, kernel_size = 3, padding = 1)]
                 conf_layers += [nn.Conv2d(self.vgg[v].out_channels, mbox[k] * num_classes, kernel_size = 3, padding = 1)]
@@ -82,6 +84,7 @@ class SSD300(nn.Module):
             #   第1层、第3层、第5层、第7层可以用来进行回归预测和分类预测。
             #   shape分别为(10,10,512), (5,5,256), (3,3,256), (1,1,256)
             #-------------------------------------------------------------#  
+            # 此处构建的是 10*10，5*5，3*3，1*1特征图的预测头
             for k, v in enumerate(self.extras[1::2], 2):
                 loc_layers  += [nn.Conv2d(v.out_channels, mbox[k] * 4, kernel_size = 3, padding = 1)]
                 conf_layers += [nn.Conv2d(v.out_channels, mbox[k] * num_classes, kernel_size = 3, padding = 1)]
@@ -119,7 +122,7 @@ class SSD300(nn.Module):
         #---------------------------#
         if self.backbone_name == "vgg":
             for k in range(23):
-                x = self.vgg[k](x)
+                x = self.vgg[k](x)   # 得到 38*38特征层
         else:
             for k in range(14):
                 x = self.mobilenet[k](x)
@@ -127,13 +130,14 @@ class SSD300(nn.Module):
         #   conv4_3的内容
         #   需要进行L2标准化
         #---------------------------#
-        s = self.L2Norm(x)
+        s = self.L2Norm(x)   # 对 38*38进行L2正则化
         sources.append(s)
 
         #---------------------------#
         #   获得conv7的内容
         #   shape为19,19,1024
         #---------------------------#
+        # 继续处理 38*38的特征层
         if self.backbone_name == "vgg":
             for k in range(23, len(self.vgg)):
                 x = self.vgg[k](x)
@@ -177,4 +181,4 @@ class SSD300(nn.Module):
         )
         return output
 a = SSD300(21, "vgg")
-print(a.vgg)
+print(a.vgg[22])

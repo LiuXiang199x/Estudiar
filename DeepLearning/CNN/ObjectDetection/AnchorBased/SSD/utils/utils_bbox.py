@@ -4,6 +4,7 @@ from torch import nn
 from torchvision.ops import nms
 
 
+# 得到模型的预测结果后进行解码
 class BBoxUtility(object):
     def __init__(self, num_classes):
         self.num_classes    = num_classes
@@ -91,6 +92,7 @@ class BBoxUtility(object):
             #--------------------------------#
             decode_bbox = self.decode_boxes(mbox_loc[i], anchors, variances)
 
+            # 不考虑0，因为0是背景的置信度
             for c in range(1, self.num_classes):
                 #--------------------------------#
                 #   取出属于该类的所有框的置信度
