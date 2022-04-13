@@ -27,7 +27,7 @@ class C(A, B):
 
     pass
 
-
+# yj
 c = C()
 print(c.name)
 c.demo()
