@@ -3,4 +3,4 @@ import cv2 as cv
 
 
 
-ptiny
+print()
