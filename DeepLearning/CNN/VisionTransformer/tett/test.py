@@ -6,6 +6,6 @@ from einops import rearrange, repeat
 
 a = torch.randn((2,3))
 print(a)
-b = torch.zeros(1,2)
+b = torch.zeros(1,3)
 print(b)
-print(torch.cat(a, b), axis=0)
+print(torch.cat([a, b], axis=1))
