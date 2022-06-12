@@ -5,3 +5,5 @@ from einops import rearrange, repeat
 
 a = torch.randn((2,3))
 print(a)
+b = torch.zeros(1,2)
+print(b)
