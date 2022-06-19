@@ -14,8 +14,7 @@ def run_(file_pth):
                 wordsCounterList[word] = 1
             else:
                 wordsCounterList[word] += 1
-    print("===============> done")
-    print(wordsCounterList.keys())
+    
     result_ = {}
     for key_name in wordsCounterList.keys():
         if wordsCounterList[key_name] > 1:
