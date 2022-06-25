@@ -1,0 +1,1 @@
+print("asdsd_{}_ads{}".format(1232,"sqq"))

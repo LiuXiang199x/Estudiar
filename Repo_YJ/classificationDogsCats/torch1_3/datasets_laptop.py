@@ -10,7 +10,7 @@ from PIL import Image
 
 
 root_dir = "/home/marco/Estudiar/Repo_YJ/classificationDogsCats/datas"
-eval_dir = "/home/marco/Estudiar/Repo_YJ/classificationDogsCats/eval"
+eval_dir = "/home/marco/Estudiar/Repo_YJ/classificationDogsCats/datas/eval"
 
 dogs_dir = os.path.join(root_dir, "dogs")
 cats_dir = os.path.join(root_dir, "cats")
@@ -56,7 +56,7 @@ def loadDatasTrain():
     catsTest = AnimalDataset(catsTest, transforms_)
     
     allTest = dogsTest+catsTest
-    testLoader = DataLoader(allTest, batch_size=1, shuffle=True, num_workers=0, pin_memory=True)
+    testLoader = DataLoader(allTest, batch_size=12, shuffle=True, num_workers=0, pin_memory=True)
     
     return testLoader
 

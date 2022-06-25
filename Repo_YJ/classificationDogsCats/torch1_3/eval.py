@@ -1,20 +1,22 @@
-import imp
-from xmlrpc.client import TRANSPORT_ERROR
-import numpy as np
 import torch
 import torch.nn as nn
-from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms
-import os
-from PIL import Image
-from datasets_laptop import *
+from datasets_laptop import loadDatasEval
+from Network import Tmodel
 
+pth_ = "/home/marco/Estudiar/Repo_YJ/classificationDogsCats/torch1_3/model_14000.pth"
 
-
-testLoader = loadDatas()
+testLoader = loadDatasEval()
 model = Tmodel()
 model.eval()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
-model.load_state_dict(torch.load("/home/marco/Estudiar/Repo_YJ/classificationDogsCats/NNN.pth"))
+print(torch.load(pth_).keys())
+print(torch.load(pth_)["epoch"])
+model.load_state_dict(torch.load(pth_)["state_dict"])
 
+for item in testLoader:
+    data, label = item
+    data = data.to(device)
+    label = label.to(device)
+    print(model(data))
+    break
