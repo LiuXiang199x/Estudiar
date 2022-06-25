@@ -56,7 +56,7 @@ def loadDatasTrain():
     catsTest = AnimalDataset(catsTest, transforms_)
     
     allTest = dogsTest+catsTest
-    testLoader = DataLoader(allTest, batch_size=12, shuffle=True, num_workers=0, pin_memory=True)
+    testLoader = DataLoader(allTest, batch_size=1, shuffle=True, num_workers=0, pin_memory=True)
     
     return testLoader
 
