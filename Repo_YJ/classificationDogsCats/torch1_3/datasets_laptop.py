@@ -10,6 +10,8 @@ from PIL import Image
 
 
 root_dir = "/home/marco/Estudiar/Repo_YJ/classificationDogsCats/datas"
+eval_dir = "/home/marco/Estudiar/Repo_YJ/classificationDogsCats/eval"
+
 dogs_dir = os.path.join(root_dir, "dogs")
 cats_dir = os.path.join(root_dir, "cats")
 
@@ -47,8 +49,8 @@ class AnimalDataset(Dataset):
 
 def loadDatasTrain():
 
-    dogsTest = initDatas(dogs_dir, 0)
-    catsTest = initDatas(cats_dir, 1)
+    dogsTest = initDatas(os.path.join(eval_dir, "dogs"), 0)
+    catsTest = initDatas(os.path.join(eval_dir, "dogs"), 1)
 
     dogsTest = AnimalDataset(dogsTest, transforms_)
     catsTest = AnimalDataset(catsTest, transforms_)
@@ -58,7 +60,7 @@ def loadDatasTrain():
     
     return testLoader
 
-def loadDatasTrain():
+def loadDatasEval():
 
     dogsTest = initDatas(dogs_dir, 0)
     catsTest = initDatas(cats_dir, 1)
