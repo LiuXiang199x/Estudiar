@@ -45,7 +45,20 @@ class AnimalDataset(Dataset):
     def __len__(self) -> int:
         return len(self.data)
 
-def loadDatas():
+def loadDatasTrain():
+
+    dogsTest = initDatas(dogs_dir, 0)
+    catsTest = initDatas(cats_dir, 1)
+
+    dogsTest = AnimalDataset(dogsTest, transforms_)
+    catsTest = AnimalDataset(catsTest, transforms_)
+    
+    allTest = dogsTest+catsTest
+    testLoader = DataLoader(allTest, batch_size=1, shuffle=True, num_workers=0, pin_memory=True)
+    
+    return testLoader
+
+def loadDatasTrain():
 
     dogsTest = initDatas(dogs_dir, 0)
     catsTest = initDatas(cats_dir, 1)
