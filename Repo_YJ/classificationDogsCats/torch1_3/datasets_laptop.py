@@ -49,8 +49,8 @@ class AnimalDataset(Dataset):
 
 def loadDatasTrain():
 
-    dogsTest = initDatas(os.path.join(eval_dir, "dogs"), 0)
-    catsTest = initDatas(os.path.join(eval_dir, "dogs"), 1)
+    dogsTest = initDatas(dogs_dir, 0)
+    catsTest = initDatas(cats_dir, 1)
 
     dogsTest = AnimalDataset(dogsTest, transforms_)
     catsTest = AnimalDataset(catsTest, transforms_)
@@ -62,8 +62,8 @@ def loadDatasTrain():
 
 def loadDatasEval():
 
-    dogsTest = initDatas(dogs_dir, 0)
-    catsTest = initDatas(cats_dir, 1)
+    dogsTest = initDatas(os.path.join(eval_dir, "dogs"), 0)
+    catsTest = initDatas(os.path.join(eval_dir, "cats"), 1)
 
     dogsTest = AnimalDataset(dogsTest, transforms_)
     catsTest = AnimalDataset(catsTest, transforms_)
