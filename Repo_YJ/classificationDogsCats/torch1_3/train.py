@@ -7,7 +7,7 @@ from Network import Tmodel
 EPOCHES = 100000
 
 def train():
-    
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = Tmodel().to(device)
     datas = loadDatasTrain()
@@ -32,7 +32,7 @@ def train():
 
             runningLoss += loss_
 
-            if epoch%5 == 0:
+            if epoch%6 == 0:
                 print("running loss = ", runningLoss)
 
         if epoch % 1000 == 0:
