@@ -5,7 +5,7 @@ import torch.nn as nn
 x = torch.rand(1, dtype=torch.float,requires_grad=True)
 print(x.grad)
 
-y = 4*x*x + 2
+y = 4*x*x*x + 2
 print(y.backward())
 print(y.grad)
 print(x.grad)
