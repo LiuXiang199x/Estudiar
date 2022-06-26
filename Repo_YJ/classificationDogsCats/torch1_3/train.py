@@ -7,6 +7,7 @@ from Network import Tmodel
 EPOCHES = 100000
 
 def train():
+    
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = Tmodel().to(device)
     datas = loadDatasTrain()
@@ -39,6 +40,7 @@ def train():
                 "epoch": epoch,
                 "state_dict": model.state_dict()},
                 "/home/marco/Estudiar/Repo_YJ/classificationDogsCats/torch1_3/model_{}.pth".format(epoch))
+
 
 if __name__ == "__main__":
     train()
