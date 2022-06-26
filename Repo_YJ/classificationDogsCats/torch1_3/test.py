@@ -12,7 +12,12 @@ print(x.grad)
 
 # backward()的理解：当前Variable(理解成函数Y)对leaf variable（理解成变量X=[x1,x2,x3]）求偏导。
 
-a=torch.ones(2,1,requires_grad=True)
-b=torch.zeros(2,1)
-b[0,0]=a[0,0]**2+a[1,0]*5
-b[1,0]=a[0,0]**3+a[1,0]*4
+w = torch.tensor([1.], requires_grad = True)
+x = torch.tensor([2.], requires_grad = True)
+
+a = torch.add(w, x)
+b = torch.add(w, 1)
+y = torch.mul(a, b)
+print(w, x, a, b, y)
+y.backward()
+print(w.grad)
