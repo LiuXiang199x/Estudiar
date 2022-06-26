@@ -40,4 +40,5 @@ def train():
                 "state_dict": model.state_dict()},
                 "/home/marco/Estudiar/Repo_YJ/classificationDogsCats/torch1_3/model_{}.pth".format(epoch))
 
+if _
 train()
