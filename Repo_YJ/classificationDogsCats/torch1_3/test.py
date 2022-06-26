@@ -19,5 +19,11 @@ a = torch.add(w, x)
 b = torch.add(w, 1)
 y = torch.mul(a, b)
 print(w, x, a, b, y)
-y.backward()
+# y.backward()
+a.backward()
 print(w.grad)
+
+#查看叶子节点
+print("is_leaf:\n",w.is_leaf,x.is_leaf,a.is_leaf,b.is_leaf,y.is_leaf)
+#查看梯度
+print("gradient:\n",w.grad,x.grad,a.grad,b.grad,y.grad)
