@@ -7,7 +7,10 @@ from .anchor_target import anchor_target
 from .proposal import proposal
 import config as cfg
 from ..utils.smooth_L1 import smooth_L1
-
+import config as cfg
+from .generate_anchors import generate_anchors
+from ..utils.bbox_operations import bbox_transform_inv, clip_boxes
+from ..nms.nms_wrapper import nms
 
 class RPN(nn.Module):
     def __init__(self):
@@ -76,13 +79,6 @@ class RPN(nn.Module):
 
         return rois, rpn_cls_loss, rpn_reg_loss, _rpn_train_info
 
-import torch
-import numpy as np
-import config as cfg
-from .generate_anchors import generate_anchors
-from ..utils.bbox_operations import bbox_transform_inv, clip_boxes
-from ..nms.nms_wrapper import nms
-
 
 def proposal(rpn_cls_prob, rpn_reg, im_info, train_mode):
 
@@ -108,7 +104,7 @@ def proposal(rpn_cls_prob, rpn_reg, im_info, train_mode):
     anchor_ratios = cfg.RPN_ANCHOR_RATIOS
     feat_stride = cfg.FEAT_STRIDE
 
-    # generate anchors
+    # generate anchor； feat_stride是feature map缩小了多少倍，比如1/16，下采样了16倍。
     _anchors = generate_anchors(base_size=feat_stride, scales=anchor_scales, ratios=anchor_ratios)
     num_anchors = _anchors.shape[0]
 
