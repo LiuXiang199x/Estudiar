@@ -21,14 +21,16 @@ def generate_anchors(base_size=16, ratios=[0.5, 1, 2],scales=2 ** np.arange(3, 6
 def _ratio_enum(anchor, ratios):
     # 获取宽高和中心点坐标
     w,h,x_ctr,y_ctr = _whctrs(anchor)
-    size = w * h   
+    size = w * h
     size_ratios = size / ratios
+    print("size_ratios: ", size_ratios)
 
     # np.round（）去掉小数点，_mkanchors()是给定anchor的中心点和宽高求出anchor的左上点和右下点坐标。 
     ws = np.round(np.sqrt(size_ratios))
     hs = np.round(ws * ratios)    
     anchors = _mkanchors(ws, hs, x_ctr, y_ctr)
     return anchors
+
 
 # _whctrs()是给定anchor左上点和右下点坐标求出anchor的中心点和宽高。x_ctr,y_ctr中心点坐标。
 def _whctrs(anchor):
@@ -60,5 +62,4 @@ def _mkanchors(ws, hs, x_ctr, y_ctr):
 if __name__ == '__main__':
     a = generate_anchors() 
     print(a)
-
 
