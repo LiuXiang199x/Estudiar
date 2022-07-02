@@ -1,3 +1,4 @@
+from matplotlib.pyplot import sca
 import numpy as np
 
 
@@ -12,6 +13,10 @@ def generate_anchors(base_size=16, ratios=[0.5, 1, 2],scales=2 ** np.arange(3, 6
     ratio_anchors = _ratio_enum(base_anchor, ratios)
     print("ratio_anchors: ", ratio_anchors)
 
+    for i in range(ratio_anchors.shape[0]):
+        print(i)
+        print(ratio_anchors[i, :], scales)
+
     anchors = np.vstack([_scale_enum(ratio_anchors[i, :], scales)
                          for i in range(ratio_anchors.shape[0])])
     
@@ -21,6 +26,8 @@ def generate_anchors(base_size=16, ratios=[0.5, 1, 2],scales=2 ** np.arange(3, 6
 def _ratio_enum(anchor, ratios):
     # 获取宽高和中心点坐标
     w,h,x_ctr,y_ctr = _whctrs(anchor)
+    # w = 16; h = 16; x_ctr = 7.5; y_ctr = 7.5
+
     size = w * h
     size_ratios = size / ratios
     print("size_ratios: ", size_ratios)
@@ -28,7 +35,10 @@ def _ratio_enum(anchor, ratios):
     # np.round（）去掉小数点，_mkanchors()是给定anchor的中心点和宽高求出anchor的左上点和右下点坐标。 
     ws = np.round(np.sqrt(size_ratios))
     hs = np.round(ws * ratios)    
+    print("ws: ", ws)
+    print("hs: ", hs)
     anchors = _mkanchors(ws, hs, x_ctr, y_ctr)
+
     return anchors
 
 
@@ -38,14 +48,20 @@ def _whctrs(anchor):
     h = anchor[3] - anchor[1] + 1
     x_ctr = anchor[0] + 0.5 * (w - 1)
     y_ctr = anchor[1] + 0.5 * (h - 1)
+
     return w, h, x_ctr, y_ctr
 
 
 def _scale_enum(anchor, scales):
+    print("anchor:{}, scales:{}".format(anchor, scales))
     w, h, x_ctr, y_ctr = _whctrs(anchor)
+    print("w={},h={},x_ctr={},y_ctr={}".format(w,h,x_ctr,y_ctr))
     ws = w * scales
     hs = h * scales
+    print(ws, hs)
     anchors = _mkanchors(ws, hs, x_ctr, y_ctr)
+    print("anchors: ", anchors)
+
     return anchors
 
 
@@ -56,6 +72,7 @@ def _mkanchors(ws, hs, x_ctr, y_ctr):
                          y_ctr - 0.5 * (hs - 1),
                          x_ctr + 0.5 * (ws - 1),
                          y_ctr + 0.5 * (hs - 1)))
+
     return anchors
 
 
