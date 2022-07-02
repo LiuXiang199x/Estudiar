@@ -9,5 +9,8 @@ def concatenate():
     print(np.concatenate((a1, a2), axis=0))
     print(np.concatenate((a1, a2), axis=1))
 
-
+    a3 = np.array([[2,3,4],[1,2,3]])
+    print(a3)
+    print(a3.T)
     
+concatenate()
