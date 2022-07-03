@@ -3,9 +3,8 @@ import time
 import torch
 import torch.nn.functional as F
 from torch.autograd import Variable
-from torchv
- 
- 
+from torchvision.models.detection import faster_rcnn 
+
 def roi_pooling(input, rois, size=(7, 7), spatial_scale=1.0):
 	assert rois.dim() == 2
 	assert rois.size(1) == 5
