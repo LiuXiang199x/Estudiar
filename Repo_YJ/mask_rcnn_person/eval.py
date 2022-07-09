@@ -61,8 +61,8 @@ with torch.no_grad():
 
 print(prediction[0].keys())
 print(len(prediction[0]["masks"]))
-Image.fromarray(img.mul(255).permute(1, 2, 0).byte().numpy()).show()
-# for i in range(len(prediction[0]["masks"])):
-    
-#     Image.fromarray(prediction[0]['masks'][i, 0].mul(255).byte().cpu().numpy()).show()
+#
 
+Image.fromarray(img.mul(255).permute(1, 2, 0).byte().numpy()).show()
+# for i in range(len(prediction[0]["masks"])):    
+#     Image.fromarray(prediction[0]['masks'][i, 0].mul(255).byte().cpu().numpy()).show()
