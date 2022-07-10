@@ -6,7 +6,7 @@ from torchvision.models.detection import faster_rcnn
 b = torchvision.models.resnet18()
 c = torchvision.models.resnet50()
 d = torchvision.models.mobilenet_v2()
-print(c)
-print(b.out_channels)
-model = faster_rcnn.FasterRCNN(backbone=b)
-print(model)
+e = torchvision.models.vgg16_bn()
+
+# model = faster_rcnn.FasterRCNN()  # 必须要指定一个backbone
+print(e.children())
