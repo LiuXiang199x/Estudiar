@@ -15,3 +15,4 @@ def getNetwork(num_classes):
 
 net = getNetwork(2)
 print(net)
+#gi
