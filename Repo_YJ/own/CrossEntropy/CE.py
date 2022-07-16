@@ -40,12 +40,23 @@ def logSoftmax_NLLLoss():
     print("NLLLoss是把logSigmoid/logSoftmax的输出与label对应的值拿出来，去掉负号再求均值。")
 
     input=torch.randn(3,3)
-    soft_input = torch.nn.Softmax(dim=0)
+    soft_input = torch.nn.Softmax(dim=1)
     print("Original inputs\n", input)
     print("After softmax\n", soft_input(input))
 
     #对softmax结果取log
-    print(torch.log(soft_input(input)))
+    print("torch.log(soft_input(input)): \n", torch.log(soft_input(input)))
+    print("假设labels为：[0, 1, 2]，第一行取第0，第二行取出1...")
+    labels = torch.tensor([0, 1, 2])
+    Loss1 = torch.abs(torch.log(soft_input(input))[0][0]) + \
+            torch.abs(torch.log(soft_input(input))[1][1]) + \
+            torch.abs(torch.log(soft_input(input))[2][2])
+    print("计算出logsofmax后，根据labels[0,1,2]找出没一行对应的值相加后求平均，Loss = ", Loss1/len(labels))
 
+    activation2 = nn.NLLLoss()
+    print("log_softmax + NLLLoss: ", activation2(torch.log(soft_input(input)), labels))
     
+    activation3 = nn.CrossEntropyLoss()
+    print("CrossEntropy loss: ", activation3(input, labels))
+
 logSoftmax_NLLLoss()
