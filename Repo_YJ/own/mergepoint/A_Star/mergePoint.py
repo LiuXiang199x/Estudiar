@@ -16,7 +16,7 @@ import os
 
 root_dir = "/home/marco/Estudiar/Repo_YJ/own/mergepoint/datas"
 def divideRegion(visualizaton=False, visualizatonRegions=False):
-    imgPth = "image/0.png"
+    imgPth = os.path.join(root_dir, "image/0.png")
     jsonPth = "/home/agent/Repo_YJ/project/source_datasets/conorPoint/标注/mergePoint/gaussianHeatmap/0.json"
     imgLabel = "/home/agent/Repo_YJ/project/source_datasets/conorPoint/标注/mergePoint/image/0_.png"
 
