@@ -26,3 +26,4 @@ if aStar.start():
     q.showMap();
 else:
     print("no way")
+#
