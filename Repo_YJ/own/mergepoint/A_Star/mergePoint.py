@@ -12,10 +12,11 @@ import copy
 from findClosetPoint import *
 from map2d import map2d
 import AStar
+import os
 
 root_dir = "/home/marco/Estudiar/Repo_YJ/own/mergepoint/datas"
 def divideRegion(visualizaton=False, visualizatonRegions=False):
-    imgPth = "/home/agent/Repo_YJ/project/source_datasets/conorPoint/标注/mergePoint/image/0.png"
+    imgPth = "image/0.png"
     jsonPth = "/home/agent/Repo_YJ/project/source_datasets/conorPoint/标注/mergePoint/gaussianHeatmap/0.json"
     imgLabel = "/home/agent/Repo_YJ/project/source_datasets/conorPoint/标注/mergePoint/image/0_.png"
 
