@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from CA import *
+from CA import *
 
 class CBAM(nn.Module):
     def __init__(self, inplanes, ratio=16, kernel_size=7):
